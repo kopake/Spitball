@@ -73,28 +73,10 @@ public class SoundManager implements Listener {
                     }
                 });
                 mp.start();
+
             }
 
         };
         thread.start();
-
-//        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-//            mediaPlayer.stop();
-//            mediaPlayer.reset();
-//            mediaPlayer.release();
-//            mediaPlayer = null;
-//        }
-//
-//        mediaPlayer = MediaPlayer.create(activity, id);
-//        mediaPlayer.setLooping(false);
-//        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-//            @Override
-//            public void onCompletion(MediaPlayer mp) {
-//                mp.reset();
-//                mp.release();
-//                mediaPlayer = null;
-//            }
-//        });
-//        mediaPlayer.start();
     }
 }

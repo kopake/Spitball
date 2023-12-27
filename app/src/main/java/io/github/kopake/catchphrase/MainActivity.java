@@ -20,6 +20,7 @@ import io.github.kopake.catchphrase.game.event.listeners.LogListener;
 import io.github.kopake.catchphrase.game.timer.GameTimer;
 import io.github.kopake.catchphrase.ui.CheckboxAdapter;
 import io.github.kopake.catchphrase.ui.SoundManager;
+import io.github.kopake.catchphrase.ui.VibrationManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -88,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Register UI listeners
         eventManager.addListener(new SoundManager(this));
+        eventManager.addListener(new VibrationManager(this));
 
 
     }

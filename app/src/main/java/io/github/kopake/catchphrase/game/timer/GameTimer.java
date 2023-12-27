@@ -67,7 +67,7 @@ public class GameTimer implements Listener {
     }
 
     private static long getTotalTimeOfTimerInMilliSeconds() {
-        return 10000;
+        return 3000;
     }
 
     @EventHandler
