@@ -41,7 +41,7 @@ public class SoundManager implements Listener {
 
     @EventHandler
     public void endOfRoundBuzzer(RoundEndEvent roundEndEvent) {
-        playSound(R.raw.round_end_buzzer);
+        playSound(R.raw.buzzer);
     }
 
     @EventHandler
@@ -60,23 +60,41 @@ public class SoundManager implements Listener {
     }
 
     private void playSound(int id) {
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            mediaPlayer.stop();
-            mediaPlayer.reset();
-            mediaPlayer.release();
-            mediaPlayer = null;
-        }
-
-        mediaPlayer = MediaPlayer.create(activity, id);
-        mediaPlayer.setLooping(false);
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+        Thread thread = new Thread() {
             @Override
-            public void onCompletion(MediaPlayer mp) {
-                mp.reset();
-                mp.release();
-                mediaPlayer = null;
+            public void run() {
+                MediaPlayer mp = MediaPlayer.create(activity, id);
+                mp.setLooping(false);
+                mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mplayer) {
+                        mplayer.reset();
+                        mplayer.release();
+                    }
+                });
+                mp.start();
             }
-        });
-        mediaPlayer.start();
+
+        };
+        thread.start();
+
+//        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+//            mediaPlayer.stop();
+//            mediaPlayer.reset();
+//            mediaPlayer.release();
+//            mediaPlayer = null;
+//        }
+//
+//        mediaPlayer = MediaPlayer.create(activity, id);
+//        mediaPlayer.setLooping(false);
+//        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+//            @Override
+//            public void onCompletion(MediaPlayer mp) {
+//                mp.reset();
+//                mp.release();
+//                mediaPlayer = null;
+//            }
+//        });
+//        mediaPlayer.start();
     }
 }

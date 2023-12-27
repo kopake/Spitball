@@ -17,8 +17,8 @@ import io.github.kopake.catchphrase.game.event.listeners.Listener;
 public class GameTimer implements Listener {
 
     private static final int TIMER_1_FREQUENCY = 600;
-    private static final int TIMER_2_FREQUENCY = 300;
-    private static final int TIMER_3_FREQUENCY = 150;
+    private static final int TIMER_2_FREQUENCY = TIMER_1_FREQUENCY / 2;
+    private static final int TIMER_3_FREQUENCY = TIMER_2_FREQUENCY / 2;
 
     private CountDownTimer timer1;
     private CountDownTimer timer2;
