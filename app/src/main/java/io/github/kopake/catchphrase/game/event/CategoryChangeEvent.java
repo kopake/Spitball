@@ -1,13 +1,15 @@
 package io.github.kopake.catchphrase.game.event;
 
-public class CategoryChangeEvent implements Event {
-    private String categoryName;
+import java.util.List;
 
-    public CategoryChangeEvent(String categoryName) {
-        this.categoryName = categoryName;
+public class CategoryChangeEvent implements Event {
+    private List<String> categoryNames;
+
+    public CategoryChangeEvent(List<String> categoryNames) {
+        this.categoryNames = categoryNames;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public List<String> getCategoryNames() {
+        return categoryNames;
     }
 }

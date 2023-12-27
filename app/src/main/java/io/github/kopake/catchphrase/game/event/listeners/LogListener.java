@@ -17,7 +17,7 @@ public class LogListener implements Listener {
 
     @EventHandler
     public void onCategoryChangeEvent(CategoryChangeEvent event) {
-        Log.i("Catchphrase", "Category changed to: " + event.getCategoryName());
+        Log.i("Catchphrase", "Categories changed to: " + event.getCategoryNames().toString());
     }
 
     @EventHandler

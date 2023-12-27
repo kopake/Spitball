@@ -25,8 +25,8 @@ public class CurrentWord implements Listener {
 
     @EventHandler
     public void onCategoryChange(CategoryChangeEvent categoryChangeEvent) {
-        currentCategoryString = categoryChangeEvent.getCategoryName();
-        currentWord = null;
+//        currentCategoryString = categoryChangeEvent.getCategoryName();
+//        currentWord = null;
         //TODO parse category word file to wordList
     }
 

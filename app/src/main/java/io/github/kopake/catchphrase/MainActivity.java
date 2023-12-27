@@ -2,6 +2,7 @@ package io.github.kopake.catchphrase;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -37,12 +38,14 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add("seven");
         arrayList.add("eight");
 
-        createCheckboxList(arrayList);
         hideNavigationBar();
+        initButtonClick();
+        createCheckboxList(arrayList);
         registerListeners();
 
 
     }
+
 
     private void hideNavigationBar() {
         View decorView = getWindow().getDecorView();
@@ -51,8 +54,20 @@ public class MainActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOptions);
     }
 
+    private void initButtonClick() {
+        Button button = findViewById(R.id.startButton);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EventManager eventManager = EventManager.getInstance();
+                eventManager.dispatchEvent(new GameStartEvent());
+                eventManager.dispatchEvent(new RoundStartEvent());
+            }
+        });
+    }
+
     private void createCheckboxList(List<String> categoryNames) {
-// Initialize RecyclerView
+        // Initialize RecyclerView
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -75,8 +90,6 @@ public class MainActivity extends AppCompatActivity {
         eventManager.addListener(new SoundManager(this));
 
 
-        eventManager.dispatchEvent(new GameStartEvent());
-        eventManager.dispatchEvent(new RoundStartEvent());
     }
 
 }

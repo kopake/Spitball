@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/startButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
@@ -33,9 +34,9 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:background="@color/button_background"
         android:gravity="center"
         android:text="Catch\nPhrase"
-        android:background="@color/button_background"
         android:textColor="@color/button_text"
         app:autoSizeMaxTextSize="100sp"
         app:autoSizeTextType="uniform"
@@ -77,11 +78,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
+        android:background="@color/button_background"
+        android:textColor="@color/button_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/texturesLabel"
-        android:background="@color/button_background"
-        android:textColor="@color/button_text" />
+        app:layout_constraintTop_toBottomOf="@+id/texturesLabel" />
 
     <TextView
         android:id="@+id/texturesLabel"
@@ -106,13 +107,13 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="32dp"
+        android:background="@color/button_background"
         android:paddingStart="2sp"
         android:text="Sounds"
+        android:textColor="@color/button_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/texturesSpinner"
-        android:background="@color/button_background"
-        android:textColor="@color/button_text" />
+        app:layout_constraintTop_toBottomOf="@+id/texturesSpinner" />
 
     <Spinner
         android:id="@+id/soundsSpinner"
@@ -120,11 +121,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="32dp"
+        android:background="@color/button_background"
+        android:textColor="@color/button_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/soundsLabel"
-        android:background="@color/button_background"
-        android:textColor="@color/button_text" />
+        app:layout_constraintTop_toBottomOf="@+id/soundsLabel" />
 
     <TextView
         android:id="@+id/categoriesLabel"
@@ -133,12 +134,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="32dp"
+        android:background="@color/button_background"
         android:paddingStart="2sp"
         android:text="Categories"
+        android:textColor="@color/button_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/soundsSpinner"
-        android:background="@color/button_background"
-        android:textColor="@color/button_text" />
+        app:layout_constraintTop_toBottomOf="@+id/soundsSpinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

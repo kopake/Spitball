@@ -10,18 +10,23 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.github.kopake.catchphrase.R;
+import io.github.kopake.catchphrase.game.event.CategoryChangeEvent;
+import io.github.kopake.catchphrase.game.event.EventManager;
 
 public class CheckboxAdapter extends RecyclerView.Adapter<CheckboxAdapter.ViewHolder> {
 
     private List<String> itemList;
+    private List<String> selectedItems; // Keep track of selected items
     private Context context;
 
     public CheckboxAdapter(Context context, List<String> itemList) {
         this.context = context;
         this.itemList = itemList;
+        this.selectedItems = new ArrayList<>();
     }
 
     @NonNull
@@ -39,13 +44,26 @@ public class CheckboxAdapter extends RecyclerView.Adapter<CheckboxAdapter.ViewHo
         // Handle checkbox state here (checked or unchecked)
         holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
             // Handle checkbox state change if needed
-            // You can use isChecked to determine the state
+            if (isChecked) {
+                // If checked, add the item to the selectedItems list
+                selectedItems.add(item);
+            } else {
+                // If unchecked, remove the item from the selectedItems list
+                selectedItems.remove(item);
+            }
+            EventManager.getInstance().dispatchEvent(new CategoryChangeEvent(selectedItems));
         });
+
+
     }
 
     @Override
     public int getItemCount() {
         return itemList.size();
+    }
+
+    public List<String> getSelectedItems() {
+        return selectedItems;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
