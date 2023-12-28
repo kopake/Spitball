@@ -8,9 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import io.github.kopake.catchphrase.file.WordListParser;
 import io.github.kopake.catchphrase.game.CurrentWord;
 import io.github.kopake.catchphrase.game.Scoreboard;
 import io.github.kopake.catchphrase.game.event.EventManager;
@@ -29,19 +29,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("one");
-        arrayList.add("two");
-        arrayList.add("three");
-        arrayList.add("four");
-        arrayList.add("five");
-        arrayList.add("six");
-        arrayList.add("seven");
-        arrayList.add("eight");
 
         hideNavigationBar();
         initButtonClick();
-        createCheckboxList(arrayList);
+        createCheckboxList(WordListParser.getCategoryNames());
         registerListeners();
 
 
@@ -60,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+//                Log.i("Catchphrase", WordListParser.getListOfWordsInCategory());
+
                 EventManager eventManager = EventManager.getInstance();
                 eventManager.dispatchEvent(new GameStartEvent());
                 eventManager.dispatchEvent(new RoundStartEvent());
