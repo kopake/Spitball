@@ -24,17 +24,13 @@ public class WordListParser {
 
     private static void parseWordLists() {
         wordLists = new ArrayList<>();
-
         File wordListDirectory = FileSystemUtilities.getWordListsDirectory();
+        if (!wordListDirectory.isDirectory())
+            throw new RuntimeException("Error while parsing word lists directory");
 
-        // Ensure the specified path is a directory
-        if (wordListDirectory.isDirectory()) {
-            // Use a FilenameFilter to filter files with ".txt" extension
-            FilenameFilter textFileFilter = (dir, name) -> name.toLowerCase().endsWith(WORD_LIST_FILE_EXTENSION);
-
-            for (File txtFile : Objects.requireNonNull(wordListDirectory.listFiles(textFileFilter))) {
-                wordLists.add(new WordList(txtFile));
-            }
+        FilenameFilter textFileFilter = (dir, name) -> name.toLowerCase().endsWith(WORD_LIST_FILE_EXTENSION);
+        for (File txtFile : Objects.requireNonNull(wordListDirectory.listFiles(textFileFilter))) {
+            wordLists.add(new WordList(txtFile));
         }
     }
 

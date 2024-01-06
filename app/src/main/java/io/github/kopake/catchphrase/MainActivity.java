@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import io.github.kopake.catchphrase.file.FileSystemUtilities;
 import io.github.kopake.catchphrase.file.WordListParser;
 import io.github.kopake.catchphrase.game.CurrentWord;
 import io.github.kopake.catchphrase.game.Scoreboard;
 import io.github.kopake.catchphrase.game.event.EventManager;
-import io.github.kopake.catchphrase.game.event.GameStartEvent;
-import io.github.kopake.catchphrase.game.event.RoundStartEvent;
+import io.github.kopake.catchphrase.game.event.NextWordEvent;
 import io.github.kopake.catchphrase.game.event.listeners.LogListener;
 import io.github.kopake.catchphrase.game.timer.GameTimer;
 import io.github.kopake.catchphrase.ui.CheckboxAdapter;
@@ -36,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
         createCheckboxList(WordListParser.getWordListNames());
         registerListeners();
 
-        Log.i("Catchphrase", WordListParser.getWordListByName("baseball").getWords().toString());
+
+        Log.i("Catchphrase", FileSystemUtilities.getCatchphraseRootDirectory().getAbsolutePath());
     }
 
 
@@ -49,13 +50,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void initStartButtonClick() {
         Button button = findViewById(R.id.startButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EventManager eventManager = EventManager.getInstance();
-                eventManager.dispatchEvent(new GameStartEvent());
-                eventManager.dispatchEvent(new RoundStartEvent());
-            }
+        button.setOnClickListener(view -> {
+            EventManager eventManager = EventManager.getInstance();
+//            eventManager.dispatchEvent(new GameStartEvent());
+//            eventManager.dispatchEvent(new RoundStartEvent());
+            eventManager.dispatchEvent(new NextWordEvent(""));
+
         });
     }
 
