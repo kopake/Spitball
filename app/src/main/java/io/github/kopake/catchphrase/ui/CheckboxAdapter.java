@@ -14,8 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.github.kopake.catchphrase.R;
-import io.github.kopake.catchphrase.game.event.CategoryChangeEvent;
-import io.github.kopake.catchphrase.game.event.EventManager;
 
 public class CheckboxAdapter extends RecyclerView.Adapter<CheckboxAdapter.ViewHolder> {
 
@@ -51,7 +49,6 @@ public class CheckboxAdapter extends RecyclerView.Adapter<CheckboxAdapter.ViewHo
                 // If unchecked, remove the item from the selectedItems list
                 selectedItems.remove(item);
             }
-            EventManager.getInstance().dispatchEvent(new CategoryChangeEvent(selectedItems));
         });
 
 

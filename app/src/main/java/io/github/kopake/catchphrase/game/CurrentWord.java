@@ -2,7 +2,6 @@ package io.github.kopake.catchphrase.game;
 
 import java.util.List;
 
-import io.github.kopake.catchphrase.game.event.CategoryChangeEvent;
 import io.github.kopake.catchphrase.game.event.EventHandler;
 import io.github.kopake.catchphrase.game.event.NextWordEvent;
 import io.github.kopake.catchphrase.game.event.RoundStartEvent;
@@ -23,12 +22,6 @@ public class CurrentWord implements Listener {
         return currentWord;
     }
 
-    @EventHandler
-    public void onCategoryChange(CategoryChangeEvent categoryChangeEvent) {
-//        currentCategoryString = categoryChangeEvent.getCategoryName();
-//        currentWord = null;
-        //TODO parse category word file to wordList
-    }
 
     @EventHandler
     public void onRoundStart(RoundStartEvent roundStartEvent) {

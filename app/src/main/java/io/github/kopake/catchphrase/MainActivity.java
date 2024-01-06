@@ -1,6 +1,7 @@
 package io.github.kopake.catchphrase;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -31,11 +32,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         hideNavigationBar();
-        initButtonClick();
-        createCheckboxList(WordListParser.getCategoryNames());
+        initStartButtonClick();
+        createCheckboxList(WordListParser.getWordListNames());
         registerListeners();
 
-
+        Log.i("Catchphrase", WordListParser.getWordListByName("baseball").getWords().toString());
     }
 
 
@@ -46,14 +47,11 @@ public class MainActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOptions);
     }
 
-    private void initButtonClick() {
+    private void initStartButtonClick() {
         Button button = findViewById(R.id.startButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                Log.i("Catchphrase", WordListParser.getListOfWordsInCategory());
-
                 EventManager eventManager = EventManager.getInstance();
                 eventManager.dispatchEvent(new GameStartEvent());
                 eventManager.dispatchEvent(new RoundStartEvent());

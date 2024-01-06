@@ -1,71 +1,56 @@
 package io.github.kopake.catchphrase.file;
 
-import android.util.Log;
-
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FilenameFilter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Objects;
+
+import io.github.kopake.catchphrase.game.model.WordList;
 
 public class WordListParser {
 
-    private static final String WORD_LISTS_LOCATION = "/Catchphrase/words";
+    private static final String WORD_LIST_FILE_EXTENSION = ".txt";
 
-    private static final FilenameFilter WORD_FILE_FILTER = (dir, name) -> name.toLowerCase().endsWith(".txt");
+    private static List<WordList> wordLists;
 
-    public static List<String> getCategoryNames() {
-        File wordDirectory = new File(WORD_LISTS_LOCATION);
-        Log.i("Catchphrase", String.valueOf(wordDirectory.mkdirs()));
-        
 
-        Log.i("Catchphrase", wordDirectory.getAbsolutePath());
+    public static List<WordList> getAllWordLists() {
+        if (wordLists == null)
+            parseWordLists();
 
-        try {
-            return Arrays.stream(wordDirectory.list(WORD_FILE_FILTER))
-                    .map(fileName -> fileName.substring(0, fileName.lastIndexOf('.')))
-                    .collect(Collectors.toList());
-        } catch (NullPointerException e) {
-            return new ArrayList<>();
-        }
+        return wordLists;
     }
 
-    public static List<String> getListOfWordsInCategory(List<String> categories) {
-        return categories.stream()
-                .flatMap(category -> getListOfWordsInCategory(category).stream())
-                .collect(Collectors.toList());
-    }
+    private static void parseWordLists() {
+        wordLists = new ArrayList<>();
 
-    public static List<String> getListOfWordsInCategory(String categoryName) {
-        return getWordsInTxtFile(getCategoryTxtFile(categoryName));
-    }
+        File wordListDirectory = FileSystemUtilities.getWordListsDirectory();
 
-    private static File getCategoryTxtFile(String categoryName) {
-        String fullFilePath = WORD_LISTS_LOCATION + "/" + categoryName;
-        if (fullFilePath.endsWith(".txt"))
-            fullFilePath += ".txt";
+        // Ensure the specified path is a directory
+        if (wordListDirectory.isDirectory()) {
+            // Use a FilenameFilter to filter files with ".txt" extension
+            FilenameFilter textFileFilter = (dir, name) -> name.toLowerCase().endsWith(WORD_LIST_FILE_EXTENSION);
 
-        return new File(fullFilePath);
-    }
-
-    private static List<String> getWordsInTxtFile(File file) {
-        List<String> lines = new ArrayList<>();
-
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                lines.add(line);
+            for (File txtFile : Objects.requireNonNull(wordListDirectory.listFiles(textFileFilter))) {
+                wordLists.add(new WordList(txtFile));
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
-        return lines;
+    }
+
+    public static WordList getWordListByName(String wordListName) {
+        for (WordList wordList : getAllWordLists()) {
+            if (wordList.getName().equals(wordListName))
+                return wordList;
+        }
+        return null;
+    }
+
+    public static List<String> getWordListNames() {
+        List<String> wordListNames = new ArrayList<>();
+        for (WordList wordList : getAllWordLists()) {
+            wordListNames.add(wordList.getName());
+        }
+        return wordListNames;
     }
 }

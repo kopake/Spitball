@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.media.MediaPlayer;
 
 import io.github.kopake.catchphrase.R;
-import io.github.kopake.catchphrase.game.event.CategoryChangeEvent;
 import io.github.kopake.catchphrase.game.event.EventHandler;
 import io.github.kopake.catchphrase.game.event.GameEndEvent;
 import io.github.kopake.catchphrase.game.event.PointAddEvent;
@@ -47,11 +46,6 @@ public class SoundManager implements Listener {
     @EventHandler
     public void pointAddSound(PointAddEvent pointAddEvent) {
         playSound(R.raw.add_point);
-    }
-
-    @EventHandler
-    public void changeCategorySound(CategoryChangeEvent categoryChangeEvent) {
-        playSound(R.raw.change_category);
     }
 
     @EventHandler

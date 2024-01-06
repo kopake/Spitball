@@ -2,7 +2,6 @@ package io.github.kopake.catchphrase.game.event.listeners;
 
 import android.util.Log;
 
-import io.github.kopake.catchphrase.game.event.CategoryChangeEvent;
 import io.github.kopake.catchphrase.game.event.EventHandler;
 import io.github.kopake.catchphrase.game.event.GameEndEvent;
 import io.github.kopake.catchphrase.game.event.GameStartEvent;
@@ -14,11 +13,6 @@ import io.github.kopake.catchphrase.game.event.RoundStartEvent;
 import io.github.kopake.catchphrase.game.event.TimerTickEvent;
 
 public class LogListener implements Listener {
-
-    @EventHandler
-    public void onCategoryChangeEvent(CategoryChangeEvent event) {
-        Log.i("Catchphrase", "Categories changed to: " + event.getCategoryNames().toString());
-    }
 
     @EventHandler
     public void onGameEndEvent(GameEndEvent event) {
