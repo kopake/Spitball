@@ -13,12 +13,14 @@ import java.util.List;
 
 import io.github.kopake.catchphrase.file.FileSystemUtilities;
 import io.github.kopake.catchphrase.file.WordListParser;
-import io.github.kopake.catchphrase.game.CurrentWord;
+import io.github.kopake.catchphrase.game.NextWordChooser;
 import io.github.kopake.catchphrase.game.Scoreboard;
 import io.github.kopake.catchphrase.game.event.EventManager;
-import io.github.kopake.catchphrase.game.event.NextWordEvent;
+import io.github.kopake.catchphrase.game.event.GameStartEvent;
+import io.github.kopake.catchphrase.game.event.RoundStartEvent;
 import io.github.kopake.catchphrase.game.event.listeners.LogListener;
 import io.github.kopake.catchphrase.game.timer.GameTimer;
+import io.github.kopake.catchphrase.ui.ActivityManager;
 import io.github.kopake.catchphrase.ui.CheckboxAdapter;
 import io.github.kopake.catchphrase.ui.SoundManager;
 import io.github.kopake.catchphrase.ui.VibrationManager;
@@ -52,10 +54,8 @@ public class MainActivity extends AppCompatActivity {
         Button button = findViewById(R.id.startButton);
         button.setOnClickListener(view -> {
             EventManager eventManager = EventManager.getInstance();
-//            eventManager.dispatchEvent(new GameStartEvent());
-//            eventManager.dispatchEvent(new RoundStartEvent());
-            eventManager.dispatchEvent(new NextWordEvent(""));
-
+            eventManager.dispatchEvent(new GameStartEvent());
+            eventManager.dispatchEvent(new RoundStartEvent());
         });
     }
 
@@ -74,10 +74,12 @@ public class MainActivity extends AppCompatActivity {
         EventManager eventManager = EventManager.getInstance();
 
         //Register main functionality listeners
-        eventManager.addListener(new CurrentWord());
+        eventManager.addListener(new NextWordChooser());
         eventManager.addListener(new GameTimer());
         eventManager.addListener(new Scoreboard());
         eventManager.addListener(new LogListener());
+        eventManager.addListener(ActivityManager.getInstance());
+        eventManager.addListener(new GameInProgressActivity());
 
         //Register UI listeners
         eventManager.addListener(new SoundManager(this));

@@ -12,13 +12,21 @@ import java.util.function.Predicate;
 import io.github.kopake.catchphrase.Catchphrase;
 import io.github.kopake.catchphrase.file.WordListParser;
 import io.github.kopake.catchphrase.game.event.EventHandler;
+import io.github.kopake.catchphrase.game.event.EventManager;
+import io.github.kopake.catchphrase.game.event.GameStartEvent;
+import io.github.kopake.catchphrase.game.event.NextButtonPressEvent;
 import io.github.kopake.catchphrase.game.event.NextWordEvent;
+import io.github.kopake.catchphrase.game.event.RoundStartEvent;
 import io.github.kopake.catchphrase.game.event.listeners.Listener;
 import io.github.kopake.catchphrase.game.model.WordList;
 
-public class CurrentWord implements Listener {
+public class NextWordChooser implements Listener {
 
-    private static final int RECENCY_WORD_PREVENTION_DISTANCE = 2;
+    /**
+     * The number of recent words that are stored to prevent repeating a word shortly after it was
+     * recently used.
+     */
+    private static final int RECENCY_WORD_PREVENTION_DISTANCE = 50;
 
     private LinkedList<String> currentSetOfWords;
 
@@ -26,13 +34,16 @@ public class CurrentWord implements Listener {
 
     private Queue<String> recentlyUsedWords = new LinkedList<>();
 
-    public void showNextWord() {
-        String word = getNextWord();
-        Toast.makeText(Catchphrase.getContext(), word, Toast.LENGTH_SHORT).show();
-        exhaustWord(word);
-    }
-
-
+    /**
+     * Calculates the next word and returns it.
+     * <p>
+     * The next word is chosen in the following priority order:
+     * - A new word which has not been used yet this session
+     * - If no such word exists, a new word which hasn't been used recently
+     * - If no such word exists, any random, available word
+     *
+     * @return The next word
+     */
     private String getNextWord() {
         // Try to get a word that has not been used yet
         String nextWord = getNewWord(word -> !wordsUsedThisSession.contains(word));
@@ -70,10 +81,21 @@ public class CurrentWord implements Listener {
         return null;
     }
 
+    /**
+     * Moves the front word in the current set to the end of the current set
+     */
     private void cycleCurrentSetOfWords() {
         currentSetOfWords.offer(currentSetOfWords.remove());
     }
 
+    /**
+     * Updates local variables to treat the given word as used.
+     * <p>
+     * The word is added to the words used this session, and the recent words collection is updated
+     * accordingly
+     *
+     * @param word The word to exhaust
+     */
     private void exhaustWord(String word) {
         wordsUsedThisSession.add(word);
 
@@ -82,8 +104,14 @@ public class CurrentWord implements Listener {
             recentlyUsedWords.remove();
     }
 
+    /**
+     * Initializes the local variables so that they are ready for other method calls. Note that this
+     * should be the first method called in the lifetime of this class
+     *
+     * @param gameStartEvent The game start event that triggered this method call
+     */
     @EventHandler
-    public void onGameStart(NextWordEvent gameStartEvent) {
+    public void onGameStart(GameStartEvent gameStartEvent) {
         currentSetOfWords = new LinkedList<>();
 
         //TODO make this only the selected lists
@@ -91,8 +119,30 @@ public class CurrentWord implements Listener {
             currentSetOfWords.addAll(wordList.getWords());
         }
         Collections.shuffle(currentSetOfWords);
-
-        showNextWord();
     }
 
+    /**
+     * Invokes {@link #calculateNextWordAndDispatchNextWordEvent(NextButtonPressEvent)}
+     *
+     * @param roundStartEvent The round start event that triggered this method call
+     */
+    @EventHandler
+    public void onRoundStart(RoundStartEvent roundStartEvent) {
+        calculateNextWordAndDispatchNextWordEvent(null);
+    }
+
+    /**
+     * Calculates the next word that should be displayed and dispatches a
+     * {@linkplain io.github.kopake.catchphrase.game.event.NextWordEvent}
+     *
+     * @param nextButtonPressEvent The event that (may have) triggered this method call (not used)
+     */
+    @EventHandler
+    public void calculateNextWordAndDispatchNextWordEvent(NextButtonPressEvent nextButtonPressEvent) {
+        String word = getNextWord();
+        //TODO delete TOAST
+        Toast.makeText(Catchphrase.getContext(), word, Toast.LENGTH_SHORT).show();
+        exhaustWord(word);
+        EventManager.getInstance().dispatchEvent(new NextWordEvent(word));
+    }
 }

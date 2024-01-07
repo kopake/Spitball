@@ -5,6 +5,7 @@ import android.util.Log;
 import io.github.kopake.catchphrase.game.event.EventHandler;
 import io.github.kopake.catchphrase.game.event.GameEndEvent;
 import io.github.kopake.catchphrase.game.event.GameStartEvent;
+import io.github.kopake.catchphrase.game.event.NextButtonPressEvent;
 import io.github.kopake.catchphrase.game.event.NextWordEvent;
 import io.github.kopake.catchphrase.game.event.PointAddEvent;
 import io.github.kopake.catchphrase.game.event.RoundCancelEvent;
@@ -52,5 +53,10 @@ public class LogListener implements Listener {
     @EventHandler
     public void onTimerTickEvent(TimerTickEvent event) {
         Log.i("Catchphrase", "Timer Tick: " + event.getTimerPhase());
+    }
+
+    @EventHandler
+    public void onNextButtonPress(NextButtonPressEvent nextButtonPressEvent) {
+        Log.i("Catchphrase", "Next Button Pressed");
     }
 }
