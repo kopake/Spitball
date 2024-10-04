@@ -2,15 +2,21 @@ package io.github.kopake.catchphrase.game.event;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import io.github.kopake.catchphrase.game.event.listeners.Listener;
 
 public class EventManager {
 
     private static EventManager instance = new EventManager();
-    private Set<Listener> listeners = new HashSet<>();
+    private Collection<Listener> listeners = new ArrayList<>();
+
+    private final ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     private EventManager() {
     }
@@ -28,9 +34,12 @@ public class EventManager {
     }
 
     public void dispatchEvent(Event event) {
-        for (Listener listener : listeners) {
-            dispatchEventToListener(event, listener);
-        }
+        // Submit a new task to the executor service
+        executorService.submit(() -> {
+            for (Listener listener : listeners) {
+                dispatchEventToListener(event, listener);
+            }
+        });
     }
 
     private void dispatchEventToListener(Event event, Listener listener) {
@@ -62,7 +71,9 @@ public class EventManager {
     }
 
     private Set<Method> getAllMethods(Object object) {
-        Set<Method> methods = new HashSet<Method>();
+        Set<Method> methods = new HashSet<>();
+        if (object == null)
+            return methods;
         Method[] publicMethods = object.getClass().getMethods();
         Method[] privateMethods = object.getClass().getDeclaredMethods();
 
@@ -72,5 +83,9 @@ public class EventManager {
             methods.add(method);
 
         return methods;
+    }
+
+    public void shutdown() {
+        executorService.shutdown();
     }
 }

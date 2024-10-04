@@ -5,6 +5,8 @@ import static io.github.kopake.catchphrase.game.timer.TimerPhase.THREE;
 import static io.github.kopake.catchphrase.game.timer.TimerPhase.TWO;
 
 import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.Looper;
 
 import io.github.kopake.catchphrase.game.event.EventHandler;
 import io.github.kopake.catchphrase.game.event.EventManager;
@@ -67,21 +69,23 @@ public class GameTimer implements Listener {
     }
 
     private static long getTotalTimeOfTimerInMilliSeconds() {
-        return 3000;
+        return 10000;
     }
 
     @EventHandler
     public void onRoundStart(RoundStartEvent roundStartEvent) {
-        initializeTimers();
-        timer1.start();
+        new Handler(Looper.getMainLooper()).post(() -> {
+            initializeTimers();
+            timer1.start();
+        });
     }
 
     @EventHandler
     public void onRoundCancel(RoundCancelEvent roundCancelEvent) {
-        timer1.cancel();
-        timer2.cancel();
-        timer3.cancel();
+        new Handler(Looper.getMainLooper()).post(() -> {
+            timer1.cancel();
+            timer2.cancel();
+            timer3.cancel();
+        });
     }
-
-
 }

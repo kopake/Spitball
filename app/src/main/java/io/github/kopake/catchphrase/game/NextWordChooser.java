@@ -1,6 +1,7 @@
 package io.github.kopake.catchphrase.game;
 
-import android.widget.Toast;
+import android.os.Handler;
+import android.os.Looper;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -9,7 +10,6 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import io.github.kopake.catchphrase.Catchphrase;
 import io.github.kopake.catchphrase.file.WordListParser;
 import io.github.kopake.catchphrase.game.event.EventHandler;
 import io.github.kopake.catchphrase.game.event.EventManager;
@@ -140,9 +140,11 @@ public class NextWordChooser implements Listener {
     @EventHandler
     public void calculateNextWordAndDispatchNextWordEvent(NextButtonPressEvent nextButtonPressEvent) {
         String word = getNextWord();
-        //TODO delete TOAST
-        Toast.makeText(Catchphrase.getContext(), word, Toast.LENGTH_SHORT).show();
         exhaustWord(word);
-        EventManager.getInstance().dispatchEvent(new NextWordEvent(word));
+
+        // Run a little later so that the GameInProgressActivity can be created properly before the next word event is received
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            EventManager.getInstance().dispatchEvent(new NextWordEvent(word));
+        }, 100);
     }
 }

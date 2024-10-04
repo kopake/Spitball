@@ -3,7 +3,6 @@ package io.github.kopake.catchphrase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,6 +26,10 @@ import io.github.kopake.catchphrase.ui.VibrationManager;
 
 public class MainActivity extends AppCompatActivity {
 
+    private GameInProgressActivity gameInProgressActivity = new GameInProgressActivity();
+
+    private PointsAddActivity pointsAddActivity = new PointsAddActivity();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,10 +37,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         hideNavigationBar();
-        initStartButtonClick();
         createCheckboxList(WordListParser.getWordListNames());
         registerListeners();
 
+
+        setContentView(R.layout.activity_main);
 
         Log.i("Catchphrase", FileSystemUtilities.getCatchphraseRootDirectory().getAbsolutePath());
     }
@@ -50,14 +54,12 @@ public class MainActivity extends AppCompatActivity {
         decorView.setSystemUiVisibility(uiOptions);
     }
 
-    private void initStartButtonClick() {
-        Button button = findViewById(R.id.startButton);
-        button.setOnClickListener(view -> {
-            EventManager eventManager = EventManager.getInstance();
-            eventManager.dispatchEvent(new GameStartEvent());
-            eventManager.dispatchEvent(new RoundStartEvent());
-        });
+    public void onStartButtonClick(View view) {
+        EventManager eventManager = EventManager.getInstance();
+        eventManager.dispatchEvent(new GameStartEvent());
+        eventManager.dispatchEvent(new RoundStartEvent());
     }
+
 
     private void createCheckboxList(List<String> categoryNames) {
         // Initialize RecyclerView
@@ -74,18 +76,17 @@ public class MainActivity extends AppCompatActivity {
         EventManager eventManager = EventManager.getInstance();
 
         //Register main functionality listeners
+        eventManager.addListener(ActivityManager.getInstance());
         eventManager.addListener(new NextWordChooser());
         eventManager.addListener(new GameTimer());
         eventManager.addListener(new Scoreboard());
         eventManager.addListener(new LogListener());
-        eventManager.addListener(ActivityManager.getInstance());
-        eventManager.addListener(new GameInProgressActivity());
+
+        eventManager.addListener(new WordUpdater());
 
         //Register UI listeners
         eventManager.addListener(new SoundManager(this));
         eventManager.addListener(new VibrationManager(this));
-
-
     }
 
 }

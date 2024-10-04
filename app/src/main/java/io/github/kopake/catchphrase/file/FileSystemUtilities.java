@@ -8,16 +8,12 @@ import io.github.kopake.catchphrase.Catchphrase;
 
 public class FileSystemUtilities {
 
-    private static final String EXTERNAL_FILES_DIRECTORY = null;
-    public static final String ROOT_CATCHPHRASE_FOLDER_NAME = "Catchphrase";
     public static final String CATEGORIES_FOLDER_NAME = "word_lists";
     public static final String RESOURCE_PACKS_FOLDER_NAME = "resource_packs";
 
     public static File getCatchphraseRootDirectory() {
         ContextWrapper contextWrapper = new ContextWrapper(Catchphrase.getContext());
-        File externalFilesDirectory = contextWrapper.getExternalFilesDir(EXTERNAL_FILES_DIRECTORY);
-        File rootCatchphraseDirectory = new File(externalFilesDirectory, ROOT_CATCHPHRASE_FOLDER_NAME);
-
+        File rootCatchphraseDirectory = contextWrapper.getExternalFilesDir(null);
         return getDirectoryCreateIfItDoesntExist(rootCatchphraseDirectory);
     }
 

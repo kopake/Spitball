@@ -52,7 +52,7 @@ public class LogListener implements Listener {
 
     @EventHandler
     public void onTimerTickEvent(TimerTickEvent event) {
-        Log.i("Catchphrase", "Timer Tick: " + event.getTimerPhase());
+//        Log.i("Catchphrase", "Timer Tick: " + event.getTimerPhase());
     }
 
     @EventHandler

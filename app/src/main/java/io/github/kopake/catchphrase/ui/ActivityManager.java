@@ -3,6 +3,8 @@ package io.github.kopake.catchphrase.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.Toast;
 
 import io.github.kopake.catchphrase.Catchphrase;
@@ -53,10 +55,12 @@ public class ActivityManager implements Listener {
     }
 
     private void openActivity(Class<? extends Activity> activityClass) {
-        Context context = Catchphrase.getContext();
-        Intent intent = new Intent(context, activityClass);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(intent);
+        new Handler(Looper.getMainLooper()).postAtFrontOfQueue(() -> {
+            Context context = Catchphrase.getContext();
+            Intent intent = new Intent(context, activityClass);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
     }
 
 

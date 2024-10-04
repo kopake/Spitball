@@ -17,6 +17,7 @@
         android:layout_marginBottom="32dp"
         android:background="@color/button_background"
         android:hapticFeedbackEnabled="true"
+        android:onClick="onStartButtonClick"
         android:text="Start"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@color/button_text"

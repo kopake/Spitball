@@ -3,6 +3,8 @@ package io.github.kopake.catchphrase;
 import android.app.Application;
 import android.content.Context;
 
+import io.github.kopake.catchphrase.game.event.EventManager;
+
 public class Catchphrase extends Application {
 
     private static Application application;
@@ -21,5 +23,9 @@ public class Catchphrase extends Application {
         return getApplication().getApplicationContext();
     }
 
-
+    @Override
+    public void onTerminate() {
+        EventManager.getInstance().shutdown();
+        super.onTerminate();
+    }
 }
