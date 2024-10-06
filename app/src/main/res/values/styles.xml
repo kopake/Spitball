@@ -7,6 +7,9 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="buttonStyle">@style/DefaultCatchphraseButtonStyle</item>
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/black</item>
     </style>
 
     <style name="DefaultCatchphraseButtonStyle" parent="">
