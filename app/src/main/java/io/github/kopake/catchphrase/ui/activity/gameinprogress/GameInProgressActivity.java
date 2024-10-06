@@ -1,4 +1,4 @@
-package io.github.kopake.catchphrase;
+package io.github.kopake.catchphrase.ui.activity.gameinprogress;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,9 +6,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import io.github.kopake.catchphrase.R;
+import io.github.kopake.catchphrase.game.event.EventHandler;
 import io.github.kopake.catchphrase.game.event.EventManager;
 import io.github.kopake.catchphrase.game.event.NextButtonPressEvent;
+import io.github.kopake.catchphrase.game.event.NextWordEvent;
 import io.github.kopake.catchphrase.game.event.RoundCancelEvent;
+import io.github.kopake.catchphrase.game.event.listeners.Listener;
 
 public class GameInProgressActivity extends AppCompatActivity {
 
@@ -22,10 +26,19 @@ public class GameInProgressActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_in_progress);
-
-        instance = this;
-
         hideNavigationBar();
+
+        if (instance == null) {
+            EventManager.getInstance().addListener(new Listener() {
+                @EventHandler
+                public void onNextWordEvent(NextWordEvent nextWordEvent) {
+                    runOnUiThread(() -> {
+                        updateWordText(nextWordEvent.getWord());
+                    });
+                }
+            });
+            instance = this;
+        }
     }
 
     private void hideNavigationBar() {

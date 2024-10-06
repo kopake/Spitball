@@ -1,4 +1,4 @@
-package io.github.kopake.catchphrase.ui;
+package io.github.kopake.catchphrase.ui.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,9 +8,6 @@ import android.os.Looper;
 import android.widget.Toast;
 
 import io.github.kopake.catchphrase.Catchphrase;
-import io.github.kopake.catchphrase.GameInProgressActivity;
-import io.github.kopake.catchphrase.MainActivity;
-import io.github.kopake.catchphrase.PointsAddActivity;
 import io.github.kopake.catchphrase.game.Scoreboard;
 import io.github.kopake.catchphrase.game.event.EventHandler;
 import io.github.kopake.catchphrase.game.event.GameEndEvent;
@@ -18,6 +15,9 @@ import io.github.kopake.catchphrase.game.event.RoundCancelEvent;
 import io.github.kopake.catchphrase.game.event.RoundEndEvent;
 import io.github.kopake.catchphrase.game.event.RoundStartEvent;
 import io.github.kopake.catchphrase.game.event.listeners.Listener;
+import io.github.kopake.catchphrase.ui.activity.gameinprogress.GameInProgressActivity;
+import io.github.kopake.catchphrase.ui.activity.main.MainActivity;
+import io.github.kopake.catchphrase.ui.activity.pointsadd.PointsAddActivity;
 
 public class ActivityManager implements Listener {
 
@@ -70,7 +70,7 @@ public class ActivityManager implements Listener {
         new Handler(Looper.getMainLooper()).postAtFrontOfQueue(() -> {
             Context context = Catchphrase.getContext();
             Intent intent = new Intent(context, activityClass);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             context.startActivity(intent);
         });
     }

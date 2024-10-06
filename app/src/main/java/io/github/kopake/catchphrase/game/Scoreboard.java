@@ -50,8 +50,10 @@ public class Scoreboard implements Listener {
         switch (pointAddEvent.getTeam()) {
             case ONE:
                 teamOneScore++;
+                break;
             case TWO:
                 teamTwoScore++;
+                break;
         }
 
         if (teamOneScore >= 7)

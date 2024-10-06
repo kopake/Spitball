@@ -1,4 +1,4 @@
-package io.github.kopake.catchphrase;
+package io.github.kopake.catchphrase.ui.activity.main;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
+import io.github.kopake.catchphrase.R;
 import io.github.kopake.catchphrase.file.FileSystemUtilities;
 import io.github.kopake.catchphrase.file.WordListParser;
 import io.github.kopake.catchphrase.game.NextWordChooser;
@@ -19,10 +20,12 @@ import io.github.kopake.catchphrase.game.event.GameStartEvent;
 import io.github.kopake.catchphrase.game.event.RoundStartEvent;
 import io.github.kopake.catchphrase.game.event.listeners.LogListener;
 import io.github.kopake.catchphrase.game.timer.GameTimer;
-import io.github.kopake.catchphrase.ui.ActivityManager;
 import io.github.kopake.catchphrase.ui.CheckboxAdapter;
 import io.github.kopake.catchphrase.ui.SoundManager;
 import io.github.kopake.catchphrase.ui.VibrationManager;
+import io.github.kopake.catchphrase.ui.activity.ActivityManager;
+import io.github.kopake.catchphrase.ui.activity.gameinprogress.GameInProgressActivity;
+import io.github.kopake.catchphrase.ui.activity.pointsadd.PointsAddActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -81,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
         eventManager.addListener(new GameTimer());
         eventManager.addListener(Scoreboard.getInstance());
         eventManager.addListener(new LogListener());
-
-        eventManager.addListener(new WordUpdater());
 
         //Register UI listeners
         eventManager.addListener(new SoundManager(this));

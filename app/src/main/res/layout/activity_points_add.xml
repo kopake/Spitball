@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/catchphrase_background_color"
-    tools:context=".PointsAddActivity">
+    tools:context=".ui.activity.pointsadd.PointsAddActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vertical50Guideline"

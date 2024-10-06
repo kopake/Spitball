@@ -145,6 +145,6 @@ public class NextWordChooser implements Listener {
         // Run a little later so that the GameInProgressActivity can be created properly before the next word event is received
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             EventManager.getInstance().dispatchEvent(new NextWordEvent(word));
-        }, 100);
+        }, 50);
     }
 }
