@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="CatchphraseTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
+        <item name="buttonStyle">@style/DefaultCatchphraseButtonStyle</item>
     </style>
+
+    <style name="DefaultCatchphraseButtonStyle" parent="">
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:backgroundTint">@color/black</item>
+        <item name="android:alpha">0.67</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">12sp</item>
+        <item name="android:autoSizeMaxTextSize">60sp</item>
+        <item name="android:hapticFeedbackEnabled">true</item> <!-- TODO doesn't work -->
+    </style>
+
+    <style name="DefaultCatchphraseTextViewStyle" parent="">
+        <item name="android:textColor">@color/button_text</item>
+        <item name="android:background">@color/black</item>
+        <item name="android:alpha">0.67</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeMinTextSize">12sp</item>
+        <item name="android:autoSizeMaxTextSize">60sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>

@@ -11,8 +11,10 @@ import io.github.kopake.catchphrase.Catchphrase;
 import io.github.kopake.catchphrase.GameInProgressActivity;
 import io.github.kopake.catchphrase.MainActivity;
 import io.github.kopake.catchphrase.PointsAddActivity;
+import io.github.kopake.catchphrase.game.Scoreboard;
 import io.github.kopake.catchphrase.game.event.EventHandler;
 import io.github.kopake.catchphrase.game.event.GameEndEvent;
+import io.github.kopake.catchphrase.game.event.RoundCancelEvent;
 import io.github.kopake.catchphrase.game.event.RoundEndEvent;
 import io.github.kopake.catchphrase.game.event.RoundStartEvent;
 import io.github.kopake.catchphrase.game.event.listeners.Listener;
@@ -46,6 +48,16 @@ public class ActivityManager implements Listener {
     public void onRoundEnd(RoundEndEvent roundEndEvent) {
         //Switch to points adding screen
         openActivity(pointsAddScreen);
+    }
+
+    @EventHandler
+    public void onRoundCancel(RoundCancelEvent roundCancelEvent) {
+        Scoreboard scoreboard = Scoreboard.getInstance();
+        if (scoreboard.getTeamOneScore() == 0 && scoreboard.getTeamTwoScore() == 0) {
+            openActivity(homeScreen);
+        } else {
+            openActivity(pointsAddScreen);
+        }
     }
 
     @EventHandler

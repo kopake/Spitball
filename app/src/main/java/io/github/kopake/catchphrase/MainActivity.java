@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         eventManager.addListener(ActivityManager.getInstance());
         eventManager.addListener(new NextWordChooser());
         eventManager.addListener(new GameTimer());
-        eventManager.addListener(new Scoreboard());
+        eventManager.addListener(Scoreboard.getInstance());
         eventManager.addListener(new LogListener());
 
         eventManager.addListener(new WordUpdater());
@@ -89,4 +89,8 @@ public class MainActivity extends AppCompatActivity {
         eventManager.addListener(new VibrationManager(this));
     }
 
+    @Override
+    public void onBackPressed() {
+        this.moveTaskToBack(true);
+    }
 }

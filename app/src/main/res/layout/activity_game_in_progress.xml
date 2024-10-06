@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:textAlignment="center"
     tools:context=".GameInProgressActivity">
 
@@ -14,6 +15,7 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".5" />
 
+    <!-- TODO make text size work better/smarter-->
     <TextView
         android:id="@+id/currentWordTextView"
         android:layout_width="0dp"
@@ -22,11 +24,9 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
-        android:background="@color/button_background"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="@color/button_text"
+        android:text="@string/current_word_default_text"
         android:textSize="34sp"
+        style="@style/DefaultCatchphraseTextViewStyle"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,10 +40,10 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="32dp"
-        android:background="@color/button_background"
         android:onClick="onNextButtonClick"
-        android:text="NEXT"
-        android:textSize="34sp"
+        android:text="@string/next_button_text"
+        android:autoSizeMaxTextSize="34sp"
+        style="@style/DefaultCatchphraseButtonStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

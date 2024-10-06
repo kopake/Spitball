@@ -9,8 +9,17 @@ import io.github.kopake.catchphrase.game.event.listeners.Listener;
 import io.github.kopake.catchphrase.game.team.Team;
 
 public class Scoreboard implements Listener {
+
+    private static Scoreboard instance = new Scoreboard();
     private int teamOneScore = 0;
     private int teamTwoScore = 0;
+
+    private Scoreboard() {
+    }
+
+    public static Scoreboard getInstance() {
+        return instance;
+    }
 
     public int getTeamOneScore() {
         return teamOneScore;
