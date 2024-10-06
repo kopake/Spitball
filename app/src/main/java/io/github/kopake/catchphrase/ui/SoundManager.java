@@ -15,8 +15,6 @@ public class SoundManager implements Listener {
 
     private Activity activity;
 
-    private MediaPlayer mediaPlayer;
-
     public SoundManager(Activity activity) {
         this.activity = activity;
     }
@@ -59,15 +57,11 @@ public class SoundManager implements Listener {
             public void run() {
                 MediaPlayer mp = MediaPlayer.create(activity, id);
                 mp.setLooping(false);
-                mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mplayer) {
-                        mplayer.reset();
-                        mplayer.release();
-                    }
+                mp.setOnCompletionListener(mplayer -> {
+                    mplayer.reset();
+                    mplayer.release();
                 });
                 mp.start();
-
             }
 
         };
