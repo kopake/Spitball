@@ -52,19 +52,15 @@ public class SoundManager implements Listener {
     }
 
     private void playSound(int id) {
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                MediaPlayer mp = MediaPlayer.create(activity, id);
-                mp.setLooping(false);
-                mp.setOnCompletionListener(mplayer -> {
-                    mplayer.reset();
-                    mplayer.release();
-                });
-                mp.start();
-            }
-
-        };
+        Thread thread = new Thread(() -> {
+            MediaPlayer mp = MediaPlayer.create(activity, id);
+            mp.setLooping(false);
+            mp.setOnCompletionListener(mplayer -> {
+                mplayer.reset();
+                mplayer.release();
+            });
+            mp.start();
+        });
         thread.start();
     }
 }
