@@ -63,7 +63,10 @@ public class ActivityManager implements Listener {
     @EventHandler
     public void onGameEnd(GameEndEvent gameEndEvent) {
         //Show victory screen for a short bit then go back to the home screen
-        Toast.makeText(Catchphrase.getContext(), "Winner: " + gameEndEvent.getWinningTeam(), Toast.LENGTH_SHORT).show();
+        new Handler(Looper.getMainLooper()).post(() -> {
+            Toast.makeText(Catchphrase.getContext(), "Winner: " + gameEndEvent.getWinningTeam(), Toast.LENGTH_SHORT).show();
+        });
+        openActivity(homeScreen);
     }
 
     private void openActivity(Class<? extends Activity> activityClass) {
