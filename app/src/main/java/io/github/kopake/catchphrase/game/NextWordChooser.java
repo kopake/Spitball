@@ -10,7 +10,6 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import io.github.kopake.catchphrase.file.WordListParser;
 import io.github.kopake.catchphrase.game.event.EventHandler;
 import io.github.kopake.catchphrase.game.event.EventManager;
 import io.github.kopake.catchphrase.game.event.GameStartEvent;
@@ -114,8 +113,7 @@ public class NextWordChooser implements Listener {
     public void onGameStart(GameStartEvent gameStartEvent) {
         currentSetOfWords = new LinkedList<>();
 
-        //TODO make this only the selected lists
-        for (WordList wordList : WordListParser.getAllWordLists()) {
+        for (WordList wordList : gameStartEvent.getWordLists()) {
             currentSetOfWords.addAll(wordList.getWords());
         }
         Collections.shuffle(currentSetOfWords);

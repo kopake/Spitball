@@ -66,4 +66,9 @@ public class WordList {
         }
         return fileName;
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

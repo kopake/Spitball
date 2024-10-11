@@ -22,7 +22,10 @@ public class LogListener implements Listener {
 
     @EventHandler
     public void onGameStartEvent(GameStartEvent event) {
-        Log.i("Catchphrase", "Game Started");
+        String outputString = "Game Started";
+        if (event.getWordLists() != null && !event.getWordLists().isEmpty())
+            outputString += " with word lists: " + event.getWordLists().toString();
+        Log.i("Catchphrase", outputString);
     }
 
     @EventHandler

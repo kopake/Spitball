@@ -3,6 +3,7 @@ package io.github.kopake.catchphrase.ui.activity.main;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import io.github.kopake.catchphrase.R;
 import io.github.kopake.catchphrase.file.FileSystemUtilities;
@@ -21,12 +23,14 @@ import io.github.kopake.catchphrase.game.event.EventManager;
 import io.github.kopake.catchphrase.game.event.GameStartEvent;
 import io.github.kopake.catchphrase.game.event.RoundStartEvent;
 import io.github.kopake.catchphrase.game.event.listeners.LogListener;
+import io.github.kopake.catchphrase.game.model.WordList;
 import io.github.kopake.catchphrase.game.timer.GameTimer;
-import io.github.kopake.catchphrase.ui.CheckboxAdapter;
 import io.github.kopake.catchphrase.ui.SoundManager;
 import io.github.kopake.catchphrase.ui.VibrationManager;
 import io.github.kopake.catchphrase.ui.activity.ActivityManager;
 import io.github.kopake.catchphrase.ui.activity.gameinprogress.GameInProgressActivity;
+import io.github.kopake.catchphrase.ui.activity.main.checkbox.CheckboxAdapter;
+import io.github.kopake.catchphrase.ui.activity.main.checkbox.CheckboxItem;
 import io.github.kopake.catchphrase.ui.activity.pointsadd.PointsAddActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,17 +39,20 @@ public class MainActivity extends AppCompatActivity {
 
     private PointsAddActivity pointsAddActivity = new PointsAddActivity();
 
+    private RecyclerView recyclerView;
+    private CheckboxAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         hideNavigationBar();
-        createCheckboxList(WordListParser.getWordListNames());
+        createCheckboxList();
         registerListeners();
 
 
-        setContentView(R.layout.activity_main);
+//        setContentView(R.layout.activity_main);
 
         Log.i("Catchphrase", FileSystemUtilities.getCatchphraseRootDirectory().getAbsolutePath());
     }
@@ -60,20 +67,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onStartButtonClick(View view) {
+        if (adapter.getCheckedItems().isEmpty()) {
+            Toast.makeText(this, "Select one or more categories to begin.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         EventManager eventManager = EventManager.getInstance();
-        eventManager.dispatchEvent(new GameStartEvent());
+        eventManager.dispatchEvent(new GameStartEvent(adapter.getCheckedItems()));
         eventManager.dispatchEvent(new RoundStartEvent());
     }
 
+    private void createCheckboxList() {
+        recyclerView = findViewById(R.id.recyclerView);
 
-    private void createCheckboxList(List<String> categoryNames) {
-        // Initialize RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        List<CheckboxItem<WordList>> wordListCheckBoxItems = WordListParser.getAllWordLists().stream()
+                .map(wordList -> new CheckboxItem<>(wordList, false))
+                .collect(Collectors.toList());
 
-        // Initialize and set the adapter
-        CheckboxAdapter adapter = new CheckboxAdapter(this, categoryNames);
+        adapter = new CheckboxAdapter(this, wordListCheckBoxItems);
+        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
 
