@@ -39,9 +39,10 @@ public class NextWordChooser implements Listener {
      * The next word is chosen in the following priority order:
      * - A new word which has not been used yet this session
      * - If no such word exists, a new word which hasn't been used recently
-     * - If no such word exists, any random, available word
+     * - If no such word exists, the state is reset and starts from the beginning
      *
      * @return The next word
+     * @throws RuntimeException If there are no words to choose from
      */
     private String getNextWord() {
         // Try to get a word that has not been used yet
@@ -51,9 +52,13 @@ public class NextWordChooser implements Listener {
         if (nextWord == null)
             nextWord = getNewWord(word -> !recentlyUsedWords.contains(word));
 
-        // If there are no words available that have not been use recently, get any word we can
-        if (nextWord == null)
+        // If there are no words available that have not been used recently, get any word we can (and shuffle the list so we don't loop through in the same order as before)
+        if (nextWord == null) {
+            wordsUsedThisSession.clear();
+            recentlyUsedWords.clear();
+            Collections.shuffle(currentSetOfWords);
             nextWord = getNewWord(word -> true);
+        }
 
         // If there are still no words available, then there are no words to select from
         if (nextWord == null)
@@ -68,14 +73,15 @@ public class NextWordChooser implements Listener {
      * Returns null if there are no words in currentSetOfWords which satisfy the predicate.
      *
      * @param validationPredicate The satisfaction criteria for the word returned
-     * @return The next word from currentSetOfWords which satisfies the given predicate
+     * @return The next word from currentSetOfWords which satisfies the given predicate, or returns
+     * null if there is no word in currentSetOfWords that satisfies the predicate
      */
     private String getNewWord(Predicate<String> validationPredicate) {
         for (int attempts = 0; attempts < currentSetOfWords.size(); attempts++) {
+            cycleCurrentSetOfWords();
             String currentPotentialWord = currentSetOfWords.peek();
             if (validationPredicate.test(currentPotentialWord))
                 return currentPotentialWord;
-            cycleCurrentSetOfWords();
         }
         return null;
     }
