@@ -7,10 +7,10 @@ import io.github.kopake.catchphrase.game.event.GameEndEvent;
 import io.github.kopake.catchphrase.game.event.GameStartEvent;
 import io.github.kopake.catchphrase.game.event.NextButtonPressEvent;
 import io.github.kopake.catchphrase.game.event.NextWordEvent;
-import io.github.kopake.catchphrase.game.event.PointAddEvent;
 import io.github.kopake.catchphrase.game.event.RoundCancelEvent;
 import io.github.kopake.catchphrase.game.event.RoundEndEvent;
 import io.github.kopake.catchphrase.game.event.RoundStartEvent;
+import io.github.kopake.catchphrase.game.event.ScoreModifyEvent;
 import io.github.kopake.catchphrase.game.event.TimerTickEvent;
 
 public class LogListener implements Listener {
@@ -34,8 +34,8 @@ public class LogListener implements Listener {
     }
 
     @EventHandler
-    public void onPointAddEvent(PointAddEvent event) {
-        Log.i("Catchphrase", "Point added to Team " + event.getTeam().name());
+    public void onPointAddEvent(ScoreModifyEvent event) {
+        Log.i("Catchphrase", String.format("Score for team: %s modified (added %d)", event.getTeam().name(), event.getValueChange()));
     }
 
     @EventHandler

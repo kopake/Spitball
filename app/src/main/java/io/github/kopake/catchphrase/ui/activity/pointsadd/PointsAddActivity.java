@@ -14,9 +14,9 @@ import io.github.kopake.catchphrase.R;
 import io.github.kopake.catchphrase.game.Scoreboard;
 import io.github.kopake.catchphrase.game.event.EventHandler;
 import io.github.kopake.catchphrase.game.event.EventManager;
-import io.github.kopake.catchphrase.game.event.PointAddEvent;
 import io.github.kopake.catchphrase.game.event.RoundEndEvent;
 import io.github.kopake.catchphrase.game.event.RoundStartEvent;
+import io.github.kopake.catchphrase.game.event.ScoreModifyEvent;
 import io.github.kopake.catchphrase.game.event.listeners.Listener;
 import io.github.kopake.catchphrase.game.team.Team;
 
@@ -37,7 +37,7 @@ public class PointsAddActivity extends AppCompatActivity {
         if (instance == null) {
             EventManager.getInstance().addListener(new Listener() {
                 @EventHandler
-                public void onPointAddEvent(PointAddEvent pointAddEvent) {
+                public void onPointAddEvent(ScoreModifyEvent pointAddEvent) {
                     displayScores();
                 }
             });
@@ -61,11 +61,19 @@ public class PointsAddActivity extends AppCompatActivity {
 
 
     public void onTeamOneAddButtonClick(View view) {
-        EventManager.getInstance().dispatchEvent(new PointAddEvent(Team.ONE));
+        EventManager.getInstance().dispatchEvent(new ScoreModifyEvent(Team.ONE, 1));
+    }
+
+    public void onTeamOneSubtractButtonClick(View view) {
+        EventManager.getInstance().dispatchEvent(new ScoreModifyEvent(Team.ONE, -1));
     }
 
     public void onTeamTwoAddButtonClick(View view) {
-        EventManager.getInstance().dispatchEvent(new PointAddEvent(Team.TWO));
+        EventManager.getInstance().dispatchEvent(new ScoreModifyEvent(Team.TWO, 1));
+    }
+
+    public void onTeamTwoSubtractButtonClick(View view) {
+        EventManager.getInstance().dispatchEvent(new ScoreModifyEvent(Team.TWO, -1));
     }
 
     public void onStartNextRoundButtonClick(View view) {

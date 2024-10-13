@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="button_text">#FFFFFFFF</color>
     <color name="button_background">#A8000000</color>
+    <color name="transparent">#00000000</color>
 </resources>

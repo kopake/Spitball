@@ -6,8 +6,8 @@ import android.media.MediaPlayer;
 import io.github.kopake.catchphrase.R;
 import io.github.kopake.catchphrase.game.event.EventHandler;
 import io.github.kopake.catchphrase.game.event.GameEndEvent;
-import io.github.kopake.catchphrase.game.event.PointAddEvent;
 import io.github.kopake.catchphrase.game.event.RoundEndEvent;
+import io.github.kopake.catchphrase.game.event.ScoreModifyEvent;
 import io.github.kopake.catchphrase.game.event.TimerTickEvent;
 import io.github.kopake.catchphrase.game.event.listeners.Listener;
 
@@ -42,8 +42,13 @@ public class SoundManager implements Listener {
     }
 
     @EventHandler
-    public void pointAddSound(PointAddEvent pointAddEvent) {
-        playSound(R.raw.add_point);
+    public void pointAddSound(ScoreModifyEvent pointAddEvent) {
+        if (pointAddEvent.getValueChange() > 0) {
+            playSound(R.raw.add_point);
+        } else {
+            //TODO make this play a different sound if the score add was negative
+            playSound(R.raw.add_point);
+        }
     }
 
     @EventHandler

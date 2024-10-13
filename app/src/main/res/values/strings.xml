@@ -11,5 +11,6 @@
     <string name="team_two_title_text">Team 2:</string>
     <string name="team_score_default_text">0</string>
     <string name="team_score_increment_button_text">+</string>
+    <string name="team_score_decrement_button_text">-</string>
     <string name="start_next_round_button_text">Start Next Round</string>
 </resources>

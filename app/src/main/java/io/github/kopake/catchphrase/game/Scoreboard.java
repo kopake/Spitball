@@ -4,7 +4,7 @@ import io.github.kopake.catchphrase.game.event.EventHandler;
 import io.github.kopake.catchphrase.game.event.EventManager;
 import io.github.kopake.catchphrase.game.event.GameEndEvent;
 import io.github.kopake.catchphrase.game.event.GameStartEvent;
-import io.github.kopake.catchphrase.game.event.PointAddEvent;
+import io.github.kopake.catchphrase.game.event.ScoreModifyEvent;
 import io.github.kopake.catchphrase.game.event.listeners.Listener;
 import io.github.kopake.catchphrase.game.team.Team;
 
@@ -46,15 +46,20 @@ public class Scoreboard implements Listener {
     }
 
     @EventHandler
-    public void onPointAdd(PointAddEvent pointAddEvent) {
-        switch (pointAddEvent.getTeam()) {
+    public void onScoreModify(ScoreModifyEvent scoreModifyEvent) {
+        switch (scoreModifyEvent.getTeam()) {
             case ONE:
-                teamOneScore++;
+                teamOneScore = teamOneScore + scoreModifyEvent.getValueChange();
                 break;
             case TWO:
-                teamTwoScore++;
+                teamTwoScore = teamTwoScore + scoreModifyEvent.getValueChange();
                 break;
         }
+
+        if (teamOneScore < 0)
+            teamOneScore = 0;
+        if (teamTwoScore < 0)
+            teamTwoScore = 0;
 
         if (teamOneScore >= 7)
             EventManager.getInstance().dispatchEvent(new GameEndEvent(Team.ONE));
