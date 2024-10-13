@@ -56,7 +56,7 @@ public class WordList {
     }
 
     public String getName() {
-        return getFileNameWithoutExtension(wordListFile.getName());
+        return getFileNameWithoutExtension(wordListFile.getName().replace('_', ' '));
     }
 
     private static String getFileNameWithoutExtension(String fileName) {
