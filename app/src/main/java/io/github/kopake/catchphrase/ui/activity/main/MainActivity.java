@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Register main functionality listeners
         eventManager.addListener(ActivityManager.getInstance());
-        eventManager.addListener(new NextWordChooser());
+        eventManager.addListener(NextWordChooser.getInstance());
         eventManager.addListener(new GameTimer());
         eventManager.addListener(Scoreboard.getInstance());
         eventManager.addListener(new LogListener());

@@ -21,6 +21,10 @@ import io.github.kopake.catchphrase.game.model.WordList;
 
 public class NextWordChooser implements Listener {
 
+    private static final NextWordChooser instance = new NextWordChooser();
+
+    private String mostRecentWord = "";
+
     /**
      * The number of recent words that are stored to prevent repeating a word shortly after it was
      * recently used.
@@ -32,6 +36,17 @@ public class NextWordChooser implements Listener {
     private Set<String> wordsUsedThisSession = new HashSet<>();
 
     private Queue<String> recentlyUsedWords = new LinkedList<>();
+
+    private NextWordChooser() {
+    }
+
+    public static NextWordChooser getInstance() {
+        return instance;
+    }
+
+    public String getMostRecentWord() {
+        return mostRecentWord;
+    }
 
     /**
      * Calculates the next word and returns it.
@@ -145,7 +160,7 @@ public class NextWordChooser implements Listener {
     public void calculateNextWordAndDispatchNextWordEvent(NextButtonPressEvent nextButtonPressEvent) {
         String word = getNextWord();
         exhaustWord(word);
-
+        mostRecentWord = word;
         // Run a little later so that the GameInProgressActivity can be created properly before the next word event is received
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             EventManager.getInstance().dispatchEvent(new NextWordEvent(word));

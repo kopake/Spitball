@@ -11,6 +11,7 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 import io.github.kopake.catchphrase.R;
+import io.github.kopake.catchphrase.game.NextWordChooser;
 import io.github.kopake.catchphrase.game.Scoreboard;
 import io.github.kopake.catchphrase.game.event.EventHandler;
 import io.github.kopake.catchphrase.game.event.EventManager;
@@ -22,33 +23,26 @@ import io.github.kopake.catchphrase.game.team.Team;
 
 public class PointsAddActivity extends AppCompatActivity {
 
-    private static PointsAddActivity instance;
-
-    public static PointsAddActivity getInstance() {
-        return instance;
-    }
+    //The word last word received from next word events (used to display the final word of the round on this activity)
+    private String mostRecentNextWord = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_points_add);
         hideNavigationBar();
+        EventManager.getInstance().addListener(new Listener() {
+            @EventHandler
+            public void onScoreModifyEvent(ScoreModifyEvent scoreModifyEvent) {
+                updateDisplay();
+            }
 
-        if (instance == null) {
-            EventManager.getInstance().addListener(new Listener() {
-                @EventHandler
-                public void onPointAddEvent(ScoreModifyEvent pointAddEvent) {
-                    displayScores();
-                }
-            });
-            EventManager.getInstance().addListener(new Listener() {
-                @EventHandler
-                public void onRoundEndEvent(RoundEndEvent roundEndEvent) {
-                    displayScores();
-                }
-            });
-            instance = this;
-        }
+            @EventHandler
+            public void onRoundEvent(RoundEndEvent roundEndEvent) {
+                updateDisplay();
+            }
+        });
+        updateDisplay();
     }
 
     private void hideNavigationBar() {
@@ -80,24 +74,30 @@ public class PointsAddActivity extends AppCompatActivity {
         EventManager.getInstance().dispatchEvent(new RoundStartEvent());
     }
 
-    public void displayScores() {
+    public void updateDisplay() {
         // Run a little later so that the scoreboard can update
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             Scoreboard scoreboard = Scoreboard.getInstance();
             displayTeamOneScore(scoreboard.getTeamOneScore());
             displayTeamTwoScore(scoreboard.getTeamTwoScore());
+            displayMostRecentNextWord(NextWordChooser.getInstance().getMostRecentWord());
         }, 100);
     }
 
 
-    public void displayTeamOneScore(int n) {
+    private void displayTeamOneScore(int n) {
         TextView teamOneScoreTextView = findViewById(R.id.teamOneScore);
         teamOneScoreTextView.setText(String.valueOf(n));
     }
 
-    public void displayTeamTwoScore(int n) {
+    private void displayTeamTwoScore(int n) {
         TextView teamTwoScoreTextView = findViewById(R.id.teamTwoScore);
         teamTwoScoreTextView.setText(String.valueOf(n));
+    }
+
+    private void displayMostRecentNextWord(String mostRecentNextWord) {
+        TextView mostRecentNextWordTextView = findViewById(R.id.mostRecentNextWord);
+        mostRecentNextWordTextView.setText(mostRecentNextWord);
     }
 
     @Override

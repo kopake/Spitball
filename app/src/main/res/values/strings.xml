@@ -13,4 +13,6 @@
     <string name="team_score_increment_button_text">+</string>
     <string name="team_score_decrement_button_text">-</string>
     <string name="start_next_round_button_text">Start Next Round</string>
+    <string name="final_word_of_previous_round_header_text">Final Phrase of Round:</string>
+    <string name="final_word_of_previous_round_header_default_text"> </string>
 </resources>
