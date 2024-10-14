@@ -2,6 +2,7 @@ package io.github.kopake.catchphrase.ui.activity.main;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Toast;
 
@@ -67,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onStartButtonClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+
         if (adapter.getCheckedItems().isEmpty()) {
             Toast.makeText(this, "Select one or more categories to begin.", Toast.LENGTH_SHORT).show();
             return;

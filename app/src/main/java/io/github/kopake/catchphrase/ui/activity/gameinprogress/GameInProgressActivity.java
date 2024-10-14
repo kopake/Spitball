@@ -1,6 +1,7 @@
 package io.github.kopake.catchphrase.ui.activity.gameinprogress;
 
 import android.os.Bundle;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.TextView;
 
@@ -52,6 +53,7 @@ public class GameInProgressActivity extends AppCompatActivity {
     }
 
     public void onNextButtonClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
         EventManager.getInstance().dispatchEvent(new NextButtonPressEvent());
     }
 

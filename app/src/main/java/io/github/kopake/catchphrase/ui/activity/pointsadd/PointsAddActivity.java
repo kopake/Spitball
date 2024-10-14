@@ -3,6 +3,7 @@ package io.github.kopake.catchphrase.ui.activity.pointsadd;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.TextView;
 
@@ -55,22 +56,27 @@ public class PointsAddActivity extends AppCompatActivity {
 
 
     public void onTeamOneAddButtonClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         EventManager.getInstance().dispatchEvent(new ScoreModifyEvent(Team.ONE, 1));
     }
 
     public void onTeamOneSubtractButtonClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         EventManager.getInstance().dispatchEvent(new ScoreModifyEvent(Team.ONE, -1));
     }
 
     public void onTeamTwoAddButtonClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         EventManager.getInstance().dispatchEvent(new ScoreModifyEvent(Team.TWO, 1));
     }
 
     public void onTeamTwoSubtractButtonClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         EventManager.getInstance().dispatchEvent(new ScoreModifyEvent(Team.TWO, -1));
     }
 
     public void onStartNextRoundButtonClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         EventManager.getInstance().dispatchEvent(new RoundStartEvent());
     }
 
