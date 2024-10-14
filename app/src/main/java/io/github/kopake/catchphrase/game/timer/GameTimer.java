@@ -18,6 +18,9 @@ import io.github.kopake.catchphrase.game.event.listeners.Listener;
 
 public class GameTimer implements Listener {
 
+    private static final double ROUND_MEAN_LENGTH_IN_SECONDS = 90;
+    private static final double ROUND_STD_DEV_IN_SECONDS = 5;
+
     private static final int TIMER_1_FREQUENCY = 600;
     private static final int TIMER_2_FREQUENCY = TIMER_1_FREQUENCY / 2;
     private static final int TIMER_3_FREQUENCY = TIMER_2_FREQUENCY / 2;
@@ -29,9 +32,9 @@ public class GameTimer implements Listener {
     private void initializeTimers() {
 
         long totalTimeOfTimerInMilliseconds = getTotalTimeOfTimerInMilliSeconds();
-        long timerPerTimerInMilliseconds = totalTimeOfTimerInMilliseconds / 3;
+        long timePerTimerInMilliseconds = totalTimeOfTimerInMilliseconds / 3;
 
-        timer1 = new CountDownTimer(timerPerTimerInMilliseconds, TIMER_1_FREQUENCY) {
+        timer1 = new CountDownTimer(timePerTimerInMilliseconds, TIMER_1_FREQUENCY) {
             @Override
             public void onTick(long l) {
                 EventManager.getInstance().dispatchEvent(new TimerTickEvent(ONE));
@@ -43,7 +46,7 @@ public class GameTimer implements Listener {
             }
         };
 
-        timer2 = new CountDownTimer(timerPerTimerInMilliseconds, TIMER_2_FREQUENCY) {
+        timer2 = new CountDownTimer(timePerTimerInMilliseconds, TIMER_2_FREQUENCY) {
             @Override
             public void onTick(long l) {
                 EventManager.getInstance().dispatchEvent(new TimerTickEvent(TWO));
@@ -55,7 +58,7 @@ public class GameTimer implements Listener {
             }
         };
 
-        timer3 = new CountDownTimer(timerPerTimerInMilliseconds, TIMER_3_FREQUENCY) {
+        timer3 = new CountDownTimer(timePerTimerInMilliseconds, TIMER_3_FREQUENCY) {
             @Override
             public void onTick(long l) {
                 EventManager.getInstance().dispatchEvent(new TimerTickEvent(THREE));
@@ -69,6 +72,8 @@ public class GameTimer implements Listener {
     }
 
     private static long getTotalTimeOfTimerInMilliSeconds() {
+        // TODO uncomment this when time length doesn't need to be short for testing
+        // return (long) (new Random().nextGaussian() * ROUND_STD_DEV_IN_SECONDS + ROUND_MEAN_LENGTH_IN_SECONDS);
         return 10000;
     }
 
