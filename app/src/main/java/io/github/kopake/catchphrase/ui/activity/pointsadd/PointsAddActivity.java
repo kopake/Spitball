@@ -86,7 +86,7 @@ public class PointsAddActivity extends AppCompatActivity {
             Scoreboard scoreboard = Scoreboard.getInstance();
             displayTeamOneScore(scoreboard.getTeamOneScore());
             displayTeamTwoScore(scoreboard.getTeamTwoScore());
-            displayMostRecentNextWord(NextWordChooser.getInstance().getMostRecentWord());
+            displayMostRecentNextWord(NextWordChooser.getInstance().getMostRecentWord().toUpperCase());
         }, 100);
     }
 

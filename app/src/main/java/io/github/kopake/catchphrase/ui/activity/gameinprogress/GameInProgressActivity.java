@@ -59,7 +59,7 @@ public class GameInProgressActivity extends AppCompatActivity {
 
     public void updateWordText(String word) {
         TextView wordTextView = findViewById(R.id.currentWordTextView);
-        wordTextView.setText(word);
+        wordTextView.setText(word.toUpperCase());
     }
 
     @Override
