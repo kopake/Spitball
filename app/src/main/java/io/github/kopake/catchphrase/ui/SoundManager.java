@@ -46,8 +46,7 @@ public class SoundManager implements Listener {
         if (pointAddEvent.getValueChange() > 0) {
             playSound(R.raw.add_point);
         } else {
-            //TODO make this play a different sound if the score add was negative
-            playSound(R.raw.add_point);
+            playSound(R.raw.minus_point);
         }
     }
 
