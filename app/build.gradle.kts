@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "io.github.kopake.catchphrase"
+    namespace = "io.github.kopake.spitball"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "io.github.kopake.catchphrase"
+        applicationId = "io.github.kopake.spitball"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

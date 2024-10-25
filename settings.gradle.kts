@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Catchphase"
+rootProject.name = "Spitball"
 include(":app")
  

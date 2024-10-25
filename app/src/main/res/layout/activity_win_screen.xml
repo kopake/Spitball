@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/catchphrase_background_color"
+    android:background="@color/spitball_background_color"
     tools:context=".ui.activity.winscreen.WinScreenActivity">
 
     <TextView
         android:id="@+id/winnerMessageTextView"
-        style="@style/DefaultCatchphraseTextViewStyle"
+        style="@style/DefaultSpitballTextViewStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"

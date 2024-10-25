@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Catchphase</string>
+    <string name="app_name">Spitball</string>
     <string name="start_button_text">Start</string>
-    <string name="title_text">Catch\nPhrase</string>
+    <string name="title_text">Spitball</string>
     <string name="textures_title_text">Textures</string>
     <string name="sounds_title_text">Sounds</string>
     <string name="categories_title_text">Categories</string>

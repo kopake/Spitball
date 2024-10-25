@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="CatchphraseTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+    <style name="SpitballTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="buttonStyle">@style/DefaultCatchphraseButtonStyle</item>
+        <item name="buttonStyle">@style/DefaultSpitballButtonStyle</item>
         <item name="colorPrimary">@color/black</item>
         <item name="colorPrimaryDark">@color/black</item>
         <item name="colorAccent">@color/black</item>
     </style>
 
-    <style name="DefaultCatchphraseButtonStyle" parent="">
+    <style name="DefaultSpitballButtonStyle" parent="">
         <item name="android:textColor">@color/button_text</item>
         <item name="android:backgroundTint">@color/colorPrimary</item>
         <item name="android:autoSizeTextType">uniform</item>
@@ -22,13 +22,13 @@
         <item name="android:hapticFeedbackEnabled">true</item> <!-- TODO doesn't work -->
     </style>
 
-    <style name="TransparentCatchphraseButtonStyle" parent="DefaultCatchphraseButtonStyle">
+    <style name="TransparentSpitballButtonStyle" parent="DefaultSpitballButtonStyle">
         <item name="android:backgroundTint">@color/transparent</item>
         <item name="strokeColor">@color/colorPrimary</item>
         <item name="strokeWidth">7dp</item>
     </style>
 
-    <style name="DefaultCatchphraseTextViewStyle" parent="">
+    <style name="DefaultSpitballTextViewStyle" parent="">
         <item name="android:textColor">@color/button_text</item>
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:autoSizeTextType">uniform</item>
@@ -37,6 +37,6 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <color name="catchphrase_background_color">@color/colorBackground</color>
+    <color name="spitball_background_color">@color/colorBackground</color>
 
 </resources>

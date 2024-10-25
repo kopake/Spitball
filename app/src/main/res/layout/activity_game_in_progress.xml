@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/catchphrase_background_color"
+    android:background="@color/spitball_background_color"
     tools:context=".ui.activity.gameinprogress.GameInProgressActivity">
 
     <androidx.constraintlayout.widget.Guideline
@@ -17,7 +17,7 @@
     <!-- TODO make text size work better/smarter-->
     <TextView
         android:id="@+id/currentWordTextView"
-        style="@style/DefaultCatchphraseTextViewStyle"
+        style="@style/DefaultSpitballTextViewStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
@@ -44,7 +44,7 @@
         android:onClick="onNextButtonClick"
         android:text="@string/next_button_text"
         android:autoSizeMaxTextSize="34sp"
-        style="@style/DefaultCatchphraseButtonStyle"
+        style="@style/DefaultSpitballButtonStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

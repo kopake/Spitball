@@ -7,7 +7,7 @@
     <!--Background is transparent since it is on top of another widget's background-->
     <CheckBox
         android:id="@+id/checkBox"
-        style="@style/DefaultCatchphraseTextViewStyle"
+        style="@style/DefaultSpitballTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00000000"
