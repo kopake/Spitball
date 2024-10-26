@@ -2,6 +2,7 @@ package io.github.kopake.spitball.ui;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
 
 import io.github.kopake.spitball.event.EventHandler;
@@ -23,11 +24,11 @@ public class VibrationManager implements Listener {
             public void run() {
                 try {
                     // Short delay so that vibration lines up with buzzer sound
-                    Thread.sleep(350);
+                    Thread.sleep(200);
                 } catch (InterruptedException ie) {
                 }
                 Vibrator vibrator = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
-                vibrator.vibrate(1000);
+                vibrator.vibrate(VibrationEffect.createOneShot(1200, VibrationEffect.DEFAULT_AMPLITUDE));
             }
         }).start();
 
