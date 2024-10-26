@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import io.github.kopake.spitball.R;
+import io.github.kopake.spitball.event.EventManager;
+import io.github.kopake.spitball.event.WordListSelectEvent;
+import io.github.kopake.spitball.game.model.WordList;
 
 public class CheckboxAdapter<T> extends RecyclerView.Adapter<CheckboxAdapter.CheckboxViewHolder> {
 
@@ -36,11 +39,15 @@ public class CheckboxAdapter<T> extends RecyclerView.Adapter<CheckboxAdapter.Che
     @Override
     public void onBindViewHolder(@NonNull CheckboxViewHolder holder, int position) {
         Log.d("CheckboxAdapter", "onBindViewHolder called for position " + position); // Add logging here
-        CheckboxItem item = checkboxItems.get(position);
-        holder.checkBox.setText(item.getItemString());
-        holder.checkBox.setChecked(item.isChecked());
+        CheckboxItem<T> checkboxItem = checkboxItems.get(position);
+        holder.checkBox.setText(checkboxItem.getItemString());
+        holder.checkBox.setChecked(checkboxItem.isChecked());
         holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            checkboxItems.get(position).setChecked(isChecked);
+            checkboxItem.setChecked(isChecked);
+            T item = checkboxItem.getItem();
+            if (item instanceof WordList) {
+                EventManager.getInstance().dispatchEvent(new WordListSelectEvent((WordList) item, isChecked));
+            }
         });
     }
 
