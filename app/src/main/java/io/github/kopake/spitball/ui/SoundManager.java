@@ -1,7 +1,12 @@
 package io.github.kopake.spitball.ui;
 
-import android.app.Activity;
-import android.media.MediaPlayer;
+import android.content.Context;
+import android.media.SoundPool;
+import android.os.Handler;
+import android.os.Looper;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import io.github.kopake.spitball.R;
 import io.github.kopake.spitball.event.EventHandler;
@@ -13,58 +18,77 @@ import io.github.kopake.spitball.event.listeners.Listener;
 
 public class SoundManager implements Listener {
 
-    private Activity activity;
+    private Context context;
 
-    public SoundManager(Activity activity) {
-        this.activity = activity;
+    private SoundPool soundPool;
+
+    private static final int SOUND_POOL_MAX_STREAMS = 4;
+
+    private Map<Integer, Integer> soundIDMap;
+
+    private static final int[] SOUNDS_TO_LOAD = {
+            R.raw.tick_1,
+            R.raw.tick_2,
+            R.raw.tick_3,
+            R.raw.add_point,
+            R.raw.minus_point,
+            R.raw.buzzer,
+            R.raw.win_1
+    };
+
+    public SoundManager(Context context) {
+        this.context = context;
+        this.soundPool = new SoundPool.Builder().setMaxStreams(SOUND_POOL_MAX_STREAMS).build();
+        loadSounds();
     }
 
+    private void loadSounds() {
+        soundIDMap = new HashMap<>();
+        for (int rawSoundID : SOUNDS_TO_LOAD) {
+            int soundPoolID = soundPool.load(context, rawSoundID, 1);
+            soundIDMap.put(rawSoundID, soundPoolID);
+        }
+    }
 
     @EventHandler
     public void timerTickSound(TimerTickEvent event) {
 
         switch (event.getTimerPhase()) {
             case ONE:
-                playSound(R.raw.tick_1);
+                playSoundFromSoundPool(R.raw.tick_1);
                 break;
             case TWO:
-                playSound(R.raw.tick_2);
+                playSoundFromSoundPool(R.raw.tick_2);
                 break;
             case THREE:
-                playSound(R.raw.tick_3);
+                playSoundFromSoundPool(R.raw.tick_3);
                 break;
         }
     }
 
     @EventHandler
     public void endOfRoundBuzzer(RoundEndEvent roundEndEvent) {
-        playSound(R.raw.buzzer);
+        playSoundFromSoundPool(R.raw.buzzer);
     }
 
     @EventHandler
     public void pointAddSound(ScoreModifyEvent pointAddEvent) {
         if (pointAddEvent.getValueChange() > 0) {
-            playSound(R.raw.add_point);
+            playSoundFromSoundPool(R.raw.add_point);
         } else {
-            playSound(R.raw.minus_point);
+            playSoundFromSoundPool(R.raw.minus_point);
         }
     }
 
     @EventHandler
     public void victorySound(GameEndEvent gameEndEvent) {
-        playSound(R.raw.win_1);
+        playSoundFromSoundPool(R.raw.win_1);
     }
 
-    private void playSound(int id) {
-        Thread thread = new Thread(() -> {
-            MediaPlayer mp = MediaPlayer.create(activity, id);
-            mp.setLooping(false);
-            mp.setOnCompletionListener(mplayer -> {
-                mplayer.reset();
-                mplayer.release();
-            });
-            mp.start();
+    private void playSoundFromSoundPool(int id) {
+
+        new Handler(Looper.getMainLooper()).post(() -> {
+            soundPool.play(soundIDMap.get(id), 1, 1, 0, 0, 1);
         });
-        thread.start();
     }
 }
