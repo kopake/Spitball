@@ -2,18 +2,18 @@
     <string name="app_name">Spitball</string>
     <string name="start_button_text">Start</string>
     <string name="title_text">Spitball</string>
-    <string name="textures_title_text">Textures</string>
     <string name="sounds_title_text">Sounds</string>
     <string name="categories_title_text">Categories</string>
-    <string name="current_word_default_text">null</string>
+    <string name="checkbox_default_text">Checkbox</string>
+    <string name="current_word_default_text">ABCD EFGHI JKLMN OPQRSTU VWXYZ</string>
     <string name="next_button_text">NEXT</string>
-    <string name="team_one_title_text">Team 1:</string>
-    <string name="team_two_title_text">Team 2:</string>
+    <string name="team_one_title_text">TEAM 1:</string>
+    <string name="team_two_title_text">TEAM 2:</string>
     <string name="team_score_default_text">0</string>
     <string name="team_score_increment_button_text">+</string>
     <string name="team_score_decrement_button_text">-</string>
     <string name="start_next_round_button_text">Start Next Round</string>
-    <string name="final_word_of_previous_round_header_text">Final Phrase of Round:</string>
-    <string name="final_word_of_previous_round_header_default_text"> </string>
+    <string name="final_word_of_previous_round_header_text">TIME\'S UP!</string>
+    <string name="final_word_of_previous_round_header_default_text">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
     <string name="winning_message_default_text">Team XXX Wins!</string>
 </resources>

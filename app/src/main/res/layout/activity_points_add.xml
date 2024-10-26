@@ -44,6 +44,7 @@
 
     <TextView
         android:id="@+id/teamOneHeader"
+        style="@style/SpitballTextViewStyleSecondary"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
@@ -51,7 +52,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/team_one_title_text"
-        style="@style/DefaultSpitballTextViewStyle"
         app:layout_constraintBottom_toTopOf="@+id/horizontal25Guideline"
         app:layout_constraintEnd_toStartOf="@+id/vertical50Guideline"
         app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +66,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:text="@string/team_two_title_text"
-        style="@style/DefaultSpitballTextViewStyle"
+        style="@style/SpitballTextViewStyleSecondary"
         app:layout_constraintBottom_toTopOf="@+id/horizontal25Guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/vertical50Guideline"
@@ -74,15 +74,15 @@
 
     <TextView
         android:id="@+id/teamOneScore"
+        style="@style/SpitballTextViewStylePrimary"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="@string/team_score_default_text"
         android:autoSizeMaxTextSize="100sp"
-        style="@style/DefaultSpitballTextViewStyle"
+        android:text="@string/team_score_default_text"
         app:layout_constraintBottom_toTopOf="@+id/horizontal75Guideline"
         app:layout_constraintEnd_toStartOf="@+id/vertical33Guideline"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,7 +98,7 @@
         android:layout_marginBottom="16dp"
         android:text="@string/team_score_default_text"
         android:autoSizeMaxTextSize="100sp"
-        style="@style/DefaultSpitballTextViewStyle"
+        style="@style/SpitballTextViewStylePrimary"
         app:layout_constraintBottom_toTopOf="@+id/horizontal75Guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/vertical67Guideline"
@@ -173,13 +173,13 @@
 
     <Button
         android:id="@+id/startNextRoundButton"
+        style="@style/DefaultSpitballButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="32dp"
         android:onClick="onStartNextRoundButtonClick"
         android:text="@string/start_next_round_button_text"
-        style="@style/DefaultSpitballButtonStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/vertical67Guideline"
         app:layout_constraintStart_toStartOf="@+id/vertical33Guideline"
@@ -187,7 +187,7 @@
 
     <TextView
         android:id="@+id/mostRecentNextWordHeader"
-        style="@style/DefaultSpitballTextViewStyle"
+        style="@style/SpitballTextViewStyleSecondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -203,7 +203,7 @@
 
     <TextView
         android:id="@+id/mostRecentNextWord"
-        style="@style/DefaultSpitballTextViewStyle"
+        style="@style/SpitballTextViewStyleSecondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -216,5 +216,21 @@
         app:layout_constraintEnd_toStartOf="@+id/vertical67Guideline"
         app:layout_constraintStart_toStartOf="@+id/vertical33Guideline"
         app:layout_constraintTop_toBottomOf="@+id/mostRecentNextWordHeader" />
+
+    <ImageView
+        android:id="@+id/centerLogoImageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/startNextRoundButton"
+        app:layout_constraintEnd_toStartOf="@+id/vertical67Guideline"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/vertical33Guideline"
+        app:layout_constraintTop_toBottomOf="@+id/mostRecentNextWord"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/spitball_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

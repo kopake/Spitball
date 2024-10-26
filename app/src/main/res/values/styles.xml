@@ -14,29 +14,38 @@
 
     <style name="DefaultSpitballButtonStyle" parent="">
         <item name="android:textColor">@color/button_text</item>
-        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:backgroundTint">@color/colorAccent</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:autoSizeMinTextSize">12sp</item>
         <item name="android:autoSizeMaxTextSize">60sp</item>
         <item name="android:gravity">center</item>
-        <item name="android:hapticFeedbackEnabled">true</item> <!-- TODO doesn't work -->
+        <item name="android:hapticFeedbackEnabled">true</item>
+        <item name="android:fontFamily">@font/spitball_font_primary</item>
     </style>
 
     <style name="TransparentSpitballButtonStyle" parent="DefaultSpitballButtonStyle">
         <item name="android:backgroundTint">@color/transparent</item>
-        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="strokeColor">@color/colorAccent</item>
         <item name="strokeWidth">7dp</item>
+        <item name="android:fontFamily">@font/spitball_font_primary</item>
     </style>
 
-    <style name="DefaultSpitballTextViewStyle" parent="">
+    <style name="SpitballTextViewStylePrimary" parent="">
         <item name="android:textColor">@color/button_text</item>
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:autoSizeMinTextSize">12sp</item>
         <item name="android:autoSizeMaxTextSize">60sp</item>
         <item name="android:gravity">center</item>
+        <item name="android:fontFamily">@font/spitball_font_primary</item>
     </style>
 
+    <style name="SpitballTextViewStyleSecondary" parent="SpitballTextViewStylePrimary">
+        <item name="android:fontFamily">@font/spitball_font_secondary</item>
+    </style>
+
+    <font name="spitball_font_primary">@font/koulen</font>
+    <font name="spitball_font_secondary">@font/inter_semibold</font>
     <color name="spitball_background_color">@color/colorBackground</color>
 
 </resources>
