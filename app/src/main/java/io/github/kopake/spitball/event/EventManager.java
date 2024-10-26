@@ -1,4 +1,4 @@
-package io.github.kopake.spitball.game.event;
+package io.github.kopake.spitball.event;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import io.github.kopake.spitball.game.event.listeners.Listener;
+import io.github.kopake.spitball.event.listeners.Listener;
 
 public class EventManager {
 

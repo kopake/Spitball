@@ -1,4 +1,4 @@
-package io.github.kopake.spitball.game.event;
+package io.github.kopake.spitball.event;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

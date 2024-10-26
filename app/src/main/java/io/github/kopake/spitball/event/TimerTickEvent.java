@@ -1,4 +1,4 @@
-package io.github.kopake.spitball.game.event;
+package io.github.kopake.spitball.event;
 
 import io.github.kopake.spitball.game.timer.TimerPhase;
 

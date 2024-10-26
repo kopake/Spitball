@@ -12,14 +12,14 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 import io.github.kopake.spitball.R;
+import io.github.kopake.spitball.event.EventHandler;
+import io.github.kopake.spitball.event.EventManager;
+import io.github.kopake.spitball.event.RoundEndEvent;
+import io.github.kopake.spitball.event.RoundStartEvent;
+import io.github.kopake.spitball.event.ScoreModifyEvent;
+import io.github.kopake.spitball.event.listeners.Listener;
 import io.github.kopake.spitball.game.NextWordChooser;
 import io.github.kopake.spitball.game.Scoreboard;
-import io.github.kopake.spitball.game.event.EventHandler;
-import io.github.kopake.spitball.game.event.EventManager;
-import io.github.kopake.spitball.game.event.RoundEndEvent;
-import io.github.kopake.spitball.game.event.RoundStartEvent;
-import io.github.kopake.spitball.game.event.ScoreModifyEvent;
-import io.github.kopake.spitball.game.event.listeners.Listener;
 import io.github.kopake.spitball.game.team.Team;
 
 public class PointsAddActivity extends AppCompatActivity {

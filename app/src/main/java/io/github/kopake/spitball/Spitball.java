@@ -3,7 +3,7 @@ package io.github.kopake.spitball;
 import android.app.Application;
 import android.content.Context;
 
-import io.github.kopake.spitball.game.event.EventManager;
+import io.github.kopake.spitball.event.EventManager;
 
 public class Spitball extends Application {
 

@@ -1,11 +1,11 @@
 package io.github.kopake.spitball.game;
 
-import io.github.kopake.spitball.game.event.EventHandler;
-import io.github.kopake.spitball.game.event.EventManager;
-import io.github.kopake.spitball.game.event.GameEndEvent;
-import io.github.kopake.spitball.game.event.GameStartEvent;
-import io.github.kopake.spitball.game.event.ScoreModifyEvent;
-import io.github.kopake.spitball.game.event.listeners.Listener;
+import io.github.kopake.spitball.event.EventHandler;
+import io.github.kopake.spitball.event.EventManager;
+import io.github.kopake.spitball.event.GameEndEvent;
+import io.github.kopake.spitball.event.GameStartEvent;
+import io.github.kopake.spitball.event.ScoreModifyEvent;
+import io.github.kopake.spitball.event.listeners.Listener;
 import io.github.kopake.spitball.game.team.Team;
 
 public class Scoreboard implements Listener {

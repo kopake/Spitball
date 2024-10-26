@@ -8,13 +8,13 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 
-import io.github.kopake.spitball.game.event.EventHandler;
-import io.github.kopake.spitball.game.event.EventManager;
-import io.github.kopake.spitball.game.event.RoundCancelEvent;
-import io.github.kopake.spitball.game.event.RoundEndEvent;
-import io.github.kopake.spitball.game.event.RoundStartEvent;
-import io.github.kopake.spitball.game.event.TimerTickEvent;
-import io.github.kopake.spitball.game.event.listeners.Listener;
+import io.github.kopake.spitball.event.EventHandler;
+import io.github.kopake.spitball.event.EventManager;
+import io.github.kopake.spitball.event.RoundCancelEvent;
+import io.github.kopake.spitball.event.RoundEndEvent;
+import io.github.kopake.spitball.event.RoundStartEvent;
+import io.github.kopake.spitball.event.TimerTickEvent;
+import io.github.kopake.spitball.event.listeners.Listener;
 
 public class GameTimer implements Listener {
 

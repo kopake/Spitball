@@ -1,17 +1,17 @@
-package io.github.kopake.spitball.game.event.listeners;
+package io.github.kopake.spitball.event.listeners;
 
 import android.util.Log;
 
-import io.github.kopake.spitball.game.event.EventHandler;
-import io.github.kopake.spitball.game.event.GameEndEvent;
-import io.github.kopake.spitball.game.event.GameStartEvent;
-import io.github.kopake.spitball.game.event.NextButtonPressEvent;
-import io.github.kopake.spitball.game.event.NextWordEvent;
-import io.github.kopake.spitball.game.event.RoundCancelEvent;
-import io.github.kopake.spitball.game.event.RoundEndEvent;
-import io.github.kopake.spitball.game.event.RoundStartEvent;
-import io.github.kopake.spitball.game.event.ScoreModifyEvent;
-import io.github.kopake.spitball.game.event.TimerTickEvent;
+import io.github.kopake.spitball.event.EventHandler;
+import io.github.kopake.spitball.event.GameEndEvent;
+import io.github.kopake.spitball.event.GameStartEvent;
+import io.github.kopake.spitball.event.NextButtonPressEvent;
+import io.github.kopake.spitball.event.NextWordEvent;
+import io.github.kopake.spitball.event.RoundCancelEvent;
+import io.github.kopake.spitball.event.RoundEndEvent;
+import io.github.kopake.spitball.event.RoundStartEvent;
+import io.github.kopake.spitball.event.ScoreModifyEvent;
+import io.github.kopake.spitball.event.TimerTickEvent;
 
 public class LogListener implements Listener {
 

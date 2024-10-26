@@ -10,12 +10,12 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 import io.github.kopake.spitball.R;
-import io.github.kopake.spitball.game.event.EventHandler;
-import io.github.kopake.spitball.game.event.EventManager;
-import io.github.kopake.spitball.game.event.NextButtonPressEvent;
-import io.github.kopake.spitball.game.event.NextWordEvent;
-import io.github.kopake.spitball.game.event.RoundCancelEvent;
-import io.github.kopake.spitball.game.event.listeners.Listener;
+import io.github.kopake.spitball.event.EventHandler;
+import io.github.kopake.spitball.event.EventManager;
+import io.github.kopake.spitball.event.NextButtonPressEvent;
+import io.github.kopake.spitball.event.NextWordEvent;
+import io.github.kopake.spitball.event.RoundCancelEvent;
+import io.github.kopake.spitball.event.listeners.Listener;
 
 public class GameInProgressActivity extends AppCompatActivity {
 

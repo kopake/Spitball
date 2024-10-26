@@ -10,13 +10,13 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import io.github.kopake.spitball.game.event.EventHandler;
-import io.github.kopake.spitball.game.event.EventManager;
-import io.github.kopake.spitball.game.event.GameStartEvent;
-import io.github.kopake.spitball.game.event.NextButtonPressEvent;
-import io.github.kopake.spitball.game.event.NextWordEvent;
-import io.github.kopake.spitball.game.event.RoundStartEvent;
-import io.github.kopake.spitball.game.event.listeners.Listener;
+import io.github.kopake.spitball.event.EventHandler;
+import io.github.kopake.spitball.event.EventManager;
+import io.github.kopake.spitball.event.GameStartEvent;
+import io.github.kopake.spitball.event.NextButtonPressEvent;
+import io.github.kopake.spitball.event.NextWordEvent;
+import io.github.kopake.spitball.event.RoundStartEvent;
+import io.github.kopake.spitball.event.listeners.Listener;
 import io.github.kopake.spitball.game.model.WordList;
 
 public class NextWordChooser implements Listener {
@@ -152,7 +152,7 @@ public class NextWordChooser implements Listener {
 
     /**
      * Calculates the next word that should be displayed and dispatches a
-     * {@linkplain io.github.kopake.spitball.game.event.NextWordEvent}
+     * {@linkplain NextWordEvent}
      *
      * @param nextButtonPressEvent The event that (may have) triggered this method call (not used)
      */

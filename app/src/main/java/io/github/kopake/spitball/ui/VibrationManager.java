@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Vibrator;
 
-import io.github.kopake.spitball.game.event.EventHandler;
-import io.github.kopake.spitball.game.event.RoundEndEvent;
-import io.github.kopake.spitball.game.event.listeners.Listener;
+import io.github.kopake.spitball.event.EventHandler;
+import io.github.kopake.spitball.event.RoundEndEvent;
+import io.github.kopake.spitball.event.listeners.Listener;
 
 public class VibrationManager implements Listener {
 

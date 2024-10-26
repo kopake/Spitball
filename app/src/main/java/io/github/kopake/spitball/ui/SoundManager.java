@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.media.MediaPlayer;
 
 import io.github.kopake.spitball.R;
-import io.github.kopake.spitball.game.event.EventHandler;
-import io.github.kopake.spitball.game.event.GameEndEvent;
-import io.github.kopake.spitball.game.event.RoundEndEvent;
-import io.github.kopake.spitball.game.event.ScoreModifyEvent;
-import io.github.kopake.spitball.game.event.TimerTickEvent;
-import io.github.kopake.spitball.game.event.listeners.Listener;
+import io.github.kopake.spitball.event.EventHandler;
+import io.github.kopake.spitball.event.GameEndEvent;
+import io.github.kopake.spitball.event.RoundEndEvent;
+import io.github.kopake.spitball.event.ScoreModifyEvent;
+import io.github.kopake.spitball.event.TimerTickEvent;
+import io.github.kopake.spitball.event.listeners.Listener;
 
 public class SoundManager implements Listener {
 

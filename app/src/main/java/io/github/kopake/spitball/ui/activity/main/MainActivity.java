@@ -16,14 +16,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import io.github.kopake.spitball.R;
+import io.github.kopake.spitball.event.EventManager;
+import io.github.kopake.spitball.event.GameStartEvent;
+import io.github.kopake.spitball.event.RoundStartEvent;
+import io.github.kopake.spitball.event.listeners.LogListener;
 import io.github.kopake.spitball.file.FileSystemUtilities;
 import io.github.kopake.spitball.file.WordListParser;
 import io.github.kopake.spitball.game.NextWordChooser;
 import io.github.kopake.spitball.game.Scoreboard;
-import io.github.kopake.spitball.game.event.EventManager;
-import io.github.kopake.spitball.game.event.GameStartEvent;
-import io.github.kopake.spitball.game.event.RoundStartEvent;
-import io.github.kopake.spitball.game.event.listeners.LogListener;
 import io.github.kopake.spitball.game.model.WordList;
 import io.github.kopake.spitball.game.timer.GameTimer;
 import io.github.kopake.spitball.ui.SoundManager;
