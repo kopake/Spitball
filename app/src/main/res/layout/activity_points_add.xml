@@ -74,7 +74,7 @@
 
     <TextView
         android:id="@+id/teamOneScore"
-        style="@style/SpitballTextViewStylePrimary"
+        style="@style/SpitballTextViewStyleSecondary"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
@@ -98,7 +98,7 @@
         android:layout_marginBottom="16dp"
         android:text="@string/team_score_default_text"
         android:autoSizeMaxTextSize="100sp"
-        style="@style/SpitballTextViewStylePrimary"
+        style="@style/SpitballTextViewStyleSecondary"
         app:layout_constraintBottom_toTopOf="@+id/horizontal75Guideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/vertical67Guideline"
