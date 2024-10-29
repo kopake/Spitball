@@ -127,14 +127,12 @@ public class SoundManager implements Listener {
     }
 
     private void playSoundFromSoundPool(int id) {
-        Integer mappedID = soundIDMap.get(id);
-        if (mappedID == null) {
-            Log.e("Spitball", "Sound with id: %d was not loaded. Update SOUNDS_TO_LOAD to play the sound");
-            return;
-        }
-
         new Handler(Looper.getMainLooper()).post(() -> {
-            soundPool.play(soundIDMap.get(id), 1, 1, 0, 0, 1);
+            try {
+                soundPool.play(soundIDMap.get(id), 1, 1, 0, 0, 1);
+            } catch (NullPointerException | ClassCastException e) {
+                Log.e("Spitball", "Sound with id: %d was not loaded. Update SOUNDS_TO_LOAD to play the sound");
+            }
         });
     }
 }
