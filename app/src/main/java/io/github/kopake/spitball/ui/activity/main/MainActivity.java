@@ -1,5 +1,6 @@
 package io.github.kopake.spitball.ui.activity.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.HapticFeedbackConstants;
@@ -30,9 +31,11 @@ import io.github.kopake.spitball.ui.SoundManager;
 import io.github.kopake.spitball.ui.VibrationManager;
 import io.github.kopake.spitball.ui.activity.ActivityManager;
 import io.github.kopake.spitball.ui.activity.gameinprogress.GameInProgressActivity;
+import io.github.kopake.spitball.ui.activity.info.InfoActivity;
 import io.github.kopake.spitball.ui.activity.main.checkbox.CheckboxAdapter;
 import io.github.kopake.spitball.ui.activity.main.checkbox.CheckboxItem;
 import io.github.kopake.spitball.ui.activity.pointsadd.PointsAddActivity;
+import io.github.kopake.spitball.ui.activity.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -112,5 +115,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         this.moveTaskToBack(true);
+    }
+
+    public void onSettingsButtonClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+    }
+
+    public void onInfoButtonClick(View view) {
+        view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        Intent intent = new Intent(this, InfoActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }

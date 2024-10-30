@@ -9,49 +9,51 @@
 
     <Button
         android:id="@+id/startButton"
+        style="@style/DefaultSpitballButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginStart="@dimen/gui_separation_distance"
+        android:layout_marginTop="@dimen/gui_half_separation_distance"
+        android:layout_marginEnd="@dimen/gui_half_separation_distance"
+        android:layout_marginBottom="@dimen/gui_separation_distance"
         android:onClick="onStartButtonClick"
         android:text="@string/start_button_text"
-        style="@style/DefaultSpitballButtonStyle"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/vertical40Guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toTopOf="@+id/horizontal50Guideline"
+        tools:ignore="TextContrastCheck" />
+
 
     <TextView
         android:id="@+id/textView"
         style="@style/SpitballTextViewStylePrimary"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginStart="@dimen/gui_separation_distance"
+        android:layout_marginTop="@dimen/gui_separation_distance"
+        android:layout_marginEnd="@dimen/gui_half_separation_distance"
+        android:layout_marginBottom="@dimen/gui_half_separation_distance"
         android:paddingStart="32sp"
         android:paddingEnd="32sp"
         android:text="@string/title_text"
         android:autoSizeMaxTextSize="100sp"
         android:autoSizeTextType="uniform"
         android:maxLines="1"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal50Guideline"
+        app:layout_constraintEnd_toStartOf="@+id/vertical40Guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
+        android:id="@+id/vertical40Guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".4" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline4"
+        android:id="@+id/horizontal50Guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -62,17 +64,17 @@
         style="@style/SpitballTextViewStylePrimary"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        android:paddingStart="8dp"
+        android:layout_marginStart="@dimen/gui_half_separation_distance"
+        android:layout_marginTop="@dimen/gui_quarter_separation_distance"
+        android:layout_marginEnd="@dimen/gui_half_separation_distance"
+        android:layout_marginBottom="@dimen/gui_separation_distance"
+        android:paddingStart="16dp"
         android:paddingTop="8dp"
-        android:paddingEnd="8dp"
+        android:paddingEnd="16dp"
         android:paddingBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/vertical90Guideline"
+        app:layout_constraintStart_toStartOf="@+id/vertical40Guideline"
         app:layout_constraintTop_toBottomOf="@+id/categoriesLabel" />
 
     <TextView
@@ -80,15 +82,70 @@
         style="@style/SpitballTextViewStyleSecondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="@dimen/gui_half_separation_distance"
+        android:layout_marginTop="@dimen/gui_separation_distance"
+        android:layout_marginEnd="@dimen/gui_half_separation_distance"
         android:gravity="start"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:text="@string/categories_title_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/vertical90Guideline"
+        app:layout_constraintStart_toStartOf="@+id/vertical40Guideline"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical90Guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/icon_guideline_width" />
+
+    <FrameLayout
+        android:id="@+id/settingsButtonFrameLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="@dimen/gui_separation_distance"
+        android:layout_marginBottom="@dimen/gui_separation_distance"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/vertical90Guideline"
+        app:layout_constraintDimensionRatio="1:1">
+
+        <ImageView
+            android:id="@+id/settingsButtonImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@android:color/transparent"
+            android:onClick="onSettingsButtonClick"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/settings_screen_title_text"
+            app:srcCompat="@drawable/settings_icon"
+            app:tint="@color/iconButtonColor" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/infoButtonFrameLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/gui_separation_distance"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/settingsButtonFrameLayout"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/vertical90Guideline">
+
+        <ImageView
+            android:id="@+id/infoButtonImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@android:color/transparent"
+            android:onClick="onInfoButtonClick"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/info_screen_title_text"
+            app:srcCompat="@drawable/info_icon"
+            app:tint="@color/iconButtonColor" />
+    </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

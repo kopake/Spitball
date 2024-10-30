@@ -16,4 +16,9 @@
     <string name="final_word_of_previous_round_header_text">TIME\'S UP!</string>
     <string name="final_word_of_previous_round_header_default_text">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
     <string name="winning_message_default_text">Team XXX Wins!</string>
+    <string name="settings_screen_title_text">Settings</string>
+    <string name="settings_screen_back_button_text">&lt;</string>
+    <string name="settings_screen_team_one_name_text">Left Team Name:</string>
+    <string name="info_screen_title_text">Information</string>
+    <string name="info_screen_back_button_text">&lt;</string>
 </resources>

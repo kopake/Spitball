@@ -4,16 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!--Background is transparent since it is on top of another widget's background-->
     <CheckBox
         android:id="@+id/checkBox"
-        style="@style/SpitballTextViewStyleSecondary"
+        style="@style/CheckBoxStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#00000000"
-        android:padding="16dp"
+        android:paddingLeft="16sp"
+        android:paddingRight="16sp"
+        android:paddingTop="8sp"
+        android:paddingBottom="8sp"
         android:text="@string/checkbox_default_text"
-        android:buttonTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

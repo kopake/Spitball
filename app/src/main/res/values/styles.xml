@@ -13,7 +13,7 @@
     </style>
 
     <style name="DefaultSpitballButtonStyle" parent="">
-        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textColor">@color/buttonText</item>
         <item name="android:backgroundTint">@color/colorAccent</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:autoSizeMinTextSize">12sp</item>
@@ -21,6 +21,7 @@
         <item name="android:gravity">center</item>
         <item name="android:hapticFeedbackEnabled">true</item>
         <item name="android:fontFamily">@font/spitball_font_primary</item>
+        <item name="shapeAppearanceOverlay">@style/RoundedButtonShape</item>
     </style>
 
     <style name="TransparentSpitballButtonStyle" parent="DefaultSpitballButtonStyle">
@@ -30,22 +31,49 @@
         <item name="android:fontFamily">@font/spitball_font_primary</item>
     </style>
 
+    <style name="RoundedButtonShape" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerSize">50%</item>
+    </style>
+
+
     <style name="SpitballTextViewStylePrimary" parent="">
-        <item name="android:textColor">@color/button_text</item>
+        <item name="android:textColor">@color/buttonText</item>
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:autoSizeTextType">uniform</item>
         <item name="android:autoSizeMinTextSize">12sp</item>
         <item name="android:autoSizeMaxTextSize">60sp</item>
         <item name="android:gravity">center</item>
         <item name="android:fontFamily">@font/spitball_font_primary</item>
+        <item name="android:paddingStart">32sp</item>
+        <item name="android:paddingEnd">32sp</item>
     </style>
 
     <style name="SpitballTextViewStyleSecondary" parent="SpitballTextViewStylePrimary">
         <item name="android:fontFamily">@font/spitball_font_secondary</item>
     </style>
 
+    <style name="CheckBoxStyle" parent="Base.Theme.AppCompat">
+        <item name="android:button">@drawable/checkbox_selector</item>
+        <item name="android:buttonTint">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+
+    <dimen name="gui_separation_distance">32dp</dimen>
+    <!-- Should be half of gui_separation_distance-->
+    <dimen name="gui_half_separation_distance">16dp</dimen>
+    <!-- Should be half of gui_half_separation_distance -->
+    <dimen name="gui_quarter_separation_distance">8dp</dimen>
+    <dimen name="icon_width">48sp</dimen>
+    <!-- Should be gui_separation_distance + icon_width -->
+    <dimen name="icon_guideline_width">80dp</dimen>
+
+    <integer name="slide_animation_duration">300</integer>
+
     <font name="spitball_font_primary">@font/koulen</font>
     <font name="spitball_font_secondary">@font/inter_semibold</font>
+
     <color name="spitball_background_color">@color/colorBackground</color>
 
 </resources>
