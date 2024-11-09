@@ -1,5 +1,8 @@
 package io.github.kopake.spitball.game;
 
+import android.content.Context;
+
+import io.github.kopake.spitball.Spitball;
 import io.github.kopake.spitball.event.EventHandler;
 import io.github.kopake.spitball.event.EventManager;
 import io.github.kopake.spitball.event.GameEndEvent;
@@ -61,9 +64,11 @@ public class Scoreboard implements Listener {
         if (teamTwoScore < 0)
             teamTwoScore = 0;
 
-        if (teamOneScore >= 7)
+        int pointsNeededToWin = Spitball.getContext().getSharedPreferences("SpitballSettings", Context.MODE_PRIVATE).getInt("pointsNeededToWin", 7);
+
+        if (teamOneScore >= pointsNeededToWin)
             EventManager.getInstance().dispatchEvent(new GameEndEvent(Team.ONE));
-        else if (teamTwoScore >= 7)
+        else if (teamTwoScore >= pointsNeededToWin)
             EventManager.getInstance().dispatchEvent(new GameEndEvent(Team.TWO));
     }
 }

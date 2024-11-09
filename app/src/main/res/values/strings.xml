@@ -19,6 +19,13 @@
     <string name="settings_screen_title_text">Settings</string>
     <string name="settings_screen_back_button_text">&lt;</string>
     <string name="settings_screen_team_one_name_text">Left Team Name:</string>
+    <string name="settings_screen_team_one_name_default_value">Team One</string>
+    <string name="settings_screen_team_two_name_text">Right Team Name:</string>
+    <string name="settings_screen_team_two_name_default_value">Team Two</string>
+    <string name="settings_screen_average_round_time_text">Average Round Time (s):</string>
+    <string name="settings_screen_average_round_time_default_value">90</string>
+    <string name="settings_screen_points_to_win_text">Points needed to win:</string>
+    <string name="settings_screen_points_to_win_default_value">7</string>
     <string name="info_screen_title_text">Information</string>
     <string name="info_screen_back_button_text">&lt;</string>
 </resources>

@@ -1,5 +1,6 @@
 package io.github.kopake.spitball.ui.activity.pointsadd;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -87,6 +88,7 @@ public class PointsAddActivity extends AppCompatActivity {
             displayTeamOneScore(scoreboard.getTeamOneScore());
             displayTeamTwoScore(scoreboard.getTeamTwoScore());
             displayMostRecentNextWord(NextWordChooser.getInstance().getMostRecentWord().toUpperCase());
+            displayTeamNames();
         }, 100);
     }
 
@@ -105,6 +107,17 @@ public class PointsAddActivity extends AppCompatActivity {
         TextView mostRecentNextWordTextView = findViewById(R.id.mostRecentNextWord);
         mostRecentNextWordTextView.setText(mostRecentNextWord);
     }
+
+    private void displayTeamNames() {
+        TextView leftTeamNameTextView = findViewById(R.id.teamOneHeader);
+        TextView rightTeamNameTextView = findViewById(R.id.teamTwoHeader);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("SpitballSettings", MODE_PRIVATE);
+
+        leftTeamNameTextView.setText(sharedPreferences.getString("leftTeamName", "Team One").toUpperCase());
+        rightTeamNameTextView.setText(sharedPreferences.getString("rightTeamName", "Team Two").toUpperCase());
+    }
+
 
     @Override
     public void onBackPressed() {

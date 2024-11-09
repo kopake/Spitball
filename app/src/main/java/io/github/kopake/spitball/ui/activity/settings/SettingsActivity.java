@@ -1,10 +1,18 @@
 package io.github.kopake.spitball.ui.activity.settings;
 
+import android.content.SharedPreferences;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ScrollView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
@@ -17,7 +25,110 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         hideNavigationBar();
+
+        ConstraintLayout rootLayout = findViewById(R.id.settingsRootLayout);
+        Button button = findViewById(R.id.backButton);
+
+        int guiSeparationDistance = getResources().getDimensionPixelSize(R.dimen.gui_separation_distance);
+
+        // Moves the back button up and down based on the presence of the keyboard
+        rootLayout.getViewTreeObserver().addOnGlobalLayoutListener(() -> {
+            Rect rect = new Rect();
+            rootLayout.getWindowVisibleDisplayFrame(rect);
+            int screenHeight = rootLayout.getRootView().getHeight();
+
+            // Calculate the height difference
+            int keypadHeight = screenHeight - rect.bottom;
+
+            ConstraintSet constraintSet = new ConstraintSet();
+            constraintSet.clone(rootLayout);
+
+            if (keypadHeight > screenHeight * 0.15) {
+                // Keyboard is visible, move button above keyboard
+                constraintSet.clear(button.getId(), ConstraintSet.BOTTOM);
+                constraintSet.connect(button.getId(), ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, keypadHeight + guiSeparationDistance);
+            } else {
+                // Keyboard is hidden, reset button to bottom-right corner
+                constraintSet.connect(button.getId(), ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, guiSeparationDistance);
+            }
+
+            constraintSet.applyTo(rootLayout);
+        });
+
+        // Sets the scrollview separation from the top and bottom to the proper distance (gets messed up because of resizing)
+        int statusBarHeight = getStatusBarHeight();
+        int combinedMargin = guiSeparationDistance - statusBarHeight;
+
+        ScrollView settingsScrollView = findViewById(R.id.settingsScrollView);
+        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) settingsScrollView.getLayoutParams();
+        params.topMargin = combinedMargin;
+        params.bottomMargin = guiSeparationDistance;
+        settingsScrollView.setLayoutParams(params);
+
+
+        // Sets editTexts to scroll to view when focused
+        View.OnFocusChangeListener editTextFocusChangeListener = (view, hasFocus) -> {
+            // Wait for keyboard to appear before scrolling
+            // TODO make this more intelligent
+            view.postDelayed(() -> scrollToView(rootLayout, settingsScrollView, view), 200);
+        };
+        findViewById(R.id.leftTeamNameEditText).setOnFocusChangeListener(editTextFocusChangeListener);
+        findViewById(R.id.rightTeamNameEditText).setOnFocusChangeListener(editTextFocusChangeListener);
+        findViewById(R.id.averageRoundTimeEditText).setOnFocusChangeListener(editTextFocusChangeListener);
+        findViewById(R.id.pointsNeededToWinEditText).setOnFocusChangeListener(editTextFocusChangeListener);
+
+        loadPreviousValues();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        saveValues();
+    }
+
+    private void loadPreviousValues() {
+        EditText leftTeamNameEditText = findViewById(R.id.leftTeamNameEditText);
+        EditText rightTeamNameEditText = findViewById(R.id.rightTeamNameEditText);
+        EditText averageRoundTimeEditText = findViewById(R.id.averageRoundTimeEditText);
+        EditText pointsNeededToWinEditText = findViewById(R.id.pointsNeededToWinEditText);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("SpitballSettings", MODE_PRIVATE);
+
+        leftTeamNameEditText.setText(sharedPreferences.getString("leftTeamName", "Team One"));
+        rightTeamNameEditText.setText(sharedPreferences.getString("rightTeamName", "Team Two"));
+        averageRoundTimeEditText.setText(String.valueOf(sharedPreferences.getInt("averageRoundTime", 90)));
+        pointsNeededToWinEditText.setText(String.valueOf(sharedPreferences.getInt("pointsNeededToWin", 7)));
+    }
+
+    private void saveValues() {
+        EditText leftTeamNameEditText = findViewById(R.id.leftTeamNameEditText);
+        EditText rightTeamNameEditText = findViewById(R.id.rightTeamNameEditText);
+        EditText averageRoundTimeEditText = findViewById(R.id.averageRoundTimeEditText);
+        EditText pointsNeededToWinEditText = findViewById(R.id.pointsNeededToWinEditText);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("SpitballSettings", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString("leftTeamName", cleanString(leftTeamNameEditText.getText().toString(), "Team One"));
+        editor.putString("rightTeamName", cleanString(rightTeamNameEditText.getText().toString(), "Team Two"));
+        editor.putInt("averageRoundTime", cleanInt(Integer.parseInt(averageRoundTimeEditText.getText().toString()), 90));
+        editor.putInt("pointsNeededToWin", cleanInt(Integer.parseInt(pointsNeededToWinEditText.getText().toString()), 7));
+
+        editor.apply();
+    }
+
+    private static String cleanString(String string, String defaultValue) {
+        if (string == null || string.isEmpty())
+            return defaultValue;
+        return string;
+    }
+
+    private static int cleanInt(int i, int defaultValue) {
+        if (i <= 0)
+            return defaultValue;
+        return i;
+    }
+
 
     private void hideNavigationBar() {
         View decorView = getWindow().getDecorView();
@@ -25,6 +136,34 @@ public class SettingsActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
         WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView()).setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+    }
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            result = getResources().getDimensionPixelSize(resourceId);
+        }
+        return result;
+    }
+
+    public void scrollToView(View rootView, ScrollView scrollView, View view) {
+        int[] locationOfView = new int[2];
+        view.getLocationOnScreen(locationOfView);
+        int viewY = locationOfView[1];
+
+        int[] locationOfScrollView = new int[2];
+        scrollView.getLocationOnScreen(locationOfScrollView);
+        int scrollY = locationOfScrollView[1];
+
+
+        scrollView.post(() -> scrollView.smoothScrollTo(0, viewY + scrollView.getScrollY() - scrollY - 64));
+    }
+
+    private int getGuiSeparationDistanceFactoringInDensity() {
+        int guiSeparationDistance = getResources().getDimensionPixelSize(R.dimen.gui_separation_distance);
+        final float density = getResources().getDisplayMetrics().density;
+        return (int) (guiSeparationDistance * density);
     }
 
     public void onBackButtonClick(View view) {
