@@ -2,6 +2,8 @@ package io.github.kopake.spitball.ui.activity.settings;
 
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,25 +67,47 @@ public class SettingsActivity extends AppCompatActivity {
         params.bottomMargin = guiSeparationDistance;
         settingsScrollView.setLayoutParams(params);
 
+        setEditTextListener(findViewById(R.id.leftTeamNameEditText));
+        setEditTextListener(findViewById(R.id.rightTeamNameEditText));
+        setEditTextListener(findViewById(R.id.averageRoundTimeEditText));
+        setEditTextListener(findViewById(R.id.pointsNeededToWinEditText));
 
+        loadPreviousValues();
+    }
+
+    private void setEditTextListener(EditText editText) {
+        ScrollView settingsScrollView = findViewById(R.id.settingsScrollView);
         // Sets editTexts to scroll to view when focused
         View.OnFocusChangeListener editTextFocusChangeListener = (view, hasFocus) -> {
             // Wait for keyboard to appear before scrolling
             // TODO make this more intelligent
-            view.postDelayed(() -> scrollToView(rootLayout, settingsScrollView, view), 200);
+            view.postDelayed(() -> scrollToView(settingsScrollView, view), 200);
 
             // Move the cursor to the end of the edit text
             if (hasFocus) {
-                EditText editText = (EditText) view;
                 editText.setSelection(editText.getText().length());
             }
         };
-        findViewById(R.id.leftTeamNameEditText).setOnFocusChangeListener(editTextFocusChangeListener);
-        findViewById(R.id.rightTeamNameEditText).setOnFocusChangeListener(editTextFocusChangeListener);
-        findViewById(R.id.averageRoundTimeEditText).setOnFocusChangeListener(editTextFocusChangeListener);
-        findViewById(R.id.pointsNeededToWinEditText).setOnFocusChangeListener(editTextFocusChangeListener);
+        editText.setOnFocusChangeListener(editTextFocusChangeListener);
 
-        loadPreviousValues();
+        TextWatcher editTextTextWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //TODO change this if changing above in focuslistener
+                editText.postDelayed(() -> scrollToView(settingsScrollView, editText), 200);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        };
+        editText.addTextChangedListener(editTextTextWatcher);
     }
 
     @Override
@@ -116,18 +140,6 @@ public class SettingsActivity extends AppCompatActivity {
         SpitballSettings.putPointsNeededToWin(pointsNeededToWinEditText.getText().toString());
     }
 
-    private static String cleanString(String string, String defaultValue) {
-        if (string == null || string.isEmpty())
-            return defaultValue;
-        return string;
-    }
-
-    private static int cleanInt(int i, int defaultValue) {
-        if (i <= 0)
-            return defaultValue;
-        return i;
-    }
-
 
     private void hideNavigationBar() {
         View decorView = getWindow().getDecorView();
@@ -146,7 +158,7 @@ public class SettingsActivity extends AppCompatActivity {
         return result;
     }
 
-    public void scrollToView(View rootView, ScrollView scrollView, View view) {
+    public void scrollToView(ScrollView scrollView, View view) {
         int[] locationOfView = new int[2];
         view.getLocationOnScreen(locationOfView);
         int viewY = locationOfView[1];
@@ -157,12 +169,6 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         scrollView.post(() -> scrollView.smoothScrollTo(0, viewY + scrollView.getScrollY() - scrollY - 64));
-    }
-
-    private int getGuiSeparationDistanceFactoringInDensity() {
-        int guiSeparationDistance = getResources().getDimensionPixelSize(R.dimen.gui_separation_distance);
-        final float density = getResources().getDisplayMetrics().density;
-        return (int) (guiSeparationDistance * density);
     }
 
     public void onBackButtonClick(View view) {

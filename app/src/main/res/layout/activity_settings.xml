@@ -71,6 +71,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <View
+                android:id="@+id/titleSeparator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/gui_quarter_separation_distance"
+                android:background="@color/colorBackground" />
+
+            <View
+                android:id="@+id/topOfListPadding"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/gui_quarter_separation_distance"
+                android:background="@color/colorPrimary" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,9 +107,9 @@
                     android:layout_weight="1"
                     android:hint="@string/settings_screen_team_one_name_default_value"
                     android:imeOptions="flagNoExtractUi"
+                    android:importantForAutofill="no"
                     android:inputType="text"
-                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck"
-                    android:importantForAutofill="no" />
+                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
             </LinearLayout>
 
             <LinearLayout
