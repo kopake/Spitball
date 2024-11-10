@@ -1,6 +1,5 @@
 package io.github.kopake.spitball.ui.activity.pointsadd;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -22,6 +21,7 @@ import io.github.kopake.spitball.event.listeners.Listener;
 import io.github.kopake.spitball.game.NextWordChooser;
 import io.github.kopake.spitball.game.Scoreboard;
 import io.github.kopake.spitball.game.team.Team;
+import io.github.kopake.spitball.settings.SpitballSettings;
 
 public class PointsAddActivity extends AppCompatActivity {
 
@@ -112,10 +112,8 @@ public class PointsAddActivity extends AppCompatActivity {
         TextView leftTeamNameTextView = findViewById(R.id.teamOneHeader);
         TextView rightTeamNameTextView = findViewById(R.id.teamTwoHeader);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("SpitballSettings", MODE_PRIVATE);
-
-        leftTeamNameTextView.setText(sharedPreferences.getString("leftTeamName", "Team One").toUpperCase());
-        rightTeamNameTextView.setText(sharedPreferences.getString("rightTeamName", "Team Two").toUpperCase());
+        leftTeamNameTextView.setText(SpitballSettings.getLeftTeamName().toUpperCase());
+        rightTeamNameTextView.setText(SpitballSettings.getRightTeamName().toUpperCase());
     }
 
 

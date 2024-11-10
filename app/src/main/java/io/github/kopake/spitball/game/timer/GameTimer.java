@@ -4,12 +4,10 @@ import static io.github.kopake.spitball.game.timer.TimerPhase.ONE;
 import static io.github.kopake.spitball.game.timer.TimerPhase.THREE;
 import static io.github.kopake.spitball.game.timer.TimerPhase.TWO;
 
-import android.content.Context;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 
-import io.github.kopake.spitball.Spitball;
 import io.github.kopake.spitball.event.EventHandler;
 import io.github.kopake.spitball.event.EventManager;
 import io.github.kopake.spitball.event.RoundCancelEvent;
@@ -17,6 +15,7 @@ import io.github.kopake.spitball.event.RoundEndEvent;
 import io.github.kopake.spitball.event.RoundStartEvent;
 import io.github.kopake.spitball.event.TimerTickEvent;
 import io.github.kopake.spitball.event.listeners.Listener;
+import io.github.kopake.spitball.settings.SpitballSettings;
 
 public class GameTimer implements Listener {
 
@@ -74,7 +73,7 @@ public class GameTimer implements Listener {
     }
 
     private long getTotalTimeOfTimerInMilliSeconds() {
-        int meanRoundTime = Spitball.getContext().getSharedPreferences("SpitballSettings", Context.MODE_PRIVATE).getInt("averageRoundTime", 90);
+        int meanRoundTime = SpitballSettings.getAverageRoundTime();
         //TODO get this math working
         return (long) (/*new Random().nextGaussian() * ROUND_STD_DEV_IN_SECONDS +*/ meanRoundTime) * 1000;
     }

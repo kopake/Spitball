@@ -1,6 +1,5 @@
 package io.github.kopake.spitball.ui.activity.settings;
 
-import android.content.SharedPreferences;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.HapticFeedbackConstants;
@@ -17,6 +16,7 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 import io.github.kopake.spitball.R;
+import io.github.kopake.spitball.settings.SpitballSettings;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -71,6 +71,12 @@ public class SettingsActivity extends AppCompatActivity {
             // Wait for keyboard to appear before scrolling
             // TODO make this more intelligent
             view.postDelayed(() -> scrollToView(rootLayout, settingsScrollView, view), 200);
+
+            // Move the cursor to the end of the edit text
+            if (hasFocus) {
+                EditText editText = (EditText) view;
+                editText.setSelection(editText.getText().length());
+            }
         };
         findViewById(R.id.leftTeamNameEditText).setOnFocusChangeListener(editTextFocusChangeListener);
         findViewById(R.id.rightTeamNameEditText).setOnFocusChangeListener(editTextFocusChangeListener);
@@ -92,12 +98,10 @@ public class SettingsActivity extends AppCompatActivity {
         EditText averageRoundTimeEditText = findViewById(R.id.averageRoundTimeEditText);
         EditText pointsNeededToWinEditText = findViewById(R.id.pointsNeededToWinEditText);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("SpitballSettings", MODE_PRIVATE);
-
-        leftTeamNameEditText.setText(sharedPreferences.getString("leftTeamName", "Team One"));
-        rightTeamNameEditText.setText(sharedPreferences.getString("rightTeamName", "Team Two"));
-        averageRoundTimeEditText.setText(String.valueOf(sharedPreferences.getInt("averageRoundTime", 90)));
-        pointsNeededToWinEditText.setText(String.valueOf(sharedPreferences.getInt("pointsNeededToWin", 7)));
+        leftTeamNameEditText.setText(SpitballSettings.getLeftTeamName());
+        rightTeamNameEditText.setText(SpitballSettings.getRightTeamName());
+        averageRoundTimeEditText.setText(String.valueOf(SpitballSettings.getAverageRoundTime()));
+        pointsNeededToWinEditText.setText(String.valueOf(SpitballSettings.getPointsNeededToWin()));
     }
 
     private void saveValues() {
@@ -106,15 +110,10 @@ public class SettingsActivity extends AppCompatActivity {
         EditText averageRoundTimeEditText = findViewById(R.id.averageRoundTimeEditText);
         EditText pointsNeededToWinEditText = findViewById(R.id.pointsNeededToWinEditText);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("SpitballSettings", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putString("leftTeamName", cleanString(leftTeamNameEditText.getText().toString(), "Team One"));
-        editor.putString("rightTeamName", cleanString(rightTeamNameEditText.getText().toString(), "Team Two"));
-        editor.putInt("averageRoundTime", cleanInt(Integer.parseInt(averageRoundTimeEditText.getText().toString()), 90));
-        editor.putInt("pointsNeededToWin", cleanInt(Integer.parseInt(pointsNeededToWinEditText.getText().toString()), 7));
-
-        editor.apply();
+        SpitballSettings.putLeftTeamName(leftTeamNameEditText.getText().toString());
+        SpitballSettings.putRightTeamName(rightTeamNameEditText.getText().toString());
+        SpitballSettings.putAverageRoundTime(averageRoundTimeEditText.getText().toString());
+        SpitballSettings.putPointsNeededToWin(pointsNeededToWinEditText.getText().toString());
     }
 
     private static String cleanString(String string, String defaultValue) {
