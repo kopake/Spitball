@@ -1,6 +1,7 @@
 package io.github.kopake.spitball.ui.activity.main;
 
 import android.content.Intent;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.HapticFeedbackConstants;
@@ -77,6 +78,13 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Select one or more categories to begin.", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        AudioManager audioManager = (AudioManager) getSystemService(AUDIO_SERVICE);
+        if (audioManager == null || audioManager.getStreamVolume(AudioManager.STREAM_MUSIC) == 0) {
+            Toast.makeText(this, "Ensure volume is on to begin.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
 
         EventManager eventManager = EventManager.getInstance();
         eventManager.dispatchEvent(new GameStartEvent(adapter.getCheckedItems()));
