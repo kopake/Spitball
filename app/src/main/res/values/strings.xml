@@ -28,4 +28,11 @@
     <string name="settings_screen_points_to_win_default_value">7</string>
     <string name="info_screen_title_text">Information</string>
     <string name="info_screen_back_button_text">&lt;</string>
+    <string name="info_screen_developer_title">Developer:</string>
+    <string name="info_screen_developer_name">Kopake</string>
+    <string name="info_screen_artist_title">Art Design:</string>
+    <string name="info_screen_artist_name">Noahnator99</string>
+    <string name="info_screen_sound_designer_title">Sound Design:</string>
+    <string name="info_screen_sound_designer_name">AP</string>
+
 </resources>

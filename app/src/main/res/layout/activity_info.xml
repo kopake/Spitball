@@ -8,16 +8,19 @@
     tools:context=".ui.activity.settings.SettingsActivity">
 
     <TextView
-        android:id="@+id/titleTextView"
+        android:id="@+id/infoTitleTextView"
         style="@style/SpitballTextViewStylePrimary"
         android:layout_width="0dp"
-        android:layout_height="57dp"
+        android:layout_height="0dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="@dimen/gui_half_separation_distance"
+        android:layout_marginBottom="@dimen/gui_half_separation_distance"
         android:autoSizeMaxTextSize="100sp"
         android:autoSizeMinTextSize="30sp"
+        android:gravity="center"
         android:text="@string/info_screen_title_text"
+        app:layout_constraintBottom_toTopOf="@+id/topHorizontalGuideline"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,5 +53,92 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_end="@dimen/icon_guideline_width" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/gui_separation_distance"
+        android:layout_marginTop="@dimen/gui_half_separation_distance"
+        android:layout_marginEnd="@dimen/gui_half_separation_distance"
+        android:layout_marginBottom="@dimen/gui_separation_distance"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/topHorizontalGuideline"
+        app:layout_constraintVertical_bias="0.529">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/developerLabelTextView"
+                style="@style/SpitballTextViewStyleLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:text="@string/info_screen_developer_title" />
+
+            <TextView
+                android:id="@+id/developerValueTextView"
+                style="@style/SpitballTextViewStyleContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:text="@string/info_screen_developer_name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/artDesignerLabelTextView"
+                style="@style/SpitballTextViewStyleLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:text="@string/info_screen_artist_title" />
+
+            <TextView
+                android:id="@+id/artDesignerValueTextView"
+                style="@style/SpitballTextViewStyleContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:text="@string/info_screen_artist_name" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/soundDesignerLabelTextView"
+                style="@style/SpitballTextViewStyleLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:text="@string/info_screen_sound_designer_title" />
+
+            <TextView
+                android:id="@+id/soundDesignerValueTextView"
+                style="@style/SpitballTextViewStyleContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/transparent"
+                android:text="@string/info_screen_sound_designer_name" />
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

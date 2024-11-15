@@ -57,7 +57,7 @@
             android:paddingEnd="0sp">
 
             <TextView
-                android:id="@+id/titleTextView"
+                android:id="@+id/infoTitleTextView"
                 style="@style/SpitballTextViewStylePrimary"
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
@@ -91,7 +91,7 @@
 
                 <TextView
                     android:id="@+id/leftTeamNameTitle"
-                    style="@style/SpitballTextViewStyleSettingsTitle"
+                    style="@style/SpitballTextViewStyleLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -101,7 +101,7 @@
 
                 <EditText
                     android:id="@+id/leftTeamNameEditText"
-                    style="@style/SpitballTextViewStyleSettingsOption"
+                    style="@style/SpitballTextViewStyleContent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -120,7 +120,7 @@
 
                 <TextView
                     android:id="@+id/rightTeamNameTitle"
-                    style="@style/SpitballTextViewStyleSettingsTitle"
+                    style="@style/SpitballTextViewStyleLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -128,7 +128,7 @@
 
                 <EditText
                     android:id="@+id/rightTeamNameEditText"
-                    style="@style/SpitballTextViewStyleSettingsOption"
+                    style="@style/SpitballTextViewStyleContent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -147,7 +147,7 @@
 
                 <TextView
                     android:id="@+id/averageRoundTimeTitle"
-                    style="@style/SpitballTextViewStyleSettingsTitle"
+                    style="@style/SpitballTextViewStyleLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -155,7 +155,7 @@
 
                 <EditText
                     android:id="@+id/averageRoundTimeEditText"
-                    style="@style/SpitballTextViewStyleSettingsOption"
+                    style="@style/SpitballTextViewStyleContent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -174,7 +174,7 @@
 
                 <TextView
                     android:id="@+id/pointsNeededToWinTitle"
-                    style="@style/SpitballTextViewStyleSettingsTitle"
+                    style="@style/SpitballTextViewStyleLabel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -182,7 +182,7 @@
 
                 <EditText
                     android:id="@+id/pointsNeededToWinEditText"
-                    style="@style/SpitballTextViewStyleSettingsOption"
+                    style="@style/SpitballTextViewStyleContent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
