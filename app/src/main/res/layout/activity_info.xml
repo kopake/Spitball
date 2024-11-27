@@ -32,20 +32,20 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".25" />
 
-    <Button
+    <ImageView
         android:id="@+id/backButton"
-        style="@style/DefaultSpitballButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="@dimen/gui_separation_distance"
         android:layout_marginBottom="@dimen/gui_separation_distance"
         android:onClick="onBackButtonClick"
+        android:src="@drawable/goback_icon"
         android:text="@string/info_screen_back_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        tools:ignore="TextContrastCheck" />
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TextContrastCheck" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

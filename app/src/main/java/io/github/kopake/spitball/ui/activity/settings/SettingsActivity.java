@@ -7,7 +7,6 @@ import android.text.TextWatcher;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ScrollView;
 
@@ -29,7 +28,7 @@ public class SettingsActivity extends AppCompatActivity {
         hideNavigationBar();
 
         ConstraintLayout rootLayout = findViewById(R.id.settingsRootLayout);
-        Button button = findViewById(R.id.backButton);
+        View button = findViewById(R.id.backButton);
 
         int guiSeparationDistance = getResources().getDimensionPixelSize(R.dimen.gui_separation_distance);
 

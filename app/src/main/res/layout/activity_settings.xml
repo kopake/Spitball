@@ -10,24 +10,24 @@
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_end="@dimen/icon_guideline_width" />
 
-    <Button
+    <ImageView
         android:id="@+id/backButton"
-        style="@style/DefaultSpitballButtonStyle"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="0dp"
         android:layout_marginEnd="@dimen/gui_separation_distance"
         android:layout_marginBottom="@dimen/gui_separation_distance"
         android:onClick="onBackButtonClick"
+        android:src="@drawable/goback_icon"
         android:text="@string/settings_screen_back_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        tools:ignore="TextContrastCheck" />
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TextContrastCheck" />
 
     <ScrollView
         android:id="@+id/settingsScrollView"
@@ -35,16 +35,14 @@
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/gui_separation_distance"
         android:layout_marginTop="@dimen/gui_separation_distance"
-        android:layout_marginEnd="@dimen/gui_half_separation_distance"
         android:layout_marginBottom="@dimen/gui_separation_distance"
+        android:layout_marginEnd="@dimen/gui_half_separation_distance"
         android:fillViewport="true"
         android:fitsSystemWindows="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/backButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -134,9 +132,9 @@
                     android:layout_weight="1"
                     android:hint="@string/settings_screen_team_two_name_default_value"
                     android:imeOptions="flagNoExtractUi"
+                    android:importantForAutofill="no"
                     android:inputType="text"
-                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck"
-                    android:importantForAutofill="no" />
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
             </LinearLayout>
 
             <LinearLayout
@@ -161,9 +159,9 @@
                     android:layout_weight="1"
                     android:hint="@string/settings_screen_average_round_time_default_value"
                     android:imeOptions="flagNoExtractUi"
+                    android:importantForAutofill="no"
                     android:inputType="number"
-                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck"
-                    android:importantForAutofill="no" />
+                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
             </LinearLayout>
 
             <LinearLayout
@@ -188,9 +186,9 @@
                     android:layout_weight="1"
                     android:hint="@string/settings_screen_points_to_win_default_value"
                     android:imeOptions="flagNoExtractUi"
+                    android:importantForAutofill="no"
                     android:inputType="number"
-                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck"
-                    android:importantForAutofill="no" />
+                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
             </LinearLayout>
 
         </LinearLayout>
