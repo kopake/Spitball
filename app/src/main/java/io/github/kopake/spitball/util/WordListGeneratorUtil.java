@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -17,6 +18,7 @@ import java.util.regex.Pattern;
 public class WordListGeneratorUtil {
     public static void convertCsvToText(String csvFilePath, String outputFilePath) {
         List<List<String>> columns = new ArrayList<>();
+        Set<String> allEntriesSet = new HashSet<>();  // Set to track all unique entries across columns
 
         try (CSVReader csvReader = new CSVReader(new FileReader(csvFilePath))) {
             String[] headers = csvReader.readNext();
@@ -45,9 +47,9 @@ public class WordListGeneratorUtil {
 
         try (FileWriter writer = new FileWriter(outputFilePath)) {
             for (List<String> column : columns) {
-                writer.write("\n#" + column.get(0) + "\n\n"); // Write header with surrounding blank lines
+                writer.write("#" + column.get(0) + "\n\n"); // Write header with surrounding blank lines
 
-                // Create a TreeSet to sort and remove duplicates, ignoring the header
+                // Create a TreeSet to sort and remove duplicates within the column, ignoring the header
                 Set<String> sortedUniqueEntries = new TreeSet<>(String.CASE_INSENSITIVE_ORDER);
                 for (int i = 1; i < column.size(); i++) {
                     String word = column.get(i).toLowerCase().trim(); // Convert to lowercase and trim whitespace
@@ -57,9 +59,21 @@ public class WordListGeneratorUtil {
                         continue;
                     }
 
-                    // Check for non-letter characters (excluding spaces) and print a message if found
-                    if (!Pattern.matches("[a-zA-Z0-9 -.!']+", word)) {
+                    word = word.replace("’", "'");
+
+                    // Check for special characters and print a message if found
+                    if (!Pattern.matches("[a-zA-Z0-9 \\-\\'’.]+", word)) {
                         System.out.println("Encountered a non-letter character in word: " + word);
+                    }
+
+                    // Check for entries with more than 4 words
+                    if (word.split("\\s+").length > 4) {
+                        System.out.println("Warning: Entry with more than 4 words: \"" + word + "\"");
+                    }
+
+                    // Check for duplicates across columns
+                    if (!allEntriesSet.add(word)) {  // If word is already in the set, it's a duplicate
+                        System.out.println("Warning: Duplicate value detected across columns: \"" + word + "\"");
                     }
 
                     sortedUniqueEntries.add(word);
@@ -78,8 +92,63 @@ public class WordListGeneratorUtil {
     }
 
     public static void main(String[] args) {
-        String csvFilePath = "C:\\Users\\Kole\\OneDrive\\Desktop\\Catchphrase_Word_Lists\\List - The World.csv"; // Path to your CSV file
-        String outputFilePath = "C:\\Users\\Kole\\OneDrive\\Desktop\\Catchphrase_Word_Lists\\World.txt"; // Path for the output file
+
+        String csvFilePath;
+        String outputFilePath;
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("Sci-Tech");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        csvFilePath = "C:\\Users\\Kole\\OneDrive\\Desktop\\Catchphrase_Word_Lists\\List - Sci-Tech.csv"; // Path to your CSV file
+        outputFilePath = "C:\\Users\\Kole\\OneDrive\\Desktop\\Catchphrase_Word_Lists\\Sci-Tech.txt"; // Path for the output file
+        convertCsvToText(csvFilePath, outputFilePath);
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("The World");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        csvFilePath = "C:\\Users\\Kole\\OneDrive\\Desktop\\Catchphrase_Word_Lists\\List - The World.csv"; // Path to your CSV file
+        outputFilePath = "C:\\Users\\Kole\\OneDrive\\Desktop\\Catchphrase_Word_Lists\\The_World.txt"; // Path for the output file
+        convertCsvToText(csvFilePath, outputFilePath);
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("Entertainment");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        csvFilePath = "C:\\Users\\Kole\\OneDrive\\Desktop\\Catchphrase_Word_Lists\\List - Entertainment.csv"; // Path to your CSV file
+        outputFilePath = "C:\\Users\\Kole\\OneDrive\\Desktop\\Catchphrase_Word_Lists\\Entertainment.txt"; // Path for the output file
+        convertCsvToText(csvFilePath, outputFilePath);
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("Food");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        csvFilePath = "C:\\Users\\Kole\\OneDrive\\Desktop\\Catchphrase_Word_Lists\\List - Food.csv"; // Path to your CSV file
+        outputFilePath = "C:\\Users\\Kole\\OneDrive\\Desktop\\Catchphrase_Word_Lists\\Food.txt"; // Path for the output file
+        convertCsvToText(csvFilePath, outputFilePath);
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println("Fun and Games");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        csvFilePath = "C:\\Users\\Kole\\OneDrive\\Desktop\\Catchphrase_Word_Lists\\List - Sports & Games.csv"; // Path to your CSV file
+        outputFilePath = "C:\\Users\\Kole\\OneDrive\\Desktop\\Catchphrase_Word_Lists\\Fun_and_Games.txt"; // Path for the output file
         convertCsvToText(csvFilePath, outputFilePath);
     }
 }
