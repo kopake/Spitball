@@ -15,6 +15,8 @@ import io.github.kopake.spitball.event.EventManager;
 import io.github.kopake.spitball.event.NextButtonPressEvent;
 import io.github.kopake.spitball.event.NextWordEvent;
 import io.github.kopake.spitball.event.RoundCancelEvent;
+import io.github.kopake.spitball.event.RoundEndEvent;
+import io.github.kopake.spitball.event.RoundStartEvent;
 import io.github.kopake.spitball.event.listeners.Listener;
 
 public class GameInProgressActivity extends AppCompatActivity {
@@ -24,6 +26,10 @@ public class GameInProgressActivity extends AppCompatActivity {
     public static GameInProgressActivity getInstance() {
         return instance;
     }
+
+    // The first time this activity created, it was because a RoundStartEvent was dispatched, so
+    // this variable should be true to start
+    private boolean roundInProgress = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,18 @@ public class GameInProgressActivity extends AppCompatActivity {
                     runOnUiThread(() -> {
                         updateWordText(nextWordEvent.getWord());
                     });
+                }
+            });
+            EventManager.getInstance().addListener(new Listener() {
+                @EventHandler
+                public void onRoundStart(RoundStartEvent roundStartEvent) {
+                    roundInProgress = true;
+                }
+            });
+            EventManager.getInstance().addListener(new Listener() {
+                @EventHandler
+                public void onRoundEnd(RoundEndEvent roundEndEvent) {
+                    roundInProgress = false;
                 }
             });
             instance = this;
@@ -64,6 +82,18 @@ public class GameInProgressActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        EventManager.getInstance().dispatchEvent(new RoundCancelEvent());
+        abortRound();
+    }
+
+    @Override
+    protected void onPause() {
+        abortRound();
+        super.onPause();
+    }
+
+    private void abortRound() {
+        if (roundInProgress) {
+            EventManager.getInstance().dispatchEvent(new RoundCancelEvent());
+        }
     }
 }
