@@ -16,6 +16,7 @@ public class Spitball extends Application {
     public void onCreate() {
         super.onCreate();
         application = this;
+        PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
     }
 
     public static Application getApplication() {

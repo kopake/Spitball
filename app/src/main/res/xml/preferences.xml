@@ -40,7 +40,7 @@
             android:key="points_win_by_two"
             android:title="Win by 2"
             android:summary="To win, a team must have at least 2 more points than the opposing team"
-            android:defaultValue="true"
+            android:defaultValue="false"
             app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
@@ -80,4 +80,16 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="reset_category"
+        android:title="Reset"
+        app:iconSpaceReserved="false">
+
+        <Preference
+            android:key="reset_to_default"
+            android:title="Reset to Default"
+            android:summary="Resets all settings to their default values"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
 </PreferenceScreen>
