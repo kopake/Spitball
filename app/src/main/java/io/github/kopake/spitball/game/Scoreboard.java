@@ -1,5 +1,8 @@
 package io.github.kopake.spitball.game;
 
+import android.content.SharedPreferences;
+
+import io.github.kopake.spitball.Spitball;
 import io.github.kopake.spitball.event.EventHandler;
 import io.github.kopake.spitball.event.EventManager;
 import io.github.kopake.spitball.event.GameEndEvent;
@@ -7,7 +10,6 @@ import io.github.kopake.spitball.event.GameStartEvent;
 import io.github.kopake.spitball.event.ScoreModifyEvent;
 import io.github.kopake.spitball.event.listeners.Listener;
 import io.github.kopake.spitball.game.team.Team;
-import io.github.kopake.spitball.settings.SpitballSettings;
 
 public class Scoreboard implements Listener {
 
@@ -62,11 +64,25 @@ public class Scoreboard implements Listener {
         if (teamTwoScore < 0)
             teamTwoScore = 0;
 
-        int pointsNeededToWin = SpitballSettings.getPointsNeededToWin();
+        SharedPreferences sharedPreferences = Spitball.getSharedPreferences();
+        int pointsNeededToWin = sharedPreferences.getInt("points_to_win", 7);
+        boolean winByTwo = sharedPreferences.getBoolean("points_win_by_two", true);
 
-        if (teamOneScore >= pointsNeededToWin)
+        if (teamHasWon(teamOneScore, teamTwoScore, pointsNeededToWin, winByTwo)) {
             EventManager.getInstance().dispatchEvent(new GameEndEvent(Team.ONE));
-        else if (teamTwoScore >= pointsNeededToWin)
-            EventManager.getInstance().dispatchEvent(new GameEndEvent(Team.TWO));
+        } else if (teamHasWon(teamTwoScore, teamOneScore, pointsNeededToWin, winByTwo)) {
+            EventManager.getInstance().dispatchEvent(new GameEndEvent(Team.ONE));
+        }
+    }
+
+    private static boolean teamHasWon(int teamScore, int opponentScore, int pointsToWin, boolean isWinningByTwoRequired) {
+        if (teamScore >= pointsToWin) {
+            if (isWinningByTwoRequired) {
+                return (teamScore - opponentScore) >= 2;
+            } else {
+                return true;
+            }
+        }
+        return false;
     }
 }

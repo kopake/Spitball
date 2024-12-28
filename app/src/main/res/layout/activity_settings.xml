@@ -2,198 +2,56 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/settingsRootLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/spitball_background_color">
+    android:orientation="vertical"
+    android:padding="@dimen/gui_separation_distance">
+
+    <TextView
+        android:id="@+id/settings_header"
+        style="@style/SpitballTextViewStylePrimary"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/settings_screen_title_text"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_end="@dimen/icon_guideline_width" />
+        app:layout_constraintGuide_end="@dimen/icon_width" />
 
+    <!-- Container for the preferences fragment -->
     <ImageView
         android:id="@+id/backButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="@dimen/gui_separation_distance"
-        android:layout_marginBottom="@dimen/gui_separation_distance"
         android:onClick="onBackButtonClick"
         android:src="@drawable/goback_icon"
-        android:text="@string/settings_screen_back_button_text"
+        android:text="@string/info_screen_back_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
         tools:ignore="ContentDescription,SpeakableTextPresentCheck,TextContrastCheck" />
 
-    <ScrollView
-        android:id="@+id/settingsScrollView"
+    <FrameLayout
+        android:id="@+id/settings_fragment_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="@dimen/gui_separation_distance"
-        android:layout_marginTop="@dimen/gui_separation_distance"
-        android:layout_marginBottom="@dimen/gui_separation_distance"
-        android:layout_marginEnd="@dimen/gui_half_separation_distance"
-        android:fillViewport="true"
-        android:fitsSystemWindows="true"
+        android:layout_marginTop="@dimen/gui_quarter_separation_distance"
+        android:layout_marginEnd="@dimen/gui_quarter_separation_distance"
+        android:layout_weight="1"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/backButton"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/settings_header">
 
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            style="@style/SpitballTextViewStylePrimary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center|top"
-            android:orientation="vertical"
-            android:paddingStart="0sp"
-            android:paddingEnd="0sp">
-
-            <TextView
-                android:id="@+id/infoTitleTextView"
-                style="@style/SpitballTextViewStylePrimary"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:autoSizeMaxTextSize="100sp"
-                android:autoSizeMinTextSize="30sp"
-                android:gravity="center"
-                android:paddingTop="8sp"
-                android:paddingBottom="8sp"
-                android:text="@string/settings_screen_title_text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:id="@+id/titleSeparator"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/gui_quarter_separation_distance"
-                android:background="@color/colorBackground" />
-
-            <View
-                android:id="@+id/topOfListPadding"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/gui_quarter_separation_distance"
-                android:background="@color/colorPrimary" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="8dp">
-
-                <TextView
-                    android:id="@+id/leftTeamNameTitle"
-                    style="@style/SpitballTextViewStyleLabel"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingLeft="16sp"
-                    android:paddingRight="16sp"
-                    android:text="@string/settings_screen_team_one_name_text" />
-
-                <EditText
-                    android:id="@+id/leftTeamNameEditText"
-                    style="@style/SpitballTextViewStyleContent"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="@string/settings_screen_team_one_name_default_value"
-                    android:imeOptions="flagNoExtractUi"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="8dp">
-
-                <TextView
-                    android:id="@+id/rightTeamNameTitle"
-                    style="@style/SpitballTextViewStyleLabel"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/settings_screen_team_two_name_text" />
-
-                <EditText
-                    android:id="@+id/rightTeamNameEditText"
-                    style="@style/SpitballTextViewStyleContent"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="@string/settings_screen_team_two_name_default_value"
-                    android:imeOptions="flagNoExtractUi"
-                    android:importantForAutofill="no"
-                    android:inputType="text"
-                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="8dp">
-
-                <TextView
-                    android:id="@+id/averageRoundTimeTitle"
-                    style="@style/SpitballTextViewStyleLabel"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/settings_screen_average_round_time_text" />
-
-                <EditText
-                    android:id="@+id/averageRoundTimeEditText"
-                    style="@style/SpitballTextViewStyleContent"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="@string/settings_screen_average_round_time_default_value"
-                    android:imeOptions="flagNoExtractUi"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    tools:ignore="TextContrastCheck,TouchTargetSizeCheck" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingBottom="8dp">
-
-                <TextView
-                    android:id="@+id/pointsNeededToWinTitle"
-                    style="@style/SpitballTextViewStyleLabel"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/settings_screen_points_to_win_text" />
-
-                <EditText
-                    android:id="@+id/pointsNeededToWinEditText"
-                    style="@style/SpitballTextViewStyleContent"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="@string/settings_screen_points_to_win_default_value"
-                    android:imeOptions="flagNoExtractUi"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
-                    tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
-
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

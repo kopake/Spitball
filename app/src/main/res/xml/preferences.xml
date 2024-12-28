@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/Theme.Spitball">
+
+    <PreferenceCategory
+        android:key="team_name_category"
+        android:title="Team Names"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            android:key="team_name_left"
+            android:title="Left Team Name"
+            android:defaultValue="Team One"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            android:key="team_name_right"
+            android:title="Right Team Name"
+            android:defaultValue="Team Two"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="points_category"
+        android:title="Points"
+        app:iconSpaceReserved="false">
+
+        <SeekBarPreference
+            android:key="points_to_win"
+            android:title="Points Needed to Win"
+            android:defaultValue="7"
+            app:min="1"
+            android:max="20"
+            app:showSeekBarValue="true"
+            app:iconSpaceReserved="false" />
+
+        <CheckBoxPreference
+            android:key="points_win_by_two"
+            android:title="Win by 2"
+            android:summary="To win, a team must have at least 2 more points than the opposing team"
+            android:defaultValue="true"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="round_length_category"
+        android:title="Round Time"
+        app:iconSpaceReserved="false">
+
+        <SeekBarPreference
+            android:key="round_length_average"
+            android:title="Round Length"
+            android:summary="(seconds)"
+            android:defaultValue="90"
+            app:min="5"
+            android:max="180"
+            app:showSeekBarValue="true"
+            app:iconSpaceReserved="false" />
+
+        <CheckBoxPreference
+            android:key="round_length_randomized"
+            android:title="Randomized Round Length"
+            android:summary="Enables round time being randomized within a range"
+            android:defaultValue="false"
+            app:iconSpaceReserved="false" />
+
+        <SeekBarPreference
+            android:key="round_length_range"
+            android:title="Random Round Length Range"
+            android:summary="Round can be longer/shorter by the given number of seconds"
+            android:defaultValue="0"
+            app:min="0"
+            android:max="30"
+            app:showSeekBarValue="true"
+            android:dependency="round_length_randomized"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

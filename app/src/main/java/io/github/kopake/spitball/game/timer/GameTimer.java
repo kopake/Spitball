@@ -4,10 +4,14 @@ import static io.github.kopake.spitball.game.timer.TimerPhase.ONE;
 import static io.github.kopake.spitball.game.timer.TimerPhase.THREE;
 import static io.github.kopake.spitball.game.timer.TimerPhase.TWO;
 
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 
+import java.util.Random;
+
+import io.github.kopake.spitball.Spitball;
 import io.github.kopake.spitball.event.EventHandler;
 import io.github.kopake.spitball.event.EventManager;
 import io.github.kopake.spitball.event.RoundCancelEvent;
@@ -15,12 +19,8 @@ import io.github.kopake.spitball.event.RoundEndEvent;
 import io.github.kopake.spitball.event.RoundStartEvent;
 import io.github.kopake.spitball.event.TimerTickEvent;
 import io.github.kopake.spitball.event.listeners.Listener;
-import io.github.kopake.spitball.settings.SpitballSettings;
 
 public class GameTimer implements Listener {
-
-    private static final double ROUND_MEAN_LENGTH_IN_SECONDS = 90;
-    private static final double ROUND_STD_DEV_IN_SECONDS = 5;
 
     private static final int TIMER_1_FREQUENCY = 600;
     private static final int TIMER_2_FREQUENCY = TIMER_1_FREQUENCY / 2;
@@ -73,9 +73,22 @@ public class GameTimer implements Listener {
     }
 
     private long getTotalTimeOfTimerInMilliSeconds() {
-        int meanRoundTime = SpitballSettings.getAverageRoundTime();
-        //TODO get this math working
-        return (long) (/*new Random().nextGaussian() * ROUND_STD_DEV_IN_SECONDS +*/ meanRoundTime) * 1000;
+        SharedPreferences sharedPreferences = Spitball.getSharedPreferences();
+        int meanRoundTime = sharedPreferences.getInt("round_length_average", 90);
+        boolean shouldRandomizeRoundLength = sharedPreferences.getBoolean("round_length_randomized", true);
+        int roundTimeRange = sharedPreferences.getInt("round_length_range", 15);
+
+        double roundLengthInSeconds = meanRoundTime;
+        if (shouldRandomizeRoundLength) {
+            // 99.7% of values fall inside of 3 std devs
+            roundLengthInSeconds += (new Random().nextGaussian() * roundTimeRange / 3.0);
+        }
+
+        // Robustness check to ensure that rounds are never too short
+        if (roundLengthInSeconds < 5)
+            roundLengthInSeconds = 5;
+
+        return (long) roundLengthInSeconds * 1000;
     }
 
     @EventHandler

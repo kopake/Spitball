@@ -2,6 +2,9 @@ package io.github.kopake.spitball;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+
+import androidx.preference.PreferenceManager;
 
 import io.github.kopake.spitball.event.EventManager;
 
@@ -21,6 +24,10 @@ public class Spitball extends Application {
 
     public static Context getContext() {
         return getApplication().getApplicationContext();
+    }
+
+    public static SharedPreferences getSharedPreferences() {
+        return PreferenceManager.getDefaultSharedPreferences(getContext());
     }
 
     @Override

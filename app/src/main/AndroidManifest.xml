@@ -27,6 +27,7 @@
             android:name=".ui.activity.settings.SettingsActivity"
             android:exported="false"
             android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.Spitball" />
         <activity
             android:name=".ui.activity.winscreen.WinScreenActivity"

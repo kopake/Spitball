@@ -1,6 +1,7 @@
 package io.github.kopake.spitball.ui.activity.winscreen;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -10,8 +11,8 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 import io.github.kopake.spitball.R;
+import io.github.kopake.spitball.Spitball;
 import io.github.kopake.spitball.game.team.Team;
-import io.github.kopake.spitball.settings.SpitballSettings;
 
 public class WinScreenActivity extends AppCompatActivity {
 
@@ -54,11 +55,12 @@ public class WinScreenActivity extends AppCompatActivity {
     public void displayWinner(Team team) {
         runOnUiThread(() -> {
             TextView winningMessageTextView = findViewById(R.id.winnerMessageTextView);
+            SharedPreferences sharedPreferences = Spitball.getSharedPreferences();
             String teamName;
             if (team == Team.ONE)
-                teamName = SpitballSettings.getLeftTeamName();
+                teamName = sharedPreferences.getString("team_name_left", "Team One");
             else
-                teamName = SpitballSettings.getRightTeamName();
+                teamName = sharedPreferences.getString("team_name_right", "Team Two");
 
             winningMessageTextView.setText(String.format(WINNING_MESSAGE_FORMAT, teamName));
         });

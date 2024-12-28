@@ -17,15 +17,6 @@
     <string name="final_word_of_previous_round_header_default_text">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
     <string name="winning_message_default_text">Team XXX Wins!</string>
     <string name="settings_screen_title_text">Settings</string>
-    <string name="settings_screen_back_button_text">&lt;</string>
-    <string name="settings_screen_team_one_name_text">Left Team Name:</string>
-    <string name="settings_screen_team_one_name_default_value">Team One</string>
-    <string name="settings_screen_team_two_name_text">Right Team Name:</string>
-    <string name="settings_screen_team_two_name_default_value">Team Two</string>
-    <string name="settings_screen_average_round_time_text">Average Round Time (s):</string>
-    <string name="settings_screen_average_round_time_default_value">90</string>
-    <string name="settings_screen_points_to_win_text">Points needed to win:</string>
-    <string name="settings_screen_points_to_win_default_value">7</string>
     <string name="info_screen_title_text">Information</string>
     <string name="info_screen_back_button_text">&lt;</string>
     <string name="info_screen_developer_title">Developer:</string>

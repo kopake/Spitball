@@ -11,26 +11,16 @@
         android:id="@+id/infoTitleTextView"
         style="@style/SpitballTextViewStylePrimary"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="32dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gui_separation_distance"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="@dimen/gui_half_separation_distance"
-        android:layout_marginBottom="@dimen/gui_half_separation_distance"
-        android:autoSizeMaxTextSize="100sp"
-        android:autoSizeMinTextSize="30sp"
+        android:layout_marginEnd="@dimen/gui_separation_distance"
         android:gravity="center"
         android:text="@string/info_screen_title_text"
-        app:layout_constraintBottom_toTopOf="@+id/topHorizontalGuideline"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/topHorizontalGuideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".25" />
 
     <ImageView
         android:id="@+id/backButton"
@@ -58,14 +48,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/gui_separation_distance"
-        android:layout_marginTop="@dimen/gui_half_separation_distance"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="@dimen/gui_half_separation_distance"
         android:layout_marginBottom="@dimen/gui_separation_distance"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/topHorizontalGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/infoTitleTextView"
         app:layout_constraintVertical_bias="0.529">
 
         <LinearLayout
