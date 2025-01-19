@@ -71,7 +71,7 @@ public class Scoreboard implements Listener {
         if (teamHasWon(teamOneScore, teamTwoScore, pointsNeededToWin, winByTwo)) {
             EventManager.getInstance().dispatchEvent(new GameEndEvent(Team.ONE));
         } else if (teamHasWon(teamTwoScore, teamOneScore, pointsNeededToWin, winByTwo)) {
-            EventManager.getInstance().dispatchEvent(new GameEndEvent(Team.ONE));
+            EventManager.getInstance().dispatchEvent(new GameEndEvent(Team.TWO));
         }
     }
 
