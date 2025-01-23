@@ -36,7 +36,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <Button
+    <io.github.kopake.spitball.ui.activity.gameinprogress.NextButton
         android:id="@+id/nextButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -44,9 +44,8 @@
         android:layout_marginTop="@dimen/gui_half_separation_distance"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="@dimen/gui_separation_distance"
-        android:onClick="onNextButtonClick"
         android:text="@string/next_button_text"
-        android:autoSizeMaxTextSize="40sp"
+        app:buttonColor="@color/colorAccent"
         style="@style/DefaultSpitballButtonStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

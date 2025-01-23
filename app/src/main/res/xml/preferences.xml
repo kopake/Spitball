@@ -81,6 +81,23 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="next_button_category"
+        android:title="Next Button"
+        app:iconSpaceReserved="false">
+
+        <SeekBarPreference
+            android:key="next_button_refractory_time"
+            android:title="Next Button Delay"
+            android:summary="Minimum amount of time in seconds between consecutive next button presses"
+            android:defaultValue="2"
+            app:min="0"
+            android:max="5"
+            app:showSeekBarValue="true"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="reset_category"
         android:title="Reset"
         app:iconSpaceReserved="false">

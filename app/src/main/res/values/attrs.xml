@@ -1,0 +1,6 @@
+<resources>
+    <declare-styleable name="NextButton">
+        <attr name="buttonColor" format="color" />
+    </declare-styleable>
+</resources>
+
