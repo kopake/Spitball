@@ -43,7 +43,8 @@ public class SoundManager implements Listener {
             R.raw.buzzer,
             R.raw.win_1,
             R.raw.next_button_click,
-            R.raw.change_category
+            R.raw.change_category,
+            R.raw.error
     };
 
     /**
@@ -114,7 +115,7 @@ public class SoundManager implements Listener {
 
     @EventHandler
     public void disabledNextButtonClickSound(DisabledNextButtonPressEvent disabledNextButtonPressEvent) {
-        playSoundFromSoundPool(R.raw.next_button_click);
+        playSoundFromSoundPool(R.raw.error);
     }
 
     @EventHandler
