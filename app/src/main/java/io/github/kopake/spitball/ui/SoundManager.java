@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.github.kopake.spitball.R;
+import io.github.kopake.spitball.event.DisabledNextButtonPressEvent;
 import io.github.kopake.spitball.event.EventHandler;
 import io.github.kopake.spitball.event.GameEndEvent;
 import io.github.kopake.spitball.event.NextButtonPressEvent;
@@ -108,6 +109,11 @@ public class SoundManager implements Listener {
 
     @EventHandler
     public void nextButtonClickSound(NextButtonPressEvent nextButtonPressEvent) {
+        playSoundFromSoundPool(R.raw.next_button_click);
+    }
+
+    @EventHandler
+    public void disabledNextButtonClickSound(DisabledNextButtonPressEvent disabledNextButtonPressEvent) {
         playSoundFromSoundPool(R.raw.next_button_click);
     }
 

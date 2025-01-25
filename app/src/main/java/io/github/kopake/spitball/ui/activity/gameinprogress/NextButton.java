@@ -25,6 +25,7 @@ import androidx.appcompat.widget.AppCompatButton;
 
 import io.github.kopake.spitball.R;
 import io.github.kopake.spitball.Spitball;
+import io.github.kopake.spitball.event.DisabledNextButtonPressEvent;
 import io.github.kopake.spitball.event.EventManager;
 import io.github.kopake.spitball.event.NextButtonPressEvent;
 
@@ -71,18 +72,18 @@ public class NextButton extends AppCompatButton {
     public boolean performClick() {
         // Ignore touch events when disabled
         if (isDisabled) {
-            //TODO add a new event type and a sound for this situation
+            EventManager.getInstance().dispatchEvent(new DisabledNextButtonPressEvent());
             return false;
         }
         EventManager.getInstance().dispatchEvent(new NextButtonPressEvent());
         getRootView().performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+        popAnimation();
         enterDisabledState();
         return super.performClick();
     }
 
     private void enterDisabledState() {
         isDisabled = true;
-        setEnabled(false);
         progressAngle = 0;
 
         SharedPreferences sharedPreferences = Spitball.getSharedPreferences();
@@ -105,7 +106,6 @@ public class NextButton extends AppCompatButton {
 
     private void exitDisabledState() {
         isDisabled = false;
-        setEnabled(true);
         invalidate();
         popAnimation();
     }
