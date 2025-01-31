@@ -7,21 +7,6 @@
     android:background="@color/spitball_background_color"
     tools:context=".ui.activity.settings.SettingsActivity">
 
-    <TextView
-        android:id="@+id/infoTitleTextView"
-        style="@style/SpitballTextViewStylePrimary"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/gui_separation_distance"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="@dimen/gui_separation_distance"
-        android:gravity="center"
-        android:text="@string/info_screen_title_text"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/backButton"
         android:layout_width="0dp"
@@ -44,91 +29,140 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="@dimen/icon_guideline_width" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".5" />
+
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/gui_separation_distance"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="@dimen/gui_half_separation_distance"
-        android:layout_marginBottom="@dimen/gui_separation_distance"
-        android:orientation="vertical"
+        android:layout_marginTop="@dimen/gui_half_separation_distance"
+        android:layout_marginEnd="@dimen/gui_quarter_separation_distance"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/infoTitleTextView"
-        app:layout_constraintVertical_bias="0.529">
+        app:layout_constraintTop_toTopOf="@+id/guideline4">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="@dimen/gui_separation_distance"
+            android:layout_marginEnd="@dimen/gui_half_separation_distance"
+            android:layout_marginBottom="@dimen/gui_separation_distance"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/developerLabelTextView"
-                style="@style/SpitballTextViewStyleLabel"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/transparent"
-                android:text="@string/info_screen_developer_title" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/developerValueTextView"
-                style="@style/SpitballTextViewStyleContent"
-                android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/developerLabelTextView"
+                    style="@style/SpitballTextViewStyleLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:text="@string/info_screen_developer_title" />
+
+                <TextView
+                    android:id="@+id/developerValueTextView"
+                    style="@style/SpitballTextViewStyleContent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:text="@string/info_screen_developer_name" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/transparent"
-                android:text="@string/info_screen_developer_name" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/artDesignerLabelTextView"
+                    style="@style/SpitballTextViewStyleLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:text="@string/info_screen_artist_title" />
+
+                <TextView
+                    android:id="@+id/artDesignerValueTextView"
+                    style="@style/SpitballTextViewStyleContent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:text="@string/info_screen_artist_name" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/soundDesignerLabelTextView"
+                    style="@style/SpitballTextViewStyleLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:text="@string/info_screen_sound_designer_title" />
+
+                <TextView
+                    android:id="@+id/soundDesignerValueTextView"
+                    style="@style/SpitballTextViewStyleContent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/transparent"
+                    android:text="@string/info_screen_sound_designer_name" />
+            </LinearLayout>
         </LinearLayout>
+    </ScrollView>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/gui_separation_distance"
+        android:layout_marginTop="@dimen/gui_separation_distance"
+        android:layout_marginEnd="@dimen/gui_separation_distance"
+        android:layout_marginBottom="@dimen/gui_half_separation_distance"
+        app:layout_constraintBottom_toTopOf="@+id/guideline4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:gravity="center">
 
-            <TextView
-                android:id="@+id/artDesignerLabelTextView"
-                style="@style/SpitballTextViewStyleLabel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/transparent"
-                android:text="@string/info_screen_artist_title" />
+            <ImageView
+                android:id="@+id/infoScreenLogoImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/spitball_logo" />
 
-            <TextView
-                android:id="@+id/artDesignerValueTextView"
-                style="@style/SpitballTextViewStyleContent"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/transparent"
-                android:text="@string/info_screen_artist_name" />
+            <ImageView
+                android:id="@+id/infoScreenBannerImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/spitball_banner" />
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/soundDesignerLabelTextView"
-                style="@style/SpitballTextViewStyleLabel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/transparent"
-                android:text="@string/info_screen_sound_designer_title" />
-
-            <TextView
-                android:id="@+id/soundDesignerValueTextView"
-                style="@style/SpitballTextViewStyleContent"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/transparent"
-                android:text="@string/info_screen_sound_designer_name" />
-        </LinearLayout>
-    </LinearLayout>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
