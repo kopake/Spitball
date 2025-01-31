@@ -1,33 +1,29 @@
 package io.github.kopake.spitball.game.model;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
 public class WordList {
 
     private static final String WORD_LIST_COMMENT_START = "#";
-    private File wordListFile;
+
+    private String name;
 
     private List<String> words;
 
-    public WordList(File wordListFile) {
-        if (wordListFile == null)
-            throw new IllegalArgumentException("WordList could not be created for null file");
-        if (!wordListFile.exists())
-            throw new IllegalArgumentException("WordList could not be created for non-existent file: " + wordListFile.getAbsolutePath());
-
-        this.wordListFile = wordListFile;
-        this.words = getListOfWordsFromFile(wordListFile);
+    public WordList(String name, InputStream inputStream) {
+        this.name = name;
+        this.words = getListOfWordsFromFile(inputStream);
     }
 
-    private static List<String> getListOfWordsFromFile(File wordListFile) {
+    private static List<String> getListOfWordsFromFile(InputStream inputStream) {
         List<String> lines = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(wordListFile))) {
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
@@ -42,11 +38,6 @@ public class WordList {
         return lines;
     }
 
-
-    public File getWordListFile() {
-        return wordListFile;
-    }
-
     public List<String> getWords() {
         return words;
     }
@@ -56,7 +47,7 @@ public class WordList {
     }
 
     public String getName() {
-        return getFileNameWithoutExtension(wordListFile.getName().replace('_', ' '));
+        return name;
     }
 
     private static String getFileNameWithoutExtension(String fileName) {

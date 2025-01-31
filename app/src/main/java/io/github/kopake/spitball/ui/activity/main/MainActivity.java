@@ -3,7 +3,6 @@ package io.github.kopake.spitball.ui.activity.main;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.Toast;
@@ -22,7 +21,6 @@ import io.github.kopake.spitball.event.EventManager;
 import io.github.kopake.spitball.event.GameStartEvent;
 import io.github.kopake.spitball.event.RoundStartEvent;
 import io.github.kopake.spitball.event.listeners.LogListener;
-import io.github.kopake.spitball.file.FileSystemUtilities;
 import io.github.kopake.spitball.file.WordListParser;
 import io.github.kopake.spitball.game.NextWordChooser;
 import io.github.kopake.spitball.game.Scoreboard;
@@ -55,11 +53,6 @@ public class MainActivity extends AppCompatActivity {
         hideNavigationBar();
         createCheckboxList();
         registerListeners();
-
-
-//        setContentView(R.layout.activity_main);
-
-        Log.i("Spitball", FileSystemUtilities.getSpitballRootDirectory().getAbsolutePath());
     }
 
 

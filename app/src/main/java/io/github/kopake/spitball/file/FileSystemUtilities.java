@@ -16,7 +16,7 @@ public class FileSystemUtilities {
         return getDirectoryCreateIfItDoesntExist(rootSpitballDirectory);
     }
 
-    public static File getWordListsDirectory() {
+    public static File getCustomWordListsDirectory() {
         return getDirectoryCreateIfItDoesntExist(new File(getSpitballRootDirectory(), CATEGORIES_FOLDER_NAME));
     }
 

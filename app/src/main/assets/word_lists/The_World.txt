@@ -1,0 +1,1524 @@
+#General
+
+
+#Animals
+
+aardvark
+african elephant
+african wild dog
+albatross
+alligator
+alpaca
+american bison
+american robin
+anaconda
+angelfish
+anteater
+antelope
+ape
+armadillo
+asian elephant
+atlantic puffin
+aye-aye
+baboon
+badger
+bald eagle
+bandicoot
+barn owl
+barracuda
+basking shark
+basset hound
+bat
+beagle
+bear
+beaver
+bee
+beluga whale
+bengal tiger
+bison
+black bear
+blobfish
+bloodhound
+blue jay
+blue whale
+boa constrictor
+bonobo
+booby
+border collie
+bottlenose dolphin
+bream
+brown bear
+buffalo
+bulldog
+bullfrog
+bumblebee
+bush viper
+buzzard
+camel
+capybara
+caribou
+cat
+catfish
+centipede
+chameleon
+cheetah
+chicken
+chimpanzee
+chinchilla
+chipmunk
+clownfish
+coati
+cockatoo
+cod
+collie
+copperhead
+cormorant
+coyote
+crab
+crayfish
+crocodile
+crow
+cuckoo
+cuscus
+cuttlefish
+dachshund
+dalmatian
+deer
+dingo
+dodo
+dog
+dolphin
+donkey
+dove
+duck
+eagle
+earthworm
+eel
+electric eel
+elephant
+elephant seal
+elk
+emperor penguin
+emu
+falcon
+ferret
+finch
+fish
+fisher cat
+flamingo
+flounder
+fly
+flying fish
+fox
+frog
+garden eel
+gecko
+gerbil
+giraffe
+glow worm
+goat
+goblin shark
+golden eagle
+golden retriever
+goldfish
+goose
+gopher
+gorilla
+grasshopper
+gray fox
+great dane
+great white shark
+grizzly bear
+guppy
+hammerhead shark
+hamster
+hare
+harpy eagle
+hawk
+hedgehog
+hermit crab
+heron
+highland cattle
+hippopotamus
+honey bee
+horn shark
+horned frog
+horse
+howler monkey
+human
+hummingbird
+husky
+hyena
+ibex
+ibis
+indian elephant
+jackal
+jaguar
+jellyfish
+kangaroo
+kestrel
+king cobra
+king crab
+kingfisher
+kiwi
+koala
+koi
+komodo dragon
+lemming
+lemur
+leopard
+leopard seal
+liger
+lion
+lizard
+lobster
+loon
+loris
+lynx
+macaw
+magpie
+manatee
+manta ray
+marmot
+marsupial
+meerkat
+millipede
+mink
+mongoose
+monkey
+moose
+mountain goat
+mouse
+mullet
+muskox
+muskrat
+narwhal
+newt
+nighthawk
+ocelot
+octopus
+opossum
+orangutan
+orca
+oryx
+ostrich
+otter
+owl
+ox
+oxpecker
+oyster
+pangolin
+panther
+parakeet
+parrot
+partridge
+peacock
+peafowl
+pelican
+penguin
+perch
+pheasant
+pig
+pigeon
+pike
+piranha
+pit bull
+platypus
+pointer
+poison dart frog
+polar bear
+poodle
+porcupine
+possum
+pufferfish
+puffin
+pug
+puma
+python
+quail
+quetzal
+rabbit
+raccoon
+rat
+rattlesnake
+red panda
+red squirrel
+redstart
+reindeer
+rhinoceros
+robin
+rockfish
+rodent
+rottweiler
+salamander
+salmon
+sardine
+scorpion
+sea anemone
+sea lion
+sea otter
+sea turtle
+sea urchin
+seahorse
+seal
+sheep
+sheepdog
+shiba inu
+shihtzu
+shrimp
+silkworm
+skink
+skunk
+sloth
+snail
+snake
+snapping turtle
+snow leopard
+sparrow
+spider monkey
+sponge
+spoonbill
+squid
+squirrel
+starfish
+stingray
+stonefish
+stork
+swallow
+swan
+swordfish
+tapir
+tarantula
+tasmanian devil
+tiger
+tiger shark
+toad
+tortoise
+toucan
+tree frog
+trout
+turkey
+turtle
+vampire bat
+viper
+vulture
+wallaby
+walrus
+warthog
+water buffalo
+weasel
+whale
+whale shark
+wildebeest
+wolf
+wolverine
+wombat
+woodpecker
+yak
+zebra
+
+#Bugs
+
+ant
+beetle
+black widow
+bumble bee
+butterfly
+caterpillar
+cockroach
+cricket
+daddy long leg
+dragonfly
+fire ant
+firefly
+grass hopper
+horse fly
+house fly
+inch worm
+june bug
+lady bug
+lice
+mosquito
+moth
+nightcrawler
+praying mantis
+rollie pollie
+sacada
+spider
+stick bug
+stink bug
+termites
+tick
+wasp
+wolf spider
+
+#Extinct
+
+black rhino
+dodo bird
+megladon
+sabre tooth tiger
+t-rex
+triceratops
+velociraptor
+wolly mammoth
+
+#Folklore
+
+abominable snowman
+banshee
+basilisk
+bigfoot
+bogeyman
+cerberus
+chupacabra
+cyclops
+davy jones
+djinn
+fairy
+gargoyle
+gnome
+goblin
+golem
+griffin
+hydra
+jackalope
+kraken
+medusa
+minotaur
+pegasus
+poltergeist
+satyr
+slender man
+sphinx
+unicorn
+yeti
+
+#Plants
+
+acacia
+aloe vera
+anemone
+apple tree
+azalea
+bamboo
+basil
+birch tree
+bonsai tree
+bougainvillea
+broom
+buckwheat
+buttercup
+cactus
+carnation
+cedar tree
+cherry blossom
+chestnut tree
+chrysanthemum
+clover
+cornflower
+crysanthamum
+daisy
+dandelion
+elm tree
+eucalyptus
+grass
+hibiscus
+honeysuckle
+hydrangea
+jasmine
+lavender
+lilac
+lily
+magnolia
+maple tree
+marigold
+mistletoe
+mum
+oak tree
+olive tree
+orchid
+palm tree
+pansy
+peace lily
+peony
+periwinkle
+petunia
+pine tree
+poinsettia
+poppy
+primrose
+privet
+rose
+rosemary
+sunflower
+thyme
+tulip
+venus fly trap
+violet
+water lilly
+
+#Architecture
+
+big ben
+buckingham palace
+eifel tower
+empire state building
+french quarters
+gateway arch
+golden gate bridge
+grand canyon
+great pyramid of giza
+great wall of china
+mount rushmore
+niagra falls
+pyramid of memphis
+smithsonean museum
+space needle
+statue of liberty
+stonehenge
+sydney opera house
+taj mahal
+times square
+tower of pisa
+whitehouse
+yellowstone national park
+
+#Hobbies
+
+3d printing
+acting
+archery
+astrology
+astronomy
+backpacking
+baking
+ballroom dancing
+barbecuing
+bartending
+beatboxing
+biking
+bird watching
+birdwatching
+blogging
+board games
+bowling
+calligraphy
+candle making
+canoeing
+card games
+chess
+climbing
+coin collecting
+coloring
+composting
+cooking
+cosplay
+couponing
+crocheting
+cycling
+dancing
+darts
+digital art
+disc golf
+drawing
+embroidery
+engraving
+fencing
+fishing
+fly fishing
+foraging
+frisbee
+gardening
+genealogy
+geocaching
+glassblowing
+golfing
+graphic design
+gymnastics
+hiking
+home improvement
+horseback riding
+hunting
+ice skating
+improv comedy
+inventing
+investing
+jigsaw puzzles
+jogging
+juggling
+karate
+kayaking
+knitting
+lacrosse
+lock picking
+magic tricks
+marathon running
+martial arts
+mountain climbing
+origami
+painting
+parkour
+photography
+podcasting
+pottery
+puzzles
+quilting
+reading
+rock climbing
+running
+sailing
+scrapbooking
+sculpting
+sewing
+skateboarding
+sketching
+skydiving
+sleeping
+snorkeling
+snowboarding
+songwriting
+spelunking
+stamp collecting
+stand-up comedy
+surfing
+swimming
+table tennis
+tailoring
+tap dancing
+taxidermy
+tennis
+thrifting
+traveling
+treasure hunting
+upcycling
+volunteering
+wakeboarding
+watching movies
+watching sports
+water skiing
+weightlifting
+whittling
+windsurfing
+wine tasting
+wood carving
+woodworking
+yodeling
+yoga
+
+#Natural Landmarks
+
+amazon river
+appalachian mountains
+arctic circle
+arctic ocean
+atacama desert
+atlantic ocean
+bering strait
+bermuda triangle
+black sea
+british colombia
+cape of africa
+caribbean sea
+colorado river
+easter island
+emerald isle
+english channel
+erie canal
+everglades
+fiji
+galapagos
+ganges river
+gobi desert
+great barrier reef
+great lakes
+gulf of california
+gulf of mexico
+horn of africa
+hudson bay
+indian ocean
+indian subcontinent
+java
+k2
+lake erie
+lake huron
+lake michigan
+lake ontario
+lake superior
+lake titicaca
+los angeles river
+magellan pass
+mediterranean sea
+midway island
+mississippi delta
+mississippi river
+mount fuji
+mount kilimanjaro
+mount rainer
+mount saint helens
+nile river
+north sea
+northern lights
+pacific ocean
+panama canal
+persian gulf
+pikes peak
+plymouth rock
+quebec
+queensland
+red sea
+rhine river
+rocky mountains
+sahara desert
+san andreas fault
+seine river
+siberia
+sicily
+silk road
+south china sea
+tasmania
+the alps
+the outback
+tibet
+yellow river
+yucatan peninsula
+
+#American Cities
+
+albuquerque
+anchorage
+atlanta
+austin
+baltimore
+boise
+boston
+brooklyn
+buenos aries
+cheyenne
+chicago
+cincinnati
+cleveland
+compton
+dallas
+denver
+des moines
+detroit
+el paso
+indianapolis
+jacksonville
+las vegas
+little rock
+long island
+los angeles
+manhattan
+memphis
+miami
+milwaukee
+minneapolis
+montreal
+nashville
+new orleans
+nome
+oakland
+omaha
+orlando
+panama city
+philadelphia
+phoenix
+pittsburgh
+portland
+queens
+reno
+richmond
+rio de janeiro
+sacramento
+salt lake city
+san antonio
+san diego
+san francisco
+seattle
+st louis
+staten island
+tijuana
+toronto
+vancouver
+washington dc
+
+#Foreign Cities
+
+amsterdam
+athens
+auckland
+barcelona
+beijing
+berlin
+brussels
+cairo
+copenhagen
+dubai
+helsinki
+hong kong
+jerusalem
+lima
+london
+madrid
+mexico city
+moscow
+paris
+prague
+rio de janeiro
+rome
+seoul
+stockholm
+sydney
+tokyo
+toronto
+vienna
+warsaw
+
+#Foreign Countries
+
+antarctica
+argentina
+australia
+austria
+belgium
+brazil
+canada
+chile
+china
+colombia
+czech republic
+denmark
+egypt
+finland
+france
+germany
+greece
+hungary
+india
+iran
+ireland
+israel
+italy
+japan
+mexico
+netherlands
+new zealand
+norway
+pakistan
+peru
+philippines
+poland
+portugal
+russia
+saudi arabia
+singapore
+south africa
+south korea
+spain
+sweden
+switzerland
+thailand
+ukraine
+united kingdom
+venezuela
+vietnam
+
+#Geological Formations
+
+arch
+badlands
+beach
+bluff
+canyon
+cave
+cliff
+column
+coral reef
+crater
+dune
+floodplain
+forest
+geyser
+glacier
+gorge
+gulch
+hill
+hot spring
+ice cap
+iceberg
+island
+lagoon
+lake
+mesa
+mountain
+oasis
+peninsula
+plateau
+prairie
+ravine
+ridge
+sandbar
+sinkhole
+stalactite
+stalagmite
+strait
+tectonic plate
+trench
+valley
+volcano
+waterfall
+
+#Cultural Items
+
+baguette
+banjo
+beret
+boomerang
+clogs
+cuckoo clock
+didgeridoo
+fez
+gondola
+kilt
+kimono
+maple syrup
+maracas
+sombrero
+sushi
+tea set
+totem poles
+vuvuzela
+
+#Colors
+
+aqua
+beige
+black
+blue
+bronze
+brown
+burgundy
+copper
+coral
+cyan
+gold
+gray
+green
+indigo
+ivory
+magenta
+maroon
+mint
+navy
+olive
+orange
+peach
+pink
+purple
+red
+scarlet
+silver
+tan
+teal
+turquoise
+white
+yellow
+
+#Materials
+
+amber
+amethyst
+aquamarine
+calcite
+diamond
+emerald
+jade
+lapis lazuli
+obsidian
+opal
+pearl
+quartz
+ruby
+sapphire
+topaz
+
+#Attractions
+
+animal kingdom
+disney world
+disneyland
+legoland
+magic kingdom
+six flags
+
+#Transit
+
+acceleration lane
+air filter
+airplane
+alternator
+ambulance
+asphalt
+battery
+beltway
+bicycle
+bike lane
+brake lights
+brake lines
+brake pads
+bridge
+bulldozer
+bus
+bus depot
+bus shelter
+bus stop
+cable car
+car
+cargo ship
+carpool lane
+catalytic converter
+clutch
+coach bus
+commuter rail
+conductor
+convertible
+crane
+cruise ship
+deceleration lane
+delivery truck
+delivery van
+detour
+divider
+door handle
+dune buggy
+electric car
+electric scooter
+electric vehicle ev
+engine
+entrance ramp
+excavator
+exhaust pipe
+exit ramp
+expressway
+fare
+fender
+ferry
+fire engine
+fire truck
+fishing boat
+flashing lights
+forklift
+freeway
+freight train
+gearbox
+glider
+golf cart
+gps
+guardrail
+hatchback
+hazard lights
+headlights
+helicopter
+highway
+hood
+horn
+hot air balloon
+hoverboard
+hovercraft
+hybrid car
+hybrid vehicle
+ice cream truck
+intersection
+jet ski
+lane markings
+leaf spring
+license plate
+light rail
+limousine
+median
+metro
+mile marker
+minivan
+monorail
+moped
+motorcycle
+motorway
+muffler
+no parking sign
+one-way sign
+overpass
+parking brake
+parking lot
+parking meter
+parkway
+passenger train
+pavement
+pedestrian bridge
+pedestrian zone
+pickup truck
+piston
+platform
+police car
+pothole
+private jet
+radiator
+railroad crossing sign
+rest stop
+ride-share vehicle
+road work ahead
+roadside assistance
+roundabout
+rv
+sailboat
+school bus
+scooter
+seat belt
+sedan
+segway
+semi-truck
+service station
+shoulder
+snowmobile
+space shuttle
+spark plugs
+speed bump
+speed limit
+speedometer
+sports car
+steering wheel
+stop sign
+streetcar
+streetlight
+submarine
+subway
+sunroof
+suv
+tank
+tanker truck
+taxi
+ticket booth
+tires
+toll booth
+toll road
+tow truck
+tractor
+traffic cone
+traffic jam
+traffic light
+trailer
+train station
+tram
+transit card
+truck
+tunnel
+turn lane
+turn signal
+turnstile
+underpass
+valet parking
+van
+water taxi
+wheelbarrow
+windshield
+windshield wiper
+yacht
+yield sign
+zeppelin
+
+#Government
+
+agencies
+amendments
+attorney general
+bill of rights
+bipartisanship
+bureaucracy
+cabinet
+capital gains tax
+capitol hill
+checks and balances
+cia
+congress
+constitution
+departments
+electoral college
+environmental protection agency
+executive branch
+executive orders
+fbi
+federal budget
+federal communications commission
+federal reserve
+federalism
+filibuster
+gerrymandering
+gridlock
+homeland security
+house of representatives
+impeachment
+internal revenue service
+joint session
+judicial branch
+legislation
+legislative branch
+lobbying
+majority leader
+medicare
+midterm elections
+minority leader
+oath of office
+preamble
+president
+redistricting
+regulations
+securities and exchange commission
+select committee
+senate
+social security
+speaker of the house
+state of the union
+supreme court
+taxation
+treaties
+veto
+vice president
+whip
+
+#Businesses
+
+accounting firm
+airline
+amusement park
+arcade
+architecture firm
+art studio
+auto parts store
+auto repair shop
+bakery
+bed and breakfast
+bookstore
+bowling alley
+brewery
+bus line
+cafe
+car dealership
+car rental service
+caterer
+clothing store
+cloud storage provider
+comedy club
+computer repair shop
+concert venue
+cruise line
+cybersecurity firm
+dance school
+data analytics company
+day spa
+daycare center
+department store
+discount store
+electrician service
+electronics store
+engineering firm
+escape room
+event planning service
+fast food chain
+fitness center
+furniture store
+gaming company
+gas station
+golf course
+handyman service
+hardware store
+home cleaning service
+hotel
+hvac service
+ice cream parlor
+interior design firm
+internet service provider
+it services company
+jewelry store
+landscaping company
+language school
+law firm
+management consulting firm
+marketing agency
+martial arts school
+massage therapy center
+medical supply store
+mobile phone store
+movie theater
+moving company
+online learning platform
+pest control service
+pet store
+pharmacy
+photography studio
+physical therapy clinic
+plumbing service
+private school
+public relations agency
+restaurant
+roofing company
+rv rental service
+shoe store
+smart home installation service
+software development company
+sporting goods store
+sports bar
+supermarket
+tech support company
+test preparation service
+thrift shop
+tour company
+toy store
+travel agency
+tutoring service
+vacation rental service
+vocational training center
+web development company
+winery
+yoga studio
+
+#Careers
+
+accountant
+actor
+aerospace engineer
+agricultural scientist
+air traffic controller
+architect
+artist
+attorney
+auditor
+automotive technician
+baker
+banker
+biochemist
+biomedical engineer
+blogger
+botanist
+carpenter
+chef
+chemist
+chiropractor
+civil engineer
+coach
+computer programmer
+construction manager
+counselor
+data analyst
+data scientist
+dentist
+detective
+dietitian
+economist
+editor
+electrical engineer
+elementary school teacher
+environmental scientist
+event planner
+fashion designer
+film director
+financial advisor
+firefighter
+flight attendant
+florist
+forensic scientist
+game designer
+geologist
+graphic designer
+hair stylist
+human resources
+interior designer
+interpreter
+journalist
+kindergarten teacher
+lab technician
+lawyer
+librarian
+life coach
+marine biologist
+massage therapist
+mechanical engineer
+medical assistant
+meteorologist
+microbiologist
+musician
+novelist
+nurse
+nutritionist
+occupational therapist
+optometrist
+paralegal
+park ranger
+personal trainer
+pharmacist
+photographer
+physical therapist
+physician
+pilot
+plumber
+police officer
+politician
+professor
+programmer
+psychologist
+realtor
+software developer
+speech-language pathologist
+surgeon
+talent agent
+tattoo artist
+tax consultant
+teacher
+telemarketer
+tour guide
+translator
+travel agent
+travel blogger
+truck driver
+tutor
+veterinarian
+video editor
+voice actor
+waiter
+web developer
+wedding planner
+welder
+yoga instructor
+zookeeper
+zoologist
+
+#Holidays
+
+armistice day
+bastille day
+black friday
+boxing day
+chinese new year
+christmas
+cinco de mayo
+columbus day
+day of the dead
+daylight savings time
+diwali
+easter
+father's day
+flag day
+good friday
+halloween
+hanukkah
+independence day
+kwanzaa
+labor day
+martin luther king jr day
+memorial day
+mother's day
+new years eve
+oktoberfest
+passover
+presidents day
+ramadan
+st. patrick's day
+thanksgiving
+valentine's day
+veterans day
+
+#Common Things
+
+atm
+baby strollers
+bakery section
+barcode scanner
+basketball hoop
+bicycle rack
+car wash
+cash register
+cell phone charging station
+checkout counter
+clothing racks
+coffee mug
+coffee shop
+coffee thermos
+community garden
+construction signs
+convenience store
+countertop
+crosswalk
+deli counter
+desk chair
+display windows
+dog leash
+dumbbells
+electric scooters
+elevator buttons
+emergency exit
+escalator
+espresso machine
+exercise bike
+fire extinguisher
+fitting rooms
+flower shop
+food truck
+fountain
+freezers
+gas pump
+gas station convenience store
+grocery bags
+gym equipment
+hand sanitizer station
+highway billboards
+jewelry case
+jogging path
+laptop
+locker room
+lost-and-found box
+mailbox
+mannequins
+markers
+meeting table
+menu board
+napkin dispenser
+newsstand
+notepad
+office phone
+outdoor seating
+park bench
+parked cars
+pharmacy counter
+playground
+prescription bottles
+price tags
+printer
+produce aisle
+protein shakes
+public park
+public restroom
+recycling bins
+resistance bands
+security cameras
+shelving units
+shopping baskets
+shopping cart
+sidewalk
+sticky notes
+street art
+street vendor cart
+streetlights
+sugar packets
+sunglasses hut
+sunglasses stand
+ticket kiosk
+ticket vending machine
+towels
+traffic cones
+trash can
+treadmill
+water fountain
+whiteboard
+wi-fi sign
+yoga mat
+
