@@ -3,7 +3,7 @@
 Spitball is a word-guessing game inspired by Catchphrase, designed for players who want more control over their gameplay experience. This app was created because my friends and I wanted the ability to play with custom word lists and special settings that allow for a more personalized game.
 
 ## Rules
-- TODO insert link
+- [PDF Link](https://docs.google.com/viewer?url=https://raw.githubusercontent.com/kopake/Spitball/main/app/src/main/assets/spitball_rules.pdf)
 
 ## Features
 
