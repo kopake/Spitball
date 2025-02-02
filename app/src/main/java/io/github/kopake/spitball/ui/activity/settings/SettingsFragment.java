@@ -14,6 +14,13 @@ import io.github.kopake.spitball.Spitball;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
 
+//    @Override
+//    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+//        setPreferencesFromResource(R.xml.preferences, rootKey);
+//
+//        init();
+//    }
+
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
@@ -22,38 +29,20 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     private void init() {
-        updateTextPreference("team_name_left");
-        updateTextPreference("team_name_right");
+        initTeamNamePreference("team_name_left");
+        initTeamNamePreference("team_name_right");
         initResetAllButton();
     }
 
-    private void updateTextPreference(String key) {
+    private void initTeamNamePreference(String teamName) {
         // Find the EditTextPreference
-        EditTextPreference textPreference = findPreference(key);
+        EditTextPreference textPreference = findPreference(teamName);
         if (textPreference != null) {
-            // Set initial value when the fragment is displayed
-            updatePreferenceSummary(textPreference);
-
-
-            // Listen for changes and update dynamically
-            textPreference.setOnPreferenceChangeListener((preference, newValue) -> {
-                updatePreferenceSummary((EditTextPreference) preference, (String) newValue);
-                return true; // Save the new value
+            // Set summary dynamically to always display the current value
+            textPreference.setSummaryProvider(preference -> {
+                String value = ((EditTextPreference) preference).getText();
+                return (value == null || value.isEmpty()) ? "Not set" : value;
             });
-        }
-    }
-
-    private void updatePreferenceSummary(EditTextPreference preference) {
-
-        if (preference != null) {
-            String value = preference.getText();
-            preference.setSummaryProvider(pref -> value == null || value.isEmpty() ? "Not set" : value);
-        }
-    }
-
-    private void updatePreferenceSummary(EditTextPreference preference, String newValue) {
-        if (preference != null) {
-            preference.setSummaryProvider(pref -> newValue.isEmpty() ? "Not set" : newValue);
         }
     }
 

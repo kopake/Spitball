@@ -12,12 +12,14 @@
             android:key="team_name_left"
             android:title="Left Team Name"
             android:defaultValue="Team One"
+            android:layout="@layout/team_name_preference_layout"
             app:iconSpaceReserved="false" />
 
         <EditTextPreference
             android:key="team_name_right"
             android:title="Right Team Name"
             android:defaultValue="Team Two"
+            android:layout="@layout/team_name_preference_layout"
             app:iconSpaceReserved="false" />
 
     </PreferenceCategory>
