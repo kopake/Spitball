@@ -1,7 +1,6 @@
 package io.github.kopake.spitball.ui.activity.gameinprogress;
 
 import android.os.Bundle;
-import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,7 +11,6 @@ import androidx.core.view.WindowInsetsControllerCompat;
 import io.github.kopake.spitball.R;
 import io.github.kopake.spitball.event.EventHandler;
 import io.github.kopake.spitball.event.EventManager;
-import io.github.kopake.spitball.event.NextButtonPressEvent;
 import io.github.kopake.spitball.event.NextWordEvent;
 import io.github.kopake.spitball.event.RoundCancelEvent;
 import io.github.kopake.spitball.event.RoundEndEvent;
@@ -68,11 +66,6 @@ public class GameInProgressActivity extends AppCompatActivity {
                 | View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
         WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView()).setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
-    }
-
-    public void onNextButtonClick(View view) {
-        view.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
-        EventManager.getInstance().dispatchEvent(new NextButtonPressEvent());
     }
 
     public void updateWordText(String word) {

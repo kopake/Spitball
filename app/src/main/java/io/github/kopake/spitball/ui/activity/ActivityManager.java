@@ -55,7 +55,7 @@ public class ActivityManager implements Listener {
     @EventHandler
     public void onRoundCancel(RoundCancelEvent roundCancelEvent) {
         Scoreboard scoreboard = Scoreboard.getInstance();
-        if (scoreboard.getTeamOneScore() == 0 && scoreboard.getTeamTwoScore() == 0) {
+        if (scoreboard.getLeftTeamScore() == 0 && scoreboard.getRightTeamScore() == 0) {
             openActivity(homeScreen);
         } else {
             openActivity(pointsAddScreen);

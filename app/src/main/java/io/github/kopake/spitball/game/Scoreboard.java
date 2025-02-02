@@ -14,8 +14,8 @@ import io.github.kopake.spitball.game.team.Team;
 public class Scoreboard implements Listener {
 
     private static Scoreboard instance = new Scoreboard();
-    private int teamOneScore = 0;
-    private int teamTwoScore = 0;
+    private int leftTeamScore = 0;
+    private int rightTeamScore = 0;
 
     private Scoreboard() {
     }
@@ -24,54 +24,54 @@ public class Scoreboard implements Listener {
         return instance;
     }
 
-    public int getTeamOneScore() {
-        return teamOneScore;
+    public int getLeftTeamScore() {
+        return leftTeamScore;
     }
 
-    public int getTeamTwoScore() {
-        return teamTwoScore;
+    public int getRightTeamScore() {
+        return rightTeamScore;
     }
 
     public int getScore(Team team) {
         switch (team) {
-            case ONE:
-                return getTeamOneScore();
-            case TWO:
-                return getTeamTwoScore();
+            case LEFT:
+                return getLeftTeamScore();
+            case RIGHT:
+                return getRightTeamScore();
         }
         return -1;
     }
 
     @EventHandler
     public void onGameStart(GameStartEvent gameStartEvent) {
-        teamOneScore = 0;
-        teamTwoScore = 0;
+        leftTeamScore = 0;
+        rightTeamScore = 0;
     }
 
     @EventHandler
     public void onScoreModify(ScoreModifyEvent scoreModifyEvent) {
         switch (scoreModifyEvent.getTeam()) {
-            case ONE:
-                teamOneScore = teamOneScore + scoreModifyEvent.getValueChange();
+            case LEFT:
+                leftTeamScore = leftTeamScore + scoreModifyEvent.getValueChange();
                 break;
-            case TWO:
-                teamTwoScore = teamTwoScore + scoreModifyEvent.getValueChange();
+            case RIGHT:
+                rightTeamScore = rightTeamScore + scoreModifyEvent.getValueChange();
                 break;
         }
 
-        if (teamOneScore < 0)
-            teamOneScore = 0;
-        if (teamTwoScore < 0)
-            teamTwoScore = 0;
+        if (leftTeamScore < 0)
+            leftTeamScore = 0;
+        if (rightTeamScore < 0)
+            rightTeamScore = 0;
 
         SharedPreferences sharedPreferences = Spitball.getSharedPreferences();
         int pointsNeededToWin = sharedPreferences.getInt("points_to_win", 7);
         boolean winByTwo = sharedPreferences.getBoolean("points_win_by_two", true);
 
-        if (teamHasWon(teamOneScore, teamTwoScore, pointsNeededToWin, winByTwo)) {
-            EventManager.getInstance().dispatchEvent(new GameEndEvent(Team.ONE));
-        } else if (teamHasWon(teamTwoScore, teamOneScore, pointsNeededToWin, winByTwo)) {
-            EventManager.getInstance().dispatchEvent(new GameEndEvent(Team.TWO));
+        if (teamHasWon(leftTeamScore, rightTeamScore, pointsNeededToWin, winByTwo)) {
+            EventManager.getInstance().dispatchEvent(new GameEndEvent(Team.LEFT));
+        } else if (teamHasWon(rightTeamScore, leftTeamScore, pointsNeededToWin, winByTwo)) {
+            EventManager.getInstance().dispatchEvent(new GameEndEvent(Team.RIGHT));
         }
     }
 

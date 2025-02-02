@@ -7,8 +7,8 @@
     <string name="checkbox_default_text">Checkbox</string>
     <string name="current_word_default_text">ABCD EFGHI JKLMN OPQRSTU VWXYZ</string>
     <string name="next_button_text">NEXT</string>
-    <string name="team_one_title_text">TEAM 1:</string>
-    <string name="team_two_title_text">TEAM 2:</string>
+    <string name="left_team_title_text">TEAM 1:</string>
+    <string name="right_team_title_text">TEAM 2:</string>
     <string name="team_score_default_text">0</string>
     <string name="team_score_increment_button_text">+</string>
     <string name="team_score_decrement_button_text">-</string>

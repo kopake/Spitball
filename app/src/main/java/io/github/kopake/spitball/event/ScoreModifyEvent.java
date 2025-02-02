@@ -3,9 +3,9 @@ package io.github.kopake.spitball.event;
 import io.github.kopake.spitball.game.team.Team;
 
 public class ScoreModifyEvent implements Event {
-    private Team team;
+    private final Team team;
 
-    private int valueChange;
+    private final int valueChange;
 
     public ScoreModifyEvent(Team team, int valueChange) {
         this.team = team;

@@ -23,9 +23,9 @@ import io.github.kopake.spitball.event.listeners.Listener;
 
 public class SoundManager implements Listener {
 
-    private Context context;
+    private final Context context;
 
-    private SoundPool soundPool;
+    private final SoundPool soundPool;
 
     private static final int SOUND_POOL_MAX_STREAMS = 4;
 

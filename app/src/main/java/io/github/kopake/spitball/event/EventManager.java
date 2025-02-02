@@ -3,6 +3,7 @@ package io.github.kopake.spitball.event;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,8 +14,8 @@ import io.github.kopake.spitball.event.listeners.Listener;
 
 public class EventManager {
 
-    private static EventManager instance = new EventManager();
-    private Collection<Listener> listeners = new ArrayList<>();
+    private static final EventManager instance = new EventManager();
+    private final Collection<Listener> listeners = new ArrayList<>();
 
     private final ExecutorService executorService = Executors.newSingleThreadExecutor();
 
@@ -62,9 +63,7 @@ public class EventManager {
 
             try {
                 method.invoke(listener, event);
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            } catch (InvocationTargetException e) {
+            } catch (IllegalAccessException | InvocationTargetException e) {
                 throw new RuntimeException(e);
             }
         }
@@ -77,10 +76,8 @@ public class EventManager {
         Method[] publicMethods = object.getClass().getMethods();
         Method[] privateMethods = object.getClass().getDeclaredMethods();
 
-        for (Method method : publicMethods)
-            methods.add(method);
-        for (Method method : privateMethods)
-            methods.add(method);
+        methods.addAll(Arrays.asList(publicMethods));
+        methods.addAll(Arrays.asList(privateMethods));
 
         return methods;
     }

@@ -26,9 +26,6 @@ import io.github.kopake.spitball.game.team.Team;
 
 public class PointsAddActivity extends AppCompatActivity {
 
-    //The word last word received from next word events (used to display the final word of the round on this activity)
-    private String mostRecentNextWord = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,25 +54,31 @@ public class PointsAddActivity extends AppCompatActivity {
     }
 
 
-    public void onTeamOneAddButtonClick(View view) {
+    public void onLeftTeamAddButtonClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-        EventManager.getInstance().dispatchEvent(new ScoreModifyEvent(Team.ONE, 1));
+        modifyScore(Team.LEFT, 1);
     }
 
-    public void onTeamOneSubtractButtonClick(View view) {
+    public void onLeftTeamSubtractButtonClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-        EventManager.getInstance().dispatchEvent(new ScoreModifyEvent(Team.ONE, -1));
+        modifyScore(Team.LEFT, -1);
     }
 
-    public void onTeamTwoAddButtonClick(View view) {
+    public void onRightTeamAddButtonClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-        EventManager.getInstance().dispatchEvent(new ScoreModifyEvent(Team.TWO, 1));
+        modifyScore(Team.RIGHT, 1);
     }
 
-    public void onTeamTwoSubtractButtonClick(View view) {
+    public void onRightTeamSubtractButtonClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-        EventManager.getInstance().dispatchEvent(new ScoreModifyEvent(Team.TWO, -1));
+        modifyScore(Team.RIGHT, -1);
     }
+
+
+    private void modifyScore(Team team, int value) {
+        EventManager.getInstance().dispatchEvent(new ScoreModifyEvent(team, value));
+    }
+
 
     public void onStartNextRoundButtonClick(View view) {
         view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
@@ -86,22 +89,22 @@ public class PointsAddActivity extends AppCompatActivity {
         // Run a little later so that the scoreboard can update
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             Scoreboard scoreboard = Scoreboard.getInstance();
-            displayTeamOneScore(scoreboard.getTeamOneScore());
-            displayTeamTwoScore(scoreboard.getTeamTwoScore());
+            displayLeftTeamScore(scoreboard.getLeftTeamScore());
+            displayRightTeamScore(scoreboard.getRightTeamScore());
             displayMostRecentNextWord(NextWordChooser.getInstance().getMostRecentWord().toUpperCase());
             displayTeamNames();
         }, 100);
     }
 
 
-    private void displayTeamOneScore(int n) {
-        TextView teamOneScoreTextView = findViewById(R.id.teamOneScore);
-        teamOneScoreTextView.setText(String.valueOf(n));
+    private void displayLeftTeamScore(int n) {
+        TextView leftTeamScoreTextView = findViewById(R.id.leftTeamScore);
+        leftTeamScoreTextView.setText(String.valueOf(n));
     }
 
-    private void displayTeamTwoScore(int n) {
-        TextView teamTwoScoreTextView = findViewById(R.id.teamTwoScore);
-        teamTwoScoreTextView.setText(String.valueOf(n));
+    private void displayRightTeamScore(int n) {
+        TextView rightTeamScoreTextView = findViewById(R.id.rightTeamScore);
+        rightTeamScoreTextView.setText(String.valueOf(n));
     }
 
     private void displayMostRecentNextWord(String mostRecentNextWord) {
@@ -110,8 +113,8 @@ public class PointsAddActivity extends AppCompatActivity {
     }
 
     private void displayTeamNames() {
-        TextView leftTeamNameTextView = findViewById(R.id.teamOneHeader);
-        TextView rightTeamNameTextView = findViewById(R.id.teamTwoHeader);
+        TextView leftTeamNameTextView = findViewById(R.id.leftTeamHeader);
+        TextView rightTeamNameTextView = findViewById(R.id.rightTeamHeader);
 
         SharedPreferences sharedPreferences = Spitball.getSharedPreferences();
         String leftTeamName = sharedPreferences.getString("team_name_left", "Team One");

@@ -33,9 +33,9 @@ public class NextWordChooser implements Listener {
 
     private LinkedList<String> currentSetOfWords;
 
-    private Set<String> wordsUsedThisSession = new HashSet<>();
+    private final Set<String> wordsUsedThisSession = new HashSet<>();
 
-    private Queue<String> recentlyUsedWords = new LinkedList<>();
+    private final Queue<String> recentlyUsedWords = new LinkedList<>();
 
     private NextWordChooser() {
     }

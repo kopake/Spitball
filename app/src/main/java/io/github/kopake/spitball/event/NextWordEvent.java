@@ -2,7 +2,7 @@ package io.github.kopake.spitball.event;
 
 public class NextWordEvent implements Event {
 
-    private String word;
+    private final String word;
 
     public NextWordEvent(String word) {
         this.word = word;

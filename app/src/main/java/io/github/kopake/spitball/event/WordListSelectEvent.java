@@ -4,9 +4,9 @@ import io.github.kopake.spitball.game.model.WordList;
 
 public class WordListSelectEvent implements Event {
 
-    private WordList wordList;
+    private final WordList wordList;
 
-    private boolean selected;
+    private final boolean selected;
 
     public WordListSelectEvent(WordList wordList, boolean selected) {
         this.wordList = wordList;

@@ -34,8 +34,8 @@ public class FileSystemUtilities {
             if (directory.mkdirs()) {
                 return directory;
             }
-        } catch (Exception e) {
-
+        } catch (Exception ignored) {
+            
         }
         throw new RuntimeException("Could not access root Spitball directory: " + directory.getAbsolutePath());
     }

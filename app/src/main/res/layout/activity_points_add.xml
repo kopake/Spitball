@@ -43,7 +43,7 @@
         app:layout_constraintGuide_percent=".75" />
 
     <TextView
-        android:id="@+id/teamOneHeader"
+        android:id="@+id/leftTeamHeader"
         style="@style/SpitballTextViewStyleSecondary"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -51,21 +51,21 @@
         android:layout_marginTop="@dimen/gui_separation_distance"
         android:layout_marginEnd="@dimen/gui_half_separation_distance"
         android:layout_marginBottom="@dimen/gui_half_separation_distance"
-        android:text="@string/team_one_title_text"
+        android:text="@string/left_team_title_text"
         app:layout_constraintBottom_toTopOf="@+id/horizontal25Guideline"
         app:layout_constraintEnd_toStartOf="@+id/vertical50Guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/teamTwoHeader"
+        android:id="@+id/rightTeamHeader"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/gui_half_separation_distance"
         android:layout_marginTop="@dimen/gui_separation_distance"
         android:layout_marginEnd="@dimen/gui_separation_distance"
         android:layout_marginBottom="@dimen/gui_half_separation_distance"
-        android:text="@string/team_two_title_text"
+        android:text="@string/right_team_title_text"
         style="@style/SpitballTextViewStyleSecondary"
         app:layout_constraintBottom_toTopOf="@+id/horizontal25Guideline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/teamOneScore"
+        android:id="@+id/leftTeamScore"
         style="@style/SpitballTextViewStyleSecondary"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -83,14 +83,14 @@
         android:layout_marginBottom="@dimen/gui_half_separation_distance"
         android:autoSizeMaxTextSize="100sp"
         android:text="@string/team_score_default_text"
-        android:onClick="onTeamOneAddButtonClick"
+        android:onClick="onLeftTeamAddButtonClick"
         app:layout_constraintBottom_toTopOf="@+id/horizontal75Guideline"
         app:layout_constraintEnd_toStartOf="@+id/vertical33Guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/horizontal25Guideline" />
 
     <TextView
-        android:id="@+id/teamTwoScore"
+        android:id="@+id/rightTeamScore"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/gui_half_separation_distance"
@@ -99,7 +99,7 @@
         android:layout_marginBottom="@dimen/gui_half_separation_distance"
         android:text="@string/team_score_default_text"
         android:autoSizeMaxTextSize="100sp"
-        android:onClick="onTeamTwoAddButtonClick"
+        android:onClick="onRightTeamAddButtonClick"
         style="@style/SpitballTextViewStyleSecondary"
         app:layout_constraintBottom_toTopOf="@+id/horizontal75Guideline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,14 +107,14 @@
         app:layout_constraintTop_toTopOf="@+id/horizontal25Guideline" />
 
     <Button
-        android:id="@+id/teamOneAddButton"
+        android:id="@+id/leftTeamAddButton"
         style="@style/DefaultSpitballButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/gui_separation_distance"
         android:layout_marginTop="@dimen/gui_half_separation_distance"
         android:layout_marginBottom="@dimen/gui_separation_distance"
-        android:onClick="onTeamOneAddButtonClick"
+        android:onClick="onLeftTeamAddButtonClick"
         android:padding="0dp"
         android:text="@string/team_score_increment_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -123,31 +123,31 @@
         app:layout_constraintTop_toTopOf="@+id/horizontal75Guideline" />
 
     <Button
-        android:id="@+id/teamOneSubtractButton"
+        android:id="@+id/leftTeamSubtractButton"
         style="@style/TransparentSpitballButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/gui_separation_distance"
         android:layout_marginTop="@dimen/gui_half_separation_distance"
         android:layout_marginBottom="@dimen/gui_separation_distance"
-        android:onClick="onTeamOneSubtractButtonClick"
+        android:onClick="onLeftTeamSubtractButtonClick"
         android:padding="0dp"
         android:text="@string/team_score_decrement_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="W,1:1"
-        app:layout_constraintStart_toEndOf="@+id/teamOneAddButton"
+        app:layout_constraintStart_toEndOf="@+id/leftTeamAddButton"
         app:layout_constraintTop_toTopOf="@+id/horizontal75Guideline"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/teamTwoAddButton"
+        android:id="@+id/rightTeamAddButton"
         style="@style/DefaultSpitballButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/gui_half_separation_distance"
         android:layout_marginEnd="@dimen/gui_separation_distance"
         android:layout_marginBottom="@dimen/gui_separation_distance"
-        android:onClick="onTeamTwoAddButtonClick"
+        android:onClick="onRightTeamAddButtonClick"
         android:padding="0dp"
         android:text="@string/team_score_increment_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -157,19 +157,19 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/teamTwoSubtractButton"
+        android:id="@+id/rightTeamSubtractButton"
         style="@style/TransparentSpitballButtonStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/gui_half_separation_distance"
         android:layout_marginEnd="@dimen/gui_separation_distance"
         android:layout_marginBottom="@dimen/gui_separation_distance"
-        android:onClick="onTeamTwoSubtractButtonClick"
+        android:onClick="onRightTeamSubtractButtonClick"
         android:padding="0dp"
         android:text="@string/team_score_decrement_button_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="W,1:1"
-        app:layout_constraintEnd_toStartOf="@+id/teamTwoAddButton"
+        app:layout_constraintEnd_toStartOf="@+id/rightTeamAddButton"
         app:layout_constraintTop_toTopOf="@+id/horizontal75Guideline"
         app:layout_constraintVertical_bias="0.0" />
 

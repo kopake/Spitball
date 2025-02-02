@@ -13,14 +13,6 @@ import io.github.kopake.spitball.R;
 import io.github.kopake.spitball.Spitball;
 
 public class SettingsFragment extends PreferenceFragmentCompat {
-
-//    @Override
-//    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-//        setPreferencesFromResource(R.xml.preferences, rootKey);
-//
-//        init();
-//    }
-
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
@@ -50,7 +42,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         Preference resetAllPreference = findPreference("reset_to_default");
         if (resetAllPreference != null) {
             resetAllPreference.setOnPreferenceClickListener(preference -> {
-                new AlertDialog.Builder(getActivity())
+                new AlertDialog.Builder(requireActivity())
                         .setTitle("Reset to default")
                         .setMessage("Select 'OK' to reset all settings to their default value?")
                         .setIcon(android.R.drawable.ic_dialog_alert)

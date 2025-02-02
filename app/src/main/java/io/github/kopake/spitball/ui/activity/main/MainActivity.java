@@ -1,5 +1,6 @@
 package io.github.kopake.spitball.ui.activity.main;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
@@ -29,21 +30,14 @@ import io.github.kopake.spitball.game.timer.GameTimer;
 import io.github.kopake.spitball.ui.SoundManager;
 import io.github.kopake.spitball.ui.VibrationManager;
 import io.github.kopake.spitball.ui.activity.ActivityManager;
-import io.github.kopake.spitball.ui.activity.gameinprogress.GameInProgressActivity;
 import io.github.kopake.spitball.ui.activity.info.InfoActivity;
 import io.github.kopake.spitball.ui.activity.main.checkbox.CheckboxAdapter;
 import io.github.kopake.spitball.ui.activity.main.checkbox.CheckboxItem;
-import io.github.kopake.spitball.ui.activity.pointsadd.PointsAddActivity;
 import io.github.kopake.spitball.ui.activity.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private GameInProgressActivity gameInProgressActivity = new GameInProgressActivity();
-
-    private PointsAddActivity pointsAddActivity = new PointsAddActivity();
-
-    private RecyclerView recyclerView;
-    private CheckboxAdapter adapter;
+    private CheckboxAdapter<WordList> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,14 +78,15 @@ public class MainActivity extends AppCompatActivity {
         eventManager.dispatchEvent(new RoundStartEvent());
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void createCheckboxList() {
-        recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
         List<CheckboxItem<WordList>> wordListCheckBoxItems = WordListParser.getAllWordLists().stream()
                 .map(wordList -> new CheckboxItem<>(wordList, false))
                 .collect(Collectors.toList());
 
-        adapter = new CheckboxAdapter(this, wordListCheckBoxItems);
+        adapter = new CheckboxAdapter<>(this, wordListCheckBoxItems);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

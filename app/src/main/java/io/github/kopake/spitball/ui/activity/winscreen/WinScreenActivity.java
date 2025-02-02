@@ -57,7 +57,7 @@ public class WinScreenActivity extends AppCompatActivity {
             TextView winningMessageTextView = findViewById(R.id.winnerMessageTextView);
             SharedPreferences sharedPreferences = Spitball.getSharedPreferences();
             String teamName;
-            if (team == Team.ONE)
+            if (team == Team.LEFT)
                 teamName = sharedPreferences.getString("team_name_left", "Team One");
             else
                 teamName = sharedPreferences.getString("team_name_right", "Team Two");

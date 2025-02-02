@@ -1,5 +1,7 @@
 package io.github.kopake.spitball.game.model;
 
+import androidx.annotation.NonNull;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,9 +13,9 @@ public class WordList {
 
     private static final String WORD_LIST_COMMENT_START = "#";
 
-    private String name;
+    private final String name;
 
-    private List<String> words;
+    private final List<String> words;
 
     public WordList(String name, InputStream inputStream) {
         this.name = name;
@@ -50,14 +52,7 @@ public class WordList {
         return name;
     }
 
-    private static String getFileNameWithoutExtension(String fileName) {
-        int lastDotIndex = fileName.lastIndexOf('.');
-        if (lastDotIndex > 0) {
-            return fileName.substring(0, lastDotIndex);
-        }
-        return fileName;
-    }
-
+    @NonNull
     @Override
     public String toString() {
         return getName();
