@@ -13,7 +13,9 @@ Spitball is a word-guessing game inspired by Catchphrase, designed for players w
 - **Simple and Intuitive UI** – Easy to pick up and play with friends.
 
 ## Installation
-- TODO
+- Navigate to the 'Releases' section of this git repository (typically below this text when viewing on mobile)
+- Click on the lastest release
+- Click on the spitball-*.*.*-release.apk file and follow the prompts from your device
 
 ## Advanced: Adding custom word lists
 - Custom word lists format:
