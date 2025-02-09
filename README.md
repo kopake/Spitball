@@ -25,5 +25,7 @@ Spitball is a word-guessing game inspired by Catchphrase, designed for players w
   * Avoid including phrases that contain too many words.
   * The app automatically ignores duplicated words, but you should still avoid including duplicated items in your lists.
 - Installing a custom word list
-  * Place your custom txt file(s) in the external files directory for the spitball app, in the 'word_lists' directory. (Usually Android\data\io.github.kopake.spitball\files\word_lists) NOTE: uninstalling the app will also delete your custom word lists from this directory
-  * After restarting the app, your word list(s) should be selectable in the app 
+  * Open the Spitball app, and navigate to the info screen using the 'i' icon on the home screen.
+  * At the bottom of the info screen, the 'Custom Word List Directory' will be shown.
+  * Place your custom txt file(s) in the Custom Word List Directory
+  * After restarting the app, your word list(s) should be selectable from the Categories menu
