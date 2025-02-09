@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
         android:textColor="@color/colorAccent"
+        android:fontFamily="@font/spitball_font_primary"
         android:paddingStart="8dp"
         android:paddingEnd="8dp" />
 </LinearLayout>

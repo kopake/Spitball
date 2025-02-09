@@ -41,6 +41,19 @@
         <item name="android:fontFamily">@font/spitball_font_secondary</item>
     </style>
 
+    <style name="SpitballInfoScreenTextViewStyle" parent="">
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:fontFamily">@font/spitball_font_secondary</item>
+    </style>
+
+    <style name="SpitballInfoScreenContributorsTextViewStyle" parent="SpitballInfoScreenTextViewStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="SpitballTextViewStyleLabel" parent="SpitballTextViewStylePrimary">
         <item name="android:gravity">right</item>
         <item name="android:textSize">20sp</item>

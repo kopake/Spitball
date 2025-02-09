@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Spitball</string>
+    <string name="sample_text">Sample Text</string>
     <string name="start_button_text">Start</string>
     <string name="title_text">Spitball</string>
     <string name="sounds_title_text">Sounds</string>
@@ -25,5 +26,9 @@
     <string name="info_screen_artist_name">Noahnator99</string>
     <string name="info_screen_sound_designer_title">Sound Design:</string>
     <string name="info_screen_sound_designer_name">AP</string>
+    <string name="info_screen_rules_title">Rules:</string>
+    <string name="info_screen_rules_open_button_text">Open</string>
+    <string name="info_screen_rules_link">View <a href="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/kopake/Spitball/main/app/src/main/assets/spitball_rules.pdf">PDF</a></string>
+    <string name="info_screen_custom_word_lists_title">Custom Word List Directory:</string>
 
 </resources>
